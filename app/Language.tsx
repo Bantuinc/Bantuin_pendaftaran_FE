@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 
 function Language() {
@@ -8,13 +8,19 @@ function Language() {
     <div className="flex items-center gap-1">
       <button
         className={`font-bold ${
-          language === "EN" ? "text-primary-dark" : "text-[#BFAD88]"
+          language === "EN" ? "text-white" : "text-[#FFA31D]"
         }`}
       >
         EN
       </button>
-      <span>/</span>
-      <button className={`font-bold ${language === "ID" ? "text-primary-dark":"text-[#BFAD88]"}`}>ID</button>
+      <span className="text-white font-bold">/</span>
+      <button
+        className={`font-bold ${
+          language === "ID" ? "text-white" : "text-[#FFA31D]"
+        }`}
+      >
+        ID
+      </button>
     </div>
   );
 }
