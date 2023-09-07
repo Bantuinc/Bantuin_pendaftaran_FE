@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Hind, Roboto } from "next/font/google";
 import GalleryImage from "@/components/GalleryImage";
 
-const hind = Hind({ weight: ["400", "700"], subsets: ["latin"] });
+export const hind = Hind({ weight: ["400", "600", "700"], subsets: ["latin"] });
 export const roboto = Roboto({ weight: ["400", "700"], subsets: ["latin"] });
 
 function Page() {
@@ -65,8 +65,7 @@ function Page() {
             </div>
             <div className="px-10 py-5">
               ISMC is a competition for mining engineering students in
-              Indonesia. This competition is held by Himpunan Mahasiswa Teknik
-              Pertambangan Universitas Pembangunan Nasional Veteran Yogyakarta.
+              Indonesia. This competition is held by ITB.
             </div>
           </div>
           <div className="bg-[#F8CF9D] rounded-3xl">
@@ -75,8 +74,7 @@ function Page() {
             </div>
             <div className="px-10 py-5">
               ISMC is a competition for mining engineering students in
-              Indonesia. This competition is held by Himpunan Mahasiswa Teknik
-              Pertambangan Universitas Pembangunan Nasional Veteran Yogyakarta.
+              Indonesia. This competition is held by ITB.
             </div>
           </div>
         </div>
