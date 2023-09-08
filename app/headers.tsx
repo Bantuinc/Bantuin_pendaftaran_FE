@@ -24,7 +24,9 @@ function Headers() {
           <Link href={"/events"}>Events</Link>
         </li>
         <li className="drop-shadow-md">Competition</li>
-        <li className="drop-shadow-md">About Us</li>
+        <li className="drop-shadow-md">
+          <Link href="/about">About Us</Link>
+        </li>
         <li className="drop-shadow-md">Partnership</li>
         <li className="drop-shadow-md">FAQ</li>
         <li className="drop-shadow-md">

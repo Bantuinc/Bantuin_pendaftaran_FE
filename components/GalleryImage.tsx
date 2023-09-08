@@ -21,7 +21,7 @@ function GalleryImage() {
         <Image
           src="/hero.jpeg"
           alt="galery1"
-          width={700}
+          width={500}
           height={500}
           className="rounded-lg w-full"
         />
