@@ -1,53 +1,56 @@
 "use client";
 import Image from "next/image";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function GalleryImage() {
   const settings = {
-    dots: true,
+    className: "center",
     infinite: true,
-    speed: 500,
+    centerPadding: "60px",
     slidesToShow: 1,
-    slidesToScroll: 1,
+    adaptiveHeight: true,
+    speed: 500,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
   return (
     <Slider {...settings}>
-      <div className="h-[20rem] rounded-md flex items-center justify-center">
+      <div className="rounded-md px-3">
         <Image
           src="/hero.jpeg"
           alt="galery1"
-          width={500}
+          width={700}
           height={500}
-          className="rounded-lg"
+          className="rounded-lg w-full"
         />
       </div>
-      <div className="h-[20rem] rounded-md">
+      <div className="rounded-md px-3">
         <Image
           src="/hero.jpeg"
           alt="galery1"
           width={500}
           height={500}
-          className="rounded-lg"
+          className="rounded-lg w-full"
         />
       </div>
-      <div className="h-[20rem] rounded-md">
+      <div className="rounded-md px-3">
         <Image
           src="/hero.jpeg"
           alt="galery1"
           width={500}
           height={500}
-          className="rounded-lg"
+          className="rounded-lg w-full"
         />
       </div>
-      <div className="h-[20rem] rounded-md">
+      <div className="rounded-md px-3">
         <Image
           src="/hero.jpeg"
           alt="galery1"
           width={500}
           height={500}
-          className="rounded-lg"
+          className="rounded-lg w-full"
         />
       </div>
     </Slider>
@@ -65,7 +68,7 @@ function NextArrow(props: ArrowProps) {
   const { style, onClick } = props;
   return (
     <div
-      className="absolute top-1/2 -right-20 h-16 w-16 -translate-y-1/2 cursor-pointer"
+      className="absolute top-1/2 md:-right-20 -right-0 h-16 w-16 -translate-y-1/2 cursor-pointer"
       style={{ ...style, display: "block" }}
       onClick={onClick}
     >
@@ -82,7 +85,7 @@ function PrevArrow(props: ArrowProps) {
   const { style, onClick } = props;
   return (
     <div
-      className="absolute top-1/2 -left-20 h-16 w-16 -translate-y-1/2 cursor-pointer"
+      className="absolute top-1/2 md:-left-20 h-16 w-16 -translate-y-1/2 cursor-pointer z-10"
       style={{ ...style, display: "block" }}
       onClick={onClick}
     >

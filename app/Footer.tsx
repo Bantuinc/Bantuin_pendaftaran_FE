@@ -1,16 +1,16 @@
 import Image from "next/image";
-import { roboto } from "./page";
+import { roboto } from "./layout";
 
 function Footer() {
   return (
-    <footer className="px-24 py-12 bg-[#FFA31D] flex justify-between gap-6">
-      <div className="flex items-center w-[400px] px-6 py-9 ring-2 ring-white/50 rounded-2xl bg-gradient-to-bl from-[#ffffff66] from-[8.95%] to-[#ffffff03] to-[114%] backdrop-blur-sm">
+    <footer className="sm:px-24 px-6 py-12 bg-[#FFA31D] flex flex-col sm:flex-row w-full justify-between gap-6">
+      <div className="flex items-center sm:w-[400px] px-6 py-9 ring-2 ring-white/50 rounded-2xl bg-gradient-to-bl from-[#ffffff66] from-[8.95%] to-[#ffffff03] to-[114%] backdrop-blur-sm">
         <Image src="/logo2.png" alt="logo" width={300} height={100} />
       </div>
       <div
-        className={`flex flex-col gap-3 text-white ${roboto.className} font-bold text-xl [&>span]:flex [&>span]:gap-6 [&>span]:items-center`}
+        className={`flex flex-col gap-3 text-white ${roboto.className} font-bold text-xl [&>div]:flex [&>div]:gap-6 [&>div]:items-center`}
       >
-        <span>
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -33,8 +33,8 @@ function Footer() {
             />
           </svg>
           <a href="">ismc_itb</a>
-        </span>
-        <span>
+        </div>
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -53,8 +53,8 @@ function Footer() {
             />
           </svg>
           <a href="">ismc_itb</a>
-        </span>
-        <span>
+        </div>
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -73,8 +73,8 @@ function Footer() {
             />
           </svg>
           <a href="">ISMC-ITB XIII</a>
-        </span>
-        <span>
+        </div>
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -101,8 +101,8 @@ function Footer() {
             />
           </svg>
           <a href="">14th Indonesian Students Mining Competition</a>
-        </span>
-        <span>
+        </div>
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -121,7 +121,7 @@ function Footer() {
             />
           </svg>
           <a href="">ISMC ITB</a>
-        </span>
+        </div>
       </div>
     </footer>
   );

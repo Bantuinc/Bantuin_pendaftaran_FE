@@ -7,6 +7,8 @@ function Language() {
   return (
     <div className="flex items-center gap-1">
       <button
+        type="button"
+        onClick={() => setLanguage("EN")}
         className={`font-bold ${
           language === "EN" ? "text-white" : "text-[#FFA31D]"
         }`}
@@ -15,6 +17,8 @@ function Language() {
       </button>
       <span className="text-white font-bold">/</span>
       <button
+        type="button"
+        onClick={() => setLanguage("ID")}
         className={`font-bold ${
           language === "ID" ? "text-white" : "text-[#FFA31D]"
         }`}
