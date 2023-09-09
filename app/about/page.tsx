@@ -21,7 +21,7 @@ function AboutUs() {
 
         <div className="md:max-w-[50%] antialiased drop-shadow-xl">
           <h3
-            className={`mt-6 text-2xl font-bold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text ${hind.className}`}
+            className={`mt-6 text-2xl font-bold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text drop-shadow-md ${hind.className}`}
           >
             ISMC stands for Indonesian Student Mining Competition that has been
             held for the 13th time. In 2024, we will hold the 14th Indonesian
@@ -53,7 +53,7 @@ function AboutUs() {
         />
         <div className="flex p-16 ring-2 ring-slate-200/70 rounded-[25px] bg-gradient-to-tr from-[#ccc8] to-[#cccd] backdrop-blur-sm">
           <h1
-            className={`${hind.className} text-5xl font-bold text-[#2A6876] text-center drop-shadow-lg`}
+            className={`${hind.className} text-5xl font-bold text-[#2A6876] text-center drop-shadow-md`}
           >
             Mine The Future: Embracing the unity, knowledge, and excellence at
             ISMC XIV

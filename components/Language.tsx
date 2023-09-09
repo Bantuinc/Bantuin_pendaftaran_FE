@@ -10,7 +10,7 @@ function Language() {
         type="button"
         onClick={() => setLanguage("EN")}
         className={`font-bold ${
-          language === "EN" ? "text-white" : "text-[#FFA31D]"
+          language === "EN" ? "text-[#FFA31D]" : "text-white"
         }`}
       >
         EN
@@ -20,7 +20,7 @@ function Language() {
         type="button"
         onClick={() => setLanguage("ID")}
         className={`font-bold ${
-          language === "ID" ? "text-white" : "text-[#FFA31D]"
+          language === "ID" ? "text-[#FFA31D]" : "text-white"
         }`}
       >
         ID

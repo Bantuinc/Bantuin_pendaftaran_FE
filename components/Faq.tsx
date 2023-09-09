@@ -9,7 +9,10 @@ import {
 
 function Faq() {
   return (
-    <section className="p-16 min-h-screen flex flex-col items-center justify-center bg-[#296875]">
+    <section
+      id="faq"
+      className="p-16 min-h-screen flex flex-col items-center justify-center bg-[#296875]"
+    >
       <div className="mb-12 w-fit">
         <h1 className={`text-6xl font-bold text-white ${roboto.className}`}>
           FAQ

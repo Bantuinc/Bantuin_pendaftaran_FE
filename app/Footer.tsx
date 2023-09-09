@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { roboto } from "./layout";
 
 function Footer() {
   return (
@@ -7,10 +6,11 @@ function Footer() {
       <div className="flex items-center sm:w-[400px] px-6 py-9 ring-2 ring-white/50 rounded-2xl bg-gradient-to-bl from-[#ffffff66] from-[8.95%] to-[#ffffff03] to-[114%] backdrop-blur-sm">
         <Image src="/logo2.png" alt="logo" width={300} height={100} />
       </div>
-      <div
-        className={`flex flex-col gap-3 text-white ${roboto.className} font-bold text-xl [&>div]:flex [&>div]:gap-6 [&>div]:items-center`}
-      >
-        <div>
+      <div className={`flex items-end gap-3`}>
+        <a
+          href="https://instagram.com/ismc.itb?igshid=MzRlODBiNWFlZA=="
+          target="_blank"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -32,9 +32,11 @@ function Footer() {
               fill="#FFA31D"
             />
           </svg>
-          <a href="">ismc_itb</a>
-        </div>
-        <div>
+        </a>
+        <a
+          href="https://www.tiktok.com/@ismc_itb?_t=8dx43CwY44f&_r=1"
+          target="_blank"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -52,9 +54,11 @@ function Footer() {
               fill="#FFA31D"
             />
           </svg>
-          <a href="">ismc_itb</a>
-        </div>
-        <div>
+        </a>
+        <a
+          href="https://twitter.com/ismc_itb?s=21&t=jPKYmK1WE_07Hn68UdzIaw"
+          target="_blank"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -72,9 +76,8 @@ function Footer() {
               fill="#FFA31D"
             />
           </svg>
-          <a href="">ISMC-ITB XIII</a>
-        </div>
-        <div>
+        </a>
+        <a href="https://www.linkedin.com/company/ismc-hmtitb/" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -100,9 +103,8 @@ function Footer() {
               fill="#FFA31D"
             />
           </svg>
-          <a href="">14th Indonesian Students Mining Competition</a>
-        </div>
-        <div>
+        </a>
+        <a href="https://www.youtube.com/@ismcitb3488" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="43"
@@ -120,8 +122,7 @@ function Footer() {
               fill="#FFA31D"
             />
           </svg>
-          <a href="">ISMC ITB</a>
-        </div>
+        </a>
       </div>
     </footer>
   );
