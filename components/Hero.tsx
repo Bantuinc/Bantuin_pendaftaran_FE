@@ -9,6 +9,8 @@ function Hero() {
         alt="Hero Login Image"
         fill
         className="z-[-1] object-cover"
+        sizes="{(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw}"
+        priority={true}
       />
       <div className="flex px-9 py-16 ring-2 ring-slate-200/70 rounded-[25px] bg-gradient-to-tr from-[#ccc3] to-[#ccca] backdrop-blur-sm">
         <Image src="/logo2.png" height={300} width={400} alt="Hero" />
