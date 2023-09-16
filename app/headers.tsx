@@ -5,11 +5,23 @@ import Language from "@/components/Language";
 import Link from "next/link";
 import { AlignJustify } from "lucide-react";
 import { useState } from "react";
+import { Transition } from "@headlessui/react";
 
 function Headers() {
   const [open, setOpen] = useState<boolean>(false);
   const [openEvent, setOpenEvent] = useState<boolean>(false);
   const [openCompetition, setOpenCompetition] = useState<boolean>(false);
+
+  const handleToggleEvent = () => {
+    if (openCompetition) setOpenCompetition(false)
+    setOpenEvent((value) => !value)
+  }
+
+  const handleToggleCompetition = () => {
+    if(openEvent) setOpenEvent(false);
+    setOpenCompetition((value)=> !value);
+  };
+
   return (
     <div className="fixed z-10 box-border w-[calc(100vw-3rem)] h-[80px] mt-4 mx-4 py-6 px-12 rounded-[10px] flex items-center justify-between ring-1 ring-slate-200/70 bg-gradient-to-br from-[#fff6] to-[#FFFFFF03] before:backdrop-blur-lg before:w-full before:h-full before:absolute before:top-0 before:left-0 before:-z-10 before:rounded-[10px]">
       <div>
@@ -26,7 +38,7 @@ function Headers() {
           <button
             type="button"
             className="relative flex items-center gap-2 group"
-            onClick={() => setOpenEvent((value) => !value)}
+            onClick={handleToggleEvent}
           >
             <p className="drop-shadow-md">Events</p>
             <Image
@@ -36,27 +48,47 @@ function Headers() {
               height={12}
               className="w-4 h-4 pt-1"
             />
-            <div
-              className={` ${
-                openEvent ? "block" : "hidden"
-              } absolute box-border md:top-8 top-0 md:left-0 -left-56 bg-[#5B99A8] rounded-md text-[#468091] shadow-sm shadow-[#46809166]`}
+            <Transition
+              show={openEvent}
+              enter="transition-all duration-150"
+              enterFrom="opacity-0 -translate-y-10"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition-opacity duration-150"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              className="absolute box-border md:top-8 top-0 md:left-0 -left-56 bg-[#5B99A8] rounded-md text-[#468091] shadow-sm shadow-[#46809166]"
             >
               <ul className="flex flex-col items-stretch gap-1 [&>a]:bg-white [&>a:hover]:bg-slate-200 [&>a]:py-3 [&>a]:px-6 [&>a:first-child]:rounded-t-md [&>a:last-child]:rounded-b-md [&>a]:w-52 [&>a]:text-sm [&>a]:transition-all">
-                <Link href={"/events/mining-competition"}>
-                  <li>Mining Competition</li>
+                <Link href={"/events/"}>
+                  <li>Ceremonies</li>
+                </Link>
+                <Link href={"/events/"}>
+                  <li>Youth Mining Conference</li>
+                </Link>
+                <Link href={"/events/"}>
+                  <li>Mining Talks</li>
+                </Link>
+                <Link href={"/events/"}>
+                  <li>Mining Expo and Job Fair</li>
                 </Link>
                 <Link href={"/events"}>
-                  <li>Mining Insight</li>
+                  <li>Mining Exhibition</li>
+                </Link>
+                <Link href={"/events"}>
+                  <li>Bandung Tour and Outbond</li>
+                </Link>
+                <Link href={"/events"}>
+                  <li>Laboratory Tour</li>
                 </Link>
               </ul>
-            </div>
+            </Transition>
           </button>
         </li>
         <li className="drop-shadow-md">
           <button
             type="button"
             className="relative flex items-center gap-2 group"
-            onClick={() => setOpenCompetition((value) => !value)}
+            onClick={handleToggleCompetition}
           >
             <p className="drop-shadow-md">Competition</p>
             <Image
@@ -66,13 +98,18 @@ function Headers() {
               height={12}
               className="w-4 h-4 pt-1"
             />
-            <div
-              className={` ${
-                openCompetition ? "block" : "hidden"
-              } absolute box-border md:top-8 top-0 md:left-0 -left-56 bg-[#5B99A8] rounded-md text-[#468091] shadow-sm shadow-[#46809166]`}
+            <Transition
+              show={openCompetition}
+              enter="transition-all duration-150"
+              enterFrom="opacity-0 -translate-y-10"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition-opacity duration-150"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              className="absolute box-border md:top-8 top-0 md:left-0 -left-56 bg-[#5B99A8] rounded-md text-[#468091] shadow-sm shadow-[#46809166]"
             >
               <ul className="flex flex-col items-stretch gap-1 [&>a]:bg-white [&>a:hover]:bg-slate-200 [&>a]:py-3 [&>a]:px-6 [&>a:first-child]:rounded-t-md [&>a:last-child]:rounded-b-md [&>a]:w-52 [&>a]:text-sm [&>a]:transition-all">
-                <Link href={"/events"}>
+                <Link href={"/events/mining-competition"}>
                   <li>Mining Competition</li>
                 </Link>
                 <Link href={"/events"}>
@@ -82,10 +119,10 @@ function Headers() {
                   <li>Poster Contest</li>
                 </Link>
                 <Link href={"/events"}>
-                  <li>Hackathon</li>
+                  <li>Hackathon Contest</li>
                 </Link>
               </ul>
-            </div>
+            </Transition>
           </button>
         </li>
         <li className="drop-shadow-md">

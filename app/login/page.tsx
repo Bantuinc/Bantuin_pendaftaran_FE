@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { hind } from "../layout";
+import { hind } from "@/fonts/font";
 import Background from "@/public/bg_login.webp"
 
 function Login() {

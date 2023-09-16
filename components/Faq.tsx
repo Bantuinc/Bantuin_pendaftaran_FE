@@ -1,4 +1,4 @@
-import { roboto } from "@/app/layout";
+import { roboto } from "@/fonts/font";
 import Underline from "./Underline";
 import {
   Accordion,

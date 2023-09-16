@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { hind } from "../layout";
+import { hind } from "@/fonts/font";
 
 function AboutUs() {
   return (

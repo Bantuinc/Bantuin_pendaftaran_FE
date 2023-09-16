@@ -1,4 +1,4 @@
-import { roboto } from "@/app/layout";
+import { roboto } from "@/fonts/font";
 import GalleryImage from "./GalleryImage";
 import Underline from "./Underline";
 
@@ -12,7 +12,7 @@ function Gallery() {
     >
       <div className="w-fit">
         <h1 className={`text-[#2A6876] text-6xl font-bold ${roboto.className}`}>
-          Gallery
+        Let’s take a look at our content!
         </h1>
         <Underline />
       </div>

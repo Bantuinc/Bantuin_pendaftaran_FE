@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { hind } from "@/app/layout";
-import Background from "@/public/background.webp"
+import { hind, cocogoose } from "@/fonts/font";
+import Background from "@/public/background.webp";
+import Link from "next/link";
 
 function Hero() {
   return (
@@ -20,9 +21,16 @@ function Hero() {
       </div>
 
       <div className="md:max-w-[50%] antialiased drop-shadow-xl">
-        <h1 className="text-6xl py-2 font-extrabold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text">
-          The 14th Indonesian Student Mining Competition
+        <h1 className={`text-6xl py-2 font-extrabold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text ${cocogoose.className}`}>
+          The <span className={`${hind.className} text-[72px]`}>14</span><span className="align-super text-3xl">th</span> Indonesian Student Mining Competition
         </h1>
+        <Link href="/register">
+          <button
+            className={`mt-6 px-6 py-2 rounded-lg text-lg text-orange-50 font-semibold bg-[#FFA31D] ${hind.className} hover:text-white hover:bg-orange-400 hover:translate-x-1 transition-all duration-300`}
+          >
+            Register Now !
+          </button>
+        </Link>
         <h3
           className={`mt-6 text-2xl font-bold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text ${hind.className}`}
         >
