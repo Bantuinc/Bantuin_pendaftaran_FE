@@ -3,16 +3,14 @@ import Background from "@/public/background.webp";
 import ButtonRegist from "./ButtonRegist";
 
 const getCompetition = async () => {
-  try{
-
+  try {
     const res = await fetch(
       "https://4427-202-80-212-185.ngrok-free.app/api/competition"
-      );
-      return res.json();
-    }
-    catch{
-      return respon;
-    }
+    );
+    return res.json();
+  } catch {
+    return respon;
+  }
 };
 
 async function Register() {
@@ -38,6 +36,7 @@ async function Register() {
           {competition.data &&
             competition?.data.map((comp: any, id: number) => (
               <ButtonRegist
+                key={id}
                 imgKey={id}
                 id={comp.id}
                 name={comp.name}
