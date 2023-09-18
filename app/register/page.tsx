@@ -25,7 +25,6 @@ const getCompetition = async () => {
 
 async function Register() {
   const competition: Competition[] = await getCompetition();
-  console.log(competition);
   return (
     <section className="p-12 pt-28 md:p-16 md:pt-40 relative min-h-[110vh] flex flex-col-reverse md:flex-row gap-6 justify-center items-center">
       <Image
