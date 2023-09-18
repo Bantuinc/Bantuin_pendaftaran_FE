@@ -1,93 +1,30 @@
-import Image from "next/image";
 import Background from "@/public/background.webp";
-import ButtonRegist from "./ButtonRegist";
-
-type competitionProps = {
-  isSuccess: boolean,
-  statusCode: number,
-  message: string,
-  timestamp: number,
-  data: {[key:string]:any}[],
-}
+import { cookies } from "next/headers";
+import Image from "next/image";
+import CompetitionList from "./CompetitionList";
 
 const getCompetition = async () => {
+  const cookieStore = cookies();
   try {
     const res = await fetch(
-      "https://4427-202-80-212-185.ngrok-free.app/api/competition",
-      { cache: "no-cache" }
+      `${process.env.NEXT_PUBLIC_API_URL}/api/competition`,
+      {
+        next: { revalidate: 3600 },
+        headers: {
+          Authorization: `Bearer ${cookieStore.get("accessToken")?.value!}`,
+        },
+      }
     );
-    return res.json();
+    const response: CompetitionAPIResponse = await res.json();
+    return response.data;
   } catch (err) {
-    console.log(err);
+    if (err instanceof Error) throw err.message;
+    throw "Something went wrong!";
   }
 };
 
 async function Register() {
-  // const competition = await getCompetition();
-  const competition : competitionProps = {
-    isSuccess: true,
-    statusCode: 200,
-    message: "Success",
-    timestamp: 1694872576,
-    data: [
-      {
-        id: "0603e4b6-80c5-4162-8c12-a8f3f3e0040e",
-        name: "Hackaton Contest",
-        description: "Competition 4",
-        requiredMember: 4,
-        maxMember: 6,
-        quota: 10,
-        type: 1,
-        openedAt: "2023-09-14T01:27:55.602292Z",
-        closedAt: "2023-10-14T01:27:55.602293Z",
-        status: 1,
-        createdAt: "2023-09-14T01:27:55.602293Z",
-        updatedAt: "2023-09-14T01:27:55.602293Z",
-      },
-      {
-        id: "08258f33-0778-4347-aed4-179d275d4f31",
-        name: "Mining Competition",
-        description: "Competition 1",
-        requiredMember: 8,
-        maxMember: 8,
-        quota: 10,
-        type: 1,
-        openedAt: "2023-09-14T01:27:55.602135Z",
-        closedAt: "2023-10-14T01:27:55.602167Z",
-        status: 1,
-        createdAt: "2023-09-14T01:27:55.602229Z",
-        updatedAt: "2023-09-14T01:27:55.602257Z",
-      },
-      {
-        id: "1c39307a-9b2d-46e4-a3fb-77cb603d6aa6",
-        name: "Paper Contest",
-        description: "Competition 2",
-        requiredMember: 1,
-        maxMember: 3,
-        quota: 10,
-        type: 1,
-        openedAt: "2023-09-14T01:27:55.602286Z",
-        closedAt: "2023-10-14T01:27:55.602286Z",
-        status: 1,
-        createdAt: "2023-09-14T01:27:55.602286Z",
-        updatedAt: "2023-09-14T01:27:55.602287Z",
-      },
-      {
-        id: "b7952fca-5bba-4b13-8cd7-ea37cf282a56",
-        name: "Poster Contest",
-        description: "Competition 3",
-        requiredMember: 1,
-        maxMember: 1,
-        quota: 10,
-        type: 2,
-        openedAt: "2023-09-14T01:27:55.602292Z",
-        closedAt: "2023-10-14T01:27:55.602292Z",
-        status: 1,
-        createdAt: "2023-09-14T01:27:55.602292Z",
-        updatedAt: "2023-09-14T01:27:55.602292Z",
-      },
-    ],
-  };
+  const competition: Competition[] = await getCompetition();
   console.log(competition);
   return (
     <section className="p-12 pt-28 md:p-16 md:pt-40 relative min-h-[110vh] flex flex-col-reverse md:flex-row gap-6 justify-center items-center">
@@ -103,19 +40,18 @@ async function Register() {
       />
       <div>
         <h1 className="text-6xl mb-6 py-2 text-center font-extrabold bg-gradient-to-r from-[#fffa] to-[#FFF] text-transparent bg-clip-text">
-          Register
+          Our Competition
         </h1>
-        <div className="flex flex-col gap-12 p-9 ring-2 ring-slate-200/70 rounded-[25px] bg-gradient-to-tr from-[#ccca] to-[#ccc] backdrop-blur-[12px] md:w-[80vw] w-full">
-          {competition.data &&
-            competition?.data.map((comp: any, id: number) => (
-              <ButtonRegist
-                key={id}
-                imgKey={id}
-                id={comp.id}
-                name={comp.name}
-                description={comp.description}
-              />
-            ))}
+        <div className="flex flex-col gap-12 px-9 py-12 ring-2 ring-slate-200/70 rounded-[32px] bg-gradient-to-tr from-[#ccc0] to-[#ccca] backdrop-blur-[12px] md:w-[80vw] w-full">
+          {competition.map((comp: Competition, id: number) => (
+            <CompetitionList
+              key={id}
+              imgKey={id}
+              id={comp.id}
+              name={comp.name}
+              description={comp.description}
+            />
+          ))}
         </div>
       </div>
     </section>
