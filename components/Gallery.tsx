@@ -11,8 +11,10 @@ function Gallery() {
       }}
     >
       <div className="w-fit">
-        <h1 className={`text-[#2A6876] text-6xl font-bold ${roboto.className}`}>
-        Let’s take a look at our content!
+        <h1
+          className={`text-[#2A6876] text-6xl font-bold text-center ${roboto.className}`}
+        >
+          Let’s take a look at our content!
         </h1>
         <Underline />
       </div>
