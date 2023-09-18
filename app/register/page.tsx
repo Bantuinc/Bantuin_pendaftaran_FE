@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import CompetitionList from "./CompetitionList";
 
-const getCompetition = async () => {
+const getCompetition = async (): Promise<Competition[]> => {
   const cookieStore = cookies();
   try {
     const res = await fetch(
@@ -42,15 +42,16 @@ async function Register() {
           Our Competition
         </h1>
         <div className="flex flex-col gap-12 px-9 py-12 ring-2 ring-slate-200/70 rounded-[32px] bg-gradient-to-tr from-[#ccc0] to-[#ccca] backdrop-blur-[12px] md:w-[80vw] w-full">
-          {competition?.map((comp: Competition, id: number) => (
-            <CompetitionList
-              key={id}
-              imgKey={id}
-              id={comp.id}
-              name={comp.name}
-              description={comp.description}
-            />
-          ))}
+          {competition &&
+            competition?.map((comp: Competition, id: number) => (
+              <CompetitionList
+                key={id}
+                imgKey={id}
+                id={comp.id}
+                name={comp.name}
+                description={comp.description}
+              />
+            ))}
         </div>
       </div>
     </section>
