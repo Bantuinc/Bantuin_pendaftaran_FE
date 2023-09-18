@@ -3,6 +3,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Script from "next/script";
 
 function GalleryImage() {
   const settings = {
@@ -18,13 +19,36 @@ function GalleryImage() {
   return (
     <Slider {...settings}>
       <div className="rounded-md px-3">
-        <Image
+        {/* <Image
           src="/hero.jpeg"
           alt="galery1"
           width={500}
           height={500}
           className="rounded-lg w-full"
-        />
+        /> */}
+        <div
+          style={{
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            border: 0,
+          }}
+        >
+          <iframe
+            src="https://www.tiktok.com/embed/7278216166827511045"
+            style={{
+              left: 0,
+              width: "100%",
+              height: 500,
+              position: "relative",
+            }}
+            allowFullScreen
+            scrolling="no"
+            allow="encrypted-media;"
+          ></iframe>
+        </div>
       </div>
       <div className="rounded-md px-3">
         <Image
