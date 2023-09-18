@@ -109,7 +109,9 @@ function RegistCompetitionForm({ competitionId }: { competitionId: string }) {
       >
         Citizenship
       </label>
-      <div className={`px-4 py-2 flex gap-3 rounded-lg  font-bold w-fit`}>
+      <div
+        className={`px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit`}
+      >
         <input
           name="citizenShip"
           type="radio"

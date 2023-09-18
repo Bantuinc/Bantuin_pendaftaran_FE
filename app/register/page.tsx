@@ -42,7 +42,7 @@ async function Register() {
           Our Competition
         </h1>
         <div className="flex flex-col gap-12 px-9 py-12 ring-2 ring-slate-200/70 rounded-[32px] bg-gradient-to-tr from-[#ccc0] to-[#ccca] backdrop-blur-[12px] md:w-[80vw] w-full">
-          {competition.map((comp: Competition, id: number) => (
+          {competition?.map((comp: Competition, id: number) => (
             <CompetitionList
               key={id}
               imgKey={id}
