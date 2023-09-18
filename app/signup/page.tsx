@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { hind } from "@/fonts/font";
 import Background from "@/public/bg_login.webp";
-import LoginForm from "@/components/LoginForm";
+import Image from "next/image";
+import SignUpForm from "@/components/SignUpForm";
 
-function Login() {
+function SignUp() {
   return (
     <section
       className={`relative min-h-[110vh] p-12 pt-28 flex gap-6 justify-end items-center ${hind.className} antialiased overflow-hidden`}
@@ -20,12 +20,12 @@ function Login() {
       />
       <div className="flex flex-col px-9 py-16 sm:w-[28rem] ring-2 ring-slate-200/70 rounded-[25px] bg-gradient-to-tr from-[#ccc8] to-[#ccca] backdrop-blur-[12px] text-white">
         <h1 className="mb-12 text-center text-4xl font-semibold drop-shadow-md">
-          Account login
+          Sign Up New Account
         </h1>
-        <LoginForm />
+        <SignUpForm />
       </div>
     </section>
   );
 }
 
-export default Login;
+export default SignUp;
