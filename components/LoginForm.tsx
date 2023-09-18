@@ -5,28 +5,44 @@ import Link from "next/link";
 import axios, { AxiosError } from "axios";
 import { FormEvent, useState } from "react";
 import { useCookies } from "react-cookie";
+import Swal from "sweetalert2";
 
 function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [cookie, setCookie] = useCookies(["accessToken"]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const { data: res } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
         { email, password }
       );
-      console.log(res?.data.token);
       setCookie("accessToken", res?.data.token, {
         path: "/",
         maxAge: 3600 * 24 * 7,
         sameSite: true,
       });
+      Swal.fire({
+        title: "Success!",
+        text: "Your account has been logged in successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
     } catch (err) {
-      if (err instanceof AxiosError) console.log(err?.response?.data?.message);
+      if (err instanceof AxiosError) {
+        Swal.fire({
+          title: "Error!",
+          text: err.response?.data?.message,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
     }
+    setLoading(false);
   };
   return (
     <form onSubmit={handleSignIn} className="flex flex-col gap-3">
@@ -39,6 +55,7 @@ function LoginForm() {
       <input
         type="email"
         id="email"
+        required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
@@ -51,6 +68,7 @@ function LoginForm() {
       </label>
       <input
         type="password"
+        required
         id="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
@@ -95,9 +113,10 @@ function LoginForm() {
       </span>
       <button
         type="submit"
+        disabled={loading}
         className="bg-[#FFA31D] hover:bg-orange-400 rounded-xl py-2 px-4 font-semibold text-2xl antialiased transition-all duration-300 ease-in-out"
       >
-        Login
+        {loading ? "Loading..." : "Login"}
       </button>
     </form>
   );
