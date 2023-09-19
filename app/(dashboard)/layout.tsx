@@ -1,7 +1,7 @@
-import "./globals.css";
+import "../globals.css";
 import type { Metadata } from "next";
-import Headers from "./headers";
-import Footer from "./Footer";
+import Headers from "../(index)/headers";
+import Footer from "../(index)/Footer";
 import { inter } from "@/fonts/font";
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "The 14th Indonesian Student Mining Competition",
 };
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
