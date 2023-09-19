@@ -6,6 +6,7 @@ import axios, { AxiosError } from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
+import Select, { MultiValue } from "react-select";
 
 const CITIZENSHIP = {
   domestic: 1,
@@ -15,13 +16,36 @@ interface StringObject {
   [key: string]: string;
 }
 
-function RegistCompetitionForm({ competitionId }: { competitionId: string }) {
+type AdditionalEntityType = "text" | "number" | "file" | "file" | "select";
+
+const enumMap = new Map<number, AdditionalEntityType>();
+
+enumMap.set(1, "text");
+enumMap.set(2, "number");
+enumMap.set(3, "file");
+enumMap.set(4, "file");
+enumMap.set(5, "select");
+
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
+
+function RegistCompetitionForm({
+  competitionId,
+  competitionType,
+}: {
+  competitionId: string;
+  competitionType: number;
+}) {
   const [teamName, setTeamName] = useState<string>("");
   const [citizenShip, setCitizenShip] = useState<1 | 2>(1);
   const [fieldLoaded, setFieldLoaded] = useState<boolean>(false);
   const [field, setField] = useState<AdditionalField[]>([]);
   const [AdditionalFieldValue, setAdditionalFieldValue] =
     useState<StringObject>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [cookies] = useCookies(["accessToken"]);
   const accessToken = cookies.accessToken! as string;
@@ -50,7 +74,9 @@ function RegistCompetitionForm({ competitionId }: { competitionId: string }) {
       );
       Swal.fire({
         title: "Success!",
-        text: "Your team has been registered successfully!",
+        text: `${
+          competitionType === 1 ? "Your team has" : "You have"
+        } been registered successfully!`,
         icon: "success",
         confirmButtonText: "OK",
       });
@@ -76,10 +102,36 @@ function RegistCompetitionForm({ competitionId }: { competitionId: string }) {
   const handleAdditionalField = (
     e: ChangeEvent<HTMLInputElement>,
     normalizedName: string
-  ) => {
+  ): void => {
     setAdditionalFieldValue({
       ...AdditionalFieldValue,
       [normalizedName]: e.target.value,
+    });
+  };
+
+  const handleSelect = (
+    e: MultiValue<{ value: string; label: string }>,
+    normalizedName: string
+  ) => {
+    let selectedValue: string[] = [];
+    selectedValue = e.map((value) => value.value);
+    const selectedValueInString = selectedValue.join(",");
+    setAdditionalFieldValue({
+      ...AdditionalFieldValue,
+      [normalizedName]: selectedValueInString,
+    });
+  };
+
+  const handleAdditionalFile = (
+    e: ChangeEvent<HTMLInputElement>,
+    normalizedName: string
+  ) => {
+    const tempFile =
+      "https://drive.google.com/uc?export=view&id=1EY9CuYFPdt6gD3ax4_pl5K8RDoCyXii8";
+    console.log(e.target?.files !== null ? e.target?.files[0] : tempFile);
+    setAdditionalFieldValue({
+      ...AdditionalFieldValue,
+      [normalizedName]: tempFile,
     });
   };
 
@@ -93,7 +145,7 @@ function RegistCompetitionForm({ competitionId }: { competitionId: string }) {
         htmlFor="teamName"
         className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
       >
-        Team Name
+        {competitionType === 1 ? "Team Name" : "Your Full Name"}
       </label>
       <input
         type="text"
@@ -109,30 +161,33 @@ function RegistCompetitionForm({ competitionId }: { competitionId: string }) {
       >
         Citizenship
       </label>
-      <div
-        className={`px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit`}
-      >
-        <input
-          name="citizenShip"
-          type="radio"
-          id="domestic"
-          value={CITIZENSHIP.domestic}
-          checked={citizenShip === CITIZENSHIP.domestic}
-          onChange={(e) => setCitizenShip(1)}
-        />
-        <label htmlFor="domestic">Domestic</label>
+      <div className="flex gap-3">
+        <div
+          className={`px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit`}
+        >
+          <input
+            name="citizenShip"
+            type="radio"
+            id="domestic"
+            value={CITIZENSHIP.domestic}
+            checked={citizenShip === CITIZENSHIP.domestic}
+            onChange={(e) => setCitizenShip(1)}
+          />
+          <label htmlFor="domestic">Domestic</label>
+        </div>
+        <div className="px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit">
+          <input
+            name="citizenShip"
+            type="radio"
+            id="overseas"
+            value={CITIZENSHIP.overseas}
+            checked={citizenShip === CITIZENSHIP.overseas}
+            onChange={(e) => setCitizenShip(2)}
+          />
+          <label htmlFor="overseas">Overseas</label>
+        </div>
       </div>
-      <div className="px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit">
-        <input
-          name="citizenShip"
-          type="radio"
-          id="overseas"
-          value={CITIZENSHIP.overseas}
-          checked={citizenShip === CITIZENSHIP.overseas}
-          onChange={(e) => setCitizenShip(2)}
-        />
-        <label htmlFor="overseas">Overseas</label>
-      </div>
+
       {fieldLoaded &&
         field.map((fieldValue: AdditionalField, id) => (
           <div key={id} className="flex flex-col">
@@ -142,27 +197,51 @@ function RegistCompetitionForm({ competitionId }: { competitionId: string }) {
             >
               {fieldValue.name}
             </label>
-            <input
-              type="text"
-              required={fieldValue.type === 1 ? true : false}
-              id={fieldValue.normalizedName}
-              value={
-                AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)
-                  ? AdditionalFieldValue[fieldValue.normalizedName]
-                  : ""
-              }
-              onChange={(e) =>
-                handleAdditionalField(e, fieldValue.normalizedName)
-              }
-              className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
-            />
+            {enumMap.get(fieldValue.type) === "file" ? (
+              <input
+                type={enumMap.get(fieldValue.type)}
+                required
+                id={fieldValue.normalizedName}
+                onChange={(e) =>
+                  handleAdditionalFile(e, fieldValue.normalizedName)
+                }
+                className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
+              />
+            ) : enumMap.get(fieldValue.type) === "select" ? (
+              <Select
+                options={options}
+                required
+                isMulti
+                className="text-slate-900"
+                onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
+              />
+            ) : (
+              <input
+                type={enumMap.get(fieldValue.type)}
+                required
+                id={fieldValue.normalizedName}
+                value={
+                  AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)
+                    ? AdditionalFieldValue[fieldValue.normalizedName]
+                    : ""
+                }
+                onChange={(e) =>
+                  handleAdditionalField(e, fieldValue.normalizedName)
+                }
+                className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
+              />
+            )}
           </div>
         ))}
       <button
         type="submit"
         className="mt-6 bg-[#FFA31D] hover:bg-orange-400 rounded-xl py-2 px-4 font-semibold text-2xl antialiased transition-all duration-300 ease-in-out"
       >
-        Register Team
+        {isLoading
+          ? "Loading..."
+          : competitionType === 1
+          ? "Register Team"
+          : "Register"}
       </button>
     </form>
   );
