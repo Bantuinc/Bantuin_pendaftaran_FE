@@ -1,17 +1,20 @@
+"use client";
 import Background from "@/public/background.webp";
-import { cookies } from "next/headers";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import CompetitionList from "./CompetitionList";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import Swal from "sweetalert2";
 
-const getCompetition = async (): Promise<Competition[]> => {
-  const cookieStore = cookies();
+const getCompetition = async (token: string): Promise<Competition[]> => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/competition`,
       {
         next: { revalidate: 3600 },
         headers: {
-          Authorization: `Bearer ${cookieStore.get("accessToken")?.value!}`,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -23,8 +26,31 @@ const getCompetition = async (): Promise<Competition[]> => {
   }
 };
 
-async function Register() {
-  const competition: Competition[] = await getCompetition();
+function Register() {
+  const [competition, setCompetition] = useState<Competition[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [cookieStore] = useCookies(["accessToken"]);
+  const router = useRouter();
+
+  useEffect(() => {
+    (async () => {
+      if (cookieStore.accessToken === undefined) {
+        const alert = await Swal.fire({
+          title: "Oops!",
+          text: "You must login first to regist your team to competition!",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+        localStorage.setItem("redirectFrom", "/register");
+        if (alert.isConfirmed) router.push("/signup");
+        return;
+      }
+      const data: Competition[] = await getCompetition(cookieStore.accessToken);
+      setCompetition(data);
+      setIsLoading(false);
+    })();
+  });
+
   return (
     <section className="p-12 pt-28 md:p-16 md:pt-40 relative min-h-[110vh] flex flex-col-reverse md:flex-row gap-6 justify-center items-center">
       <Image
@@ -42,7 +68,7 @@ async function Register() {
           Our Competition
         </h1>
         <div className="flex flex-col gap-12 px-9 py-12 ring-2 ring-slate-200/70 rounded-[32px] bg-gradient-to-tr from-[#ccc0] to-[#ccca] backdrop-blur-[12px] md:w-[80vw] w-full">
-          {competition &&
+          {!isLoading &&
             competition?.map((comp: Competition, id: number) => (
               <CompetitionList
                 key={id}

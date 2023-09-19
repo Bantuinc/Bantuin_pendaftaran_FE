@@ -6,12 +6,15 @@ import axios, { AxiosError } from "axios";
 import { FormEvent, useState } from "react";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [cookie, setCookie] = useCookies(["accessToken"]);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,12 +29,18 @@ function LoginForm() {
         maxAge: 3600 * 24 * 7,
         sameSite: true,
       });
-      Swal.fire({
+      const alert = await Swal.fire({
         title: "Success!",
         text: "Your account has been logged in successfully!",
         icon: "success",
         confirmButtonText: "OK",
       });
+      if (alert.isConfirmed) {
+        if (localStorage.getItem("redirectFrom") !== null) {
+          router.push(localStorage.getItem("redirectFrom")?.toString() || "/");
+          localStorage.removeItem("redirectFrom");
+        } else router.push("/dashboard");
+      }
     } catch (err) {
       if (err instanceof AxiosError) {
         Swal.fire({
