@@ -1,21 +1,15 @@
 "use client";
 import Background from "@/public/background.webp";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import CompetitionList from "./CompetitionList";
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
-import Swal from "sweetalert2";
+import CompetitionList from "./CompetitionList";
 
-const getCompetition = async (token: string): Promise<Competition[]> => {
+const getCompetition = async (): Promise<Competition[]> => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/competition`,
       {
         next: { revalidate: 3600 },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       }
     );
     const response: CompetitionAPIResponse = await res.json();
@@ -29,23 +23,10 @@ const getCompetition = async (token: string): Promise<Competition[]> => {
 function Register() {
   const [competition, setCompetition] = useState<Competition[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [cookieStore] = useCookies(["accessToken"]);
-  const router = useRouter();
 
   useEffect(() => {
     (async () => {
-      if (cookieStore.accessToken === undefined) {
-        const alert = await Swal.fire({
-          title: "Oops!",
-          text: "You must login first to regist your team to competition!",
-          icon: "error",
-          confirmButtonText: "OK",
-        });
-        localStorage.setItem("redirectFrom", "/register");
-        if (alert.isConfirmed) router.push("/signup");
-        return;
-      }
-      const data: Competition[] = await getCompetition(cookieStore.accessToken);
+      const data: Competition[] = await getCompetition();
       setCompetition(data);
       setIsLoading(false);
     })();
@@ -68,7 +49,7 @@ function Register() {
           Our Competition
         </h1>
         <div className="flex flex-col gap-12 px-9 py-12 ring-2 ring-slate-200/70 rounded-[32px] bg-gradient-to-tr from-[#ccc0] to-[#ccca] backdrop-blur-[12px] md:w-[80vw] w-full">
-          {!isLoading &&
+          {!isLoading ? (
             competition?.map((comp: Competition, id: number) => (
               <CompetitionList
                 key={id}
@@ -77,7 +58,20 @@ function Register() {
                 name={comp.name}
                 description={comp.description}
               />
-            ))}
+            ))
+          ) : (
+            <div className="w-full p-16 flex gap-2 justify-center items-center text-xl font-bold text-slate-800 bg-white rounded-xl">
+              Loading Competition
+              <span>
+                <Image
+                  src="/3-dots-fade.svg"
+                  alt="loading"
+                  width={24}
+                  height={24}
+                />
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </section>

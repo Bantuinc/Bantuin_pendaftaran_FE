@@ -2,8 +2,15 @@ import Image from "next/image";
 import Background from "@/public/bg_login.webp";
 import { hind } from "@/fonts/font";
 import RegistCompetitionForm from "@/components/RegistCompetitionForm";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 function page({ params }: { params: { competitionId: string } }) {
+  const accessToken = cookies().get("accessToken")?.value;
+  if (!accessToken) {
+    redirect("/login");
+  }
+
   return (
     <section
       className={`relative min-h-[110vh] p-12 pt-28 flex gap-6 justify-end items-center ${hind.className} antialiased overflow-hidden`}
