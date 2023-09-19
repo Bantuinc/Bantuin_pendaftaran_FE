@@ -6,20 +6,22 @@ import Link from "next/link";
 import { AlignJustify } from "lucide-react";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
+import { useCookies } from "react-cookie";
 
 function Headers() {
   const [open, setOpen] = useState<boolean>(false);
   const [openEvent, setOpenEvent] = useState<boolean>(false);
   const [openCompetition, setOpenCompetition] = useState<boolean>(false);
+  const [cookies] = useCookies(["accessToken"]);
 
   const handleToggleEvent = () => {
-    if (openCompetition) setOpenCompetition(false)
-    setOpenEvent((value) => !value)
-  }
+    if (openCompetition) setOpenCompetition(false);
+    setOpenEvent((value) => !value);
+  };
 
   const handleToggleCompetition = () => {
-    if(openEvent) setOpenEvent(false);
-    setOpenCompetition((value)=> !value);
+    if (openEvent) setOpenEvent(false);
+    setOpenCompetition((value) => !value);
   };
 
   return (
@@ -132,9 +134,15 @@ function Headers() {
         <li className="drop-shadow-md">
           <Link href="/#faq">FAQ</Link>
         </li>
-        <li className="drop-shadow-md">
-          <Link href="/login">Login</Link>
-        </li>
+        {cookies.accessToken !== undefined ? (
+          <li className="drop-shadow-md bg-[#FFA31D] py-1.5 px-3 rounded-md text-center">
+            <Link href="/dashboard">Dashboard</Link>
+          </li>
+        ) : (
+          <li className="drop-shadow-md">
+            <Link href="/login">Login</Link>
+          </li>
+        )}
       </ul>
       <button
         className="md:hidden block ring-1 ring-slate-200/70 rounded-lg p-2"
