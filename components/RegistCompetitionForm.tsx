@@ -53,6 +53,7 @@ function RegistCompetitionForm({
 
   const handleCompetitionRegist = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const requestBody = {
       teamName,
       citizenship: citizenShip,
@@ -90,6 +91,7 @@ function RegistCompetitionForm({
         });
       }
     }
+    setIsLoading(false);
   };
 
   const getFormFields = async () => {
