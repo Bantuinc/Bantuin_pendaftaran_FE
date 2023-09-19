@@ -134,13 +134,13 @@ function Headers() {
         <li className="drop-shadow-md">
           <Link href="/#faq">FAQ</Link>
         </li>
-        {cookies.accessToken !== undefined ? (
-          <li className="drop-shadow-md bg-[#FFA31D] py-1.5 px-3 rounded-md text-center">
-            <Link href="/dashboard">Dashboard</Link>
-          </li>
-        ) : (
+        {cookies.accessToken === undefined ? (
           <li className="drop-shadow-md">
             <Link href="/login">Login</Link>
+          </li>
+        ) : (
+          <li className="drop-shadow-md bg-[#FFA31D] py-1.5 px-3 rounded-md text-center">
+            <Link href="/dashboard">Dashboard</Link>
           </li>
         )}
       </ul>
