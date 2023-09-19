@@ -1,15 +1,11 @@
-import Faq from "@/components/Faq";
-import Gallery from "@/components/Gallery";
-import Hero from "@/components/Hero";
-import Timeline from "@/components/Timeline";
 
+import Team from "@/components/dashboard/team";
+import Sidebar from "@/components/dashboard/sidebar";
 function Page() {
   return (
-    <div className="min-h-screen">
-      <Hero />
-      <Timeline />
-      <Gallery />
-      <Faq />
+    <div className="lg:flex">
+        <Sidebar/>
+        <Team/>
     </div>
   );
 }
