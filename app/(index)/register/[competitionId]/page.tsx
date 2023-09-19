@@ -5,7 +5,10 @@ import RegistCompetitionForm from "@/components/RegistCompetitionForm";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const getTypeOfCompetition = async (competitionId: string, token: string) => {
+const getTypeOfCompetition = async (
+  competitionId: string,
+  token: string
+): Promise<Competition> => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/competition/${competitionId}`,
     {
@@ -16,7 +19,7 @@ const getTypeOfCompetition = async (competitionId: string, token: string) => {
     }
   );
   const data: APIResponse = await res.json();
-  return data.data;
+  return data.data as Competition;
 };
 
 async function page({ params }: { params: { competitionId: string } }) {
@@ -25,7 +28,7 @@ async function page({ params }: { params: { competitionId: string } }) {
     redirect("/login");
   }
 
-  const typeOfCompetition = await getTypeOfCompetition(
+  const Competition = await getTypeOfCompetition(
     params.competitionId,
     accessToken
   );
@@ -52,11 +55,11 @@ async function page({ params }: { params: { competitionId: string } }) {
       </div>
       <div className="flex flex-col px-9 py-16 sm:w-[28rem] ring-2 ring-slate-200/70 rounded-[25px] bg-gradient-to-tr from-[#ccc8] to-[#ccca] backdrop-blur-[12px] text-white">
         <h1 className="mb-12 text-center text-4xl font-semibold drop-shadow-md">
-          Registration
+          {Competition.name} Registration
         </h1>
         <RegistCompetitionForm
           competitionId={params.competitionId}
-          competitionType={typeOfCompetition.type}
+          competitionType={Competition.type}
         />
       </div>
     </section>
