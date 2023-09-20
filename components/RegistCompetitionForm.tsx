@@ -7,6 +7,11 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 import Select, { MultiValue } from "react-select";
+import {
+  previewParticipantDocumentURL,
+  uploadParticipantDocument,
+} from "@/lib/bucket";
+import Image from "next/image";
 
 const CITIZENSHIP = {
   domestic: 1,
@@ -54,6 +59,7 @@ function RegistCompetitionForm({
   const handleCompetitionRegist = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+
     const requestBody = {
       teamName,
       citizenship: citizenShip,
@@ -114,27 +120,39 @@ function RegistCompetitionForm({
   const handleSelect = (
     e: MultiValue<{ value: string; label: string }>,
     normalizedName: string
-  ) => {
+  ): void => {
     let selectedValue: string[] = [];
-    selectedValue = e.map((value) => value.value);
-    const selectedValueInString = selectedValue.join(",");
+    selectedValue = e.map((select) => select.value);
+    const selectedValueInString: string = selectedValue.join(",");
     setAdditionalFieldValue({
       ...AdditionalFieldValue,
       [normalizedName]: selectedValueInString,
     });
   };
 
-  const handleAdditionalFile = (
+  const handleAdditionalFile = async (
     e: ChangeEvent<HTMLInputElement>,
     normalizedName: string
-  ) => {
-    const tempFile =
-      "https://drive.google.com/uc?export=view&id=1EY9CuYFPdt6gD3ax4_pl5K8RDoCyXii8";
-    console.log(e.target?.files !== null ? e.target?.files[0] : tempFile);
-    setAdditionalFieldValue({
-      ...AdditionalFieldValue,
-      [normalizedName]: tempFile,
-    });
+  ): Promise<void> => {
+    if (!e.target?.files) return;
+    const uploadedFile = e.target?.files[0];
+    try {
+      const res = await uploadParticipantDocument(uploadedFile);
+      const previewURL = previewParticipantDocumentURL(res.$id);
+      setAdditionalFieldValue({
+        ...AdditionalFieldValue,
+        [normalizedName]: previewURL,
+      });
+    } catch (error) {
+      if (error instanceof Error)
+        Swal.fire({
+          title: "Error!",
+          text: error?.message,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      return;
+    }
   };
 
   useEffect(() => {
@@ -204,6 +222,7 @@ function RegistCompetitionForm({
                 type={enumMap.get(fieldValue.type)}
                 required
                 id={fieldValue.normalizedName}
+                accept=".pdf"
                 onChange={(e) =>
                   handleAdditionalFile(e, fieldValue.normalizedName)
                 }
