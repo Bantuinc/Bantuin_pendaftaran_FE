@@ -1,8 +1,10 @@
+import { hind } from "@/fonts/font";
+
 export default function Team(){
     return(
         <>
             {/* Content */}
-            <div className="flex-1 px-2 sm:px-0">
+            <div className={`${hind.className} flex-1 px-2 sm:px-0`}>
                 <div className="flex justify-between items-center">
                     <h3 className="text-3xl font-extralight text-white/50">Groups</h3>
                     <div className="inline-flex items-center space-x-2">
@@ -37,7 +39,7 @@ export default function Team(){
                             </svg>
                         </a>
                         <a className="text-white/50 group-hover:text-white group-hover:smooth-hover text-center"
-                           href="#">Create group</a>
+                           href="#">Add member</a>
                     </div>
                     <div
                         className="relative group bg-[#296875] py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-[#296875]/80 hover:smooth-hover">
