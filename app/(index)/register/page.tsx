@@ -30,7 +30,7 @@ function Register() {
       setCompetition(data);
       setIsLoading(false);
     })();
-  });
+  }, []);
 
   return (
     <section className="p-12 pt-28 md:p-16 md:pt-40 relative min-h-[110vh] flex flex-col-reverse md:flex-row gap-6 justify-center items-center">
