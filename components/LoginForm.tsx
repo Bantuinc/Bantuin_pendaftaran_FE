@@ -26,7 +26,7 @@ function LoginForm() {
       );
       setCookie("accessToken", res?.data.token, {
         path: "/",
-        maxAge: 3600 * 24 * 7,
+        maxAge: 3600 * 24,
         sameSite: true,
       });
       const alert = await Swal.fire({

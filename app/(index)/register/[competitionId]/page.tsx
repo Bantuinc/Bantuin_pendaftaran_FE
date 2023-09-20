@@ -55,11 +55,11 @@ async function page({ params }: { params: { competitionId: string } }) {
       </div>
       <div className="flex flex-col px-9 py-16 sm:w-[28rem] ring-2 ring-slate-200/70 rounded-[25px] bg-gradient-to-tr from-[#ccc8] to-[#ccca] backdrop-blur-[12px] text-white">
         <h1 className="mb-12 text-center text-4xl font-semibold drop-shadow-md">
-          {Competition.name} Registration
+          {Competition?.name} Registration
         </h1>
         <RegistCompetitionForm
           competitionId={params.competitionId}
-          competitionType={Competition.type}
+          competitionType={Competition?.type}
         />
       </div>
     </section>
