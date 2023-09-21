@@ -1,11 +1,15 @@
+import { getCompetition } from "@/utils/registration";
 import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function NavbarDropdown() {
   const [openEvent, setOpenEvent] = useState<boolean>(false);
   const [openCompetition, setOpenCompetition] = useState<boolean>(false);
+  const [competition, setCompetition] = useState<Competition[]>([]);
+  const [loadCompetition, setLoadCompetition] = useState<boolean>(true);
+
   const handleToggleEvent = () => {
     if (openCompetition) setOpenCompetition(false);
     setOpenEvent((value) => !value);
@@ -15,6 +19,14 @@ function NavbarDropdown() {
     if (openEvent) setOpenEvent(false);
     setOpenCompetition((value) => !value);
   };
+
+  useEffect(() => {
+    (async () => {
+      const comp = await getCompetition();
+      setCompetition(comp);
+      setLoadCompetition(false);
+    })();
+  }, []);
 
   return (
     <>
@@ -93,18 +105,15 @@ function NavbarDropdown() {
             className="absolute box-border md:top-8 top-0 md:left-0 -left-56 bg-[#5B99A8] rounded-md text-[#468091] shadow-sm shadow-[#46809166]"
           >
             <ul className="flex flex-col items-stretch gap-1 [&>a]:bg-white [&>a:hover]:bg-slate-200 [&>a]:py-3 [&>a]:px-6 [&>a:first-child]:rounded-t-md [&>a:last-child]:rounded-b-md [&>a]:w-52 [&>a]:text-sm [&>a]:transition-all">
-              <Link href={"/events/mining-competition"}>
-                <li>Mining Competition</li>
-              </Link>
-              <Link href={"/events"}>
-                <li>Paper Contest</li>
-              </Link>
-              <Link href={"/events"}>
-                <li>Poster Contest</li>
-              </Link>
-              <Link href={"/events"}>
-                <li>Hackathon Contest</li>
-              </Link>
+              {!loadCompetition ? (
+                competition.map((comp: Competition, id: number) => (
+                  <Link key={id} href={`/events/${comp.id}`}>
+                    <li>{comp.name}</li>
+                  </Link>
+                ))
+              ) : (
+                <div>Loading...</div>
+              )}
             </ul>
           </Transition>
         </button>

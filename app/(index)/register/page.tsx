@@ -1,22 +1,7 @@
 import Background from "@/public/background.webp";
 import Image from "next/image";
 import CompetitionList from "./CompetitionList";
-
-const getCompetition = async (): Promise<Competition[]> => {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/competition`,
-      {
-        next: { revalidate: 3600 },
-      }
-    );
-    const response: CompetitionAPIResponse = await res.json();
-    return response.data;
-  } catch (err) {
-    if (err instanceof Error) throw err.message;
-    throw "Something went wrong!";
-  }
-};
+import { getCompetition } from "@/utils/registration";
 
 async function Register() {
   const competition: Competition[] = await getCompetition();

@@ -21,4 +21,20 @@ const getAdditionalField = async (token: string, competitionId: string) => {
   }
 };
 
-export { getAdditionalField };
+const getCompetition = async (): Promise<Competition[]> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/competition`,
+      {
+        next: { revalidate: 3600 },
+      }
+    );
+    const response: CompetitionAPIResponse = await res.json();
+    return response.data;
+  } catch (err) {
+    if (err instanceof Error) throw err.message;
+    throw "Something went wrong!";
+  }
+};
+
+export { getAdditionalField, getCompetition };
