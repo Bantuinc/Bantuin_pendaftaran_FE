@@ -234,7 +234,12 @@ function RegistCompetitionForm({
       <TooltipProvider>
         {fieldLoaded &&
           field.map((fieldValue: AdditionalField, id) => (
-            <div key={id} className="flex flex-col">
+            <div
+              key={id}
+              className={`flex flex-col ${
+                fieldValue.priority !== 1 ? "hidden" : ""
+              }`}
+            >
               <div className="flex relative">
                 <label
                   htmlFor={fieldValue.normalizedName}
