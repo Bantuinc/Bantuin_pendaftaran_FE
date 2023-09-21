@@ -1,8 +1,6 @@
-"use client";
-
 import { FileText, Fingerprint } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type RegistProps = {
   id: string;
@@ -12,10 +10,6 @@ type RegistProps = {
 };
 
 function CompetitionList({ id, name, description, imgKey }: RegistProps) {
-  const router = useRouter();
-  const registCompe = async (id: string) => {
-    router.push(`register/${id}`);
-  };
   const RegistImg = [
     "background_mining_competition.webp",
     "bg_login.webp",
@@ -38,17 +32,18 @@ function CompetitionList({ id, name, description, imgKey }: RegistProps) {
         </h1>
         <p className="font-bold text-slate-50 text-lg">{description}</p>
         <div className="flex gap-3">
-          <button
-            onClick={() => registCompe(id)}
-            className="py-4 px-8 flex justify-center gap-2 rounded-xl bg-[#FFA31D] w-full font-bold text-lg text-white hover:shadow-lg hover:bg-orange-400 duration-300 ease-in-out transition-all"
-          >
-            <Fingerprint className="-ml-4" />
-            <span className="drop-shadow-md">Regist</span>
-          </button>
-          <button className="py-4 px-8 flex justify-center gap-2 rounded-xl ring-1 ring-slate-400 w-full font-semibold text-md text-slate-900 bg-gradient-to-tr from-slate-600/10 to-slate-600/20 hover:shadow-lg transition-all">
-            <FileText className="-ml-4" />
-            Detail
-          </button>
+          <Link href={`register/${id}`} className="flex-1">
+            <button className="py-4 px-8 flex justify-center gap-2 rounded-xl bg-[#FFA31D] w-full font-bold text-lg text-white hover:shadow-lg hover:bg-orange-400 duration-300 ease-in-out transition-all">
+              <Fingerprint className="-ml-4" />
+              <span className="drop-shadow-md">Regist</span>
+            </button>
+          </Link>
+          <a href={"/"} className="flex-1">
+            <button className="py-4 px-8 flex justify-center gap-2 rounded-xl ring-1 ring-slate-400 w-full font-semibold text-md text-slate-900 bg-gradient-to-tr from-slate-600/10 to-slate-600/20 hover:shadow-lg transition-all">
+              <FileText className="-ml-4" />
+              Detail
+            </button>
+          </a>
         </div>
       </div>
       <Image

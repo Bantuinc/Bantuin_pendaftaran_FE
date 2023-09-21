@@ -1,6 +1,12 @@
 import Image from "next/image";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 function Loading() {
+  const accessToken = cookies().get("accessToken")?.value;
+  if (!accessToken) {
+    redirect("/login");
+  }
   return (
     <div className="relative h-screen w-screen bg-[#296875]">
       <div className="absolute w-64 h-16 top-[calc(50%-2rem)] left-[calc(50%-8rem)] p-16 bg-white rounded-2xl shadow-xl text-slate-900 font-semibold text-2xl flex gap-2 justify-center items-center">
