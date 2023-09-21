@@ -4,6 +4,7 @@ import { hind } from "@/fonts/font";
 import RegistCompetitionForm from "@/components/RegistCompetitionForm";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 const getTypeOfCompetition = async (
   competitionId: string,
@@ -25,6 +26,11 @@ const getTypeOfCompetition = async (
 async function page({ params }: { params: { competitionId: string } }) {
   const accessToken = cookies().get("accessToken")?.value;
   if (!accessToken) {
+    redirect("/login");
+  }
+
+  const decoded: JwtPayload = jwt.decode(accessToken) as JwtPayload;
+  if (decoded?.exp && decoded?.exp * 1000 < Date.now()) {
     redirect("/login");
   }
 
