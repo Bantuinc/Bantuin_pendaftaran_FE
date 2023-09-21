@@ -18,6 +18,8 @@ type AdditionalField = {
   type: number;
   normalizedName: string;
   competitionId: string;
+  description: string;
+  priority: number;
 };
 
 type Competition = {
