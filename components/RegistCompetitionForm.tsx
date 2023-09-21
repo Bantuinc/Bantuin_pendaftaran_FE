@@ -11,7 +11,13 @@ import {
   previewParticipantDocumentURL,
   uploadParticipantDocument,
 } from "@/lib/bucket";
-import Image from "next/image";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const CITIZENSHIP = {
   domestic: 1,
@@ -161,12 +167,30 @@ function RegistCompetitionForm({
 
   return (
     <form onSubmit={handleCompetitionRegist} className="flex flex-col gap-3">
-      <label
-        htmlFor="teamName"
-        className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
-      >
-        {competitionType === 1 ? "Team Name" : "Your Full Name"}
-      </label>
+      <div className="flex relative">
+        <label
+          htmlFor="teamName"
+          className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
+        >
+          {competitionType === 1 ? "Team Name" : "Your Full Name"}
+        </label>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <span className="absolute top-0 w-4 h-4 flex items-center justify-center p-1 pt-1.5 text-sm rounded-full bg-blue-600 font-bold">
+                ?
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>
+              <pre>
+                *forbidden to choose a team name that has university elements
+                <br></br>
+                *forbidden to choose a team name that has elements of SARA
+              </pre>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
       <input
         type="text"
         id="teamName"
@@ -207,53 +231,68 @@ function RegistCompetitionForm({
           <label htmlFor="overseas">Overseas</label>
         </div>
       </div>
-
-      {fieldLoaded &&
-        field.map((fieldValue: AdditionalField, id) => (
-          <div key={id} className="flex flex-col">
-            <label
-              htmlFor={fieldValue.normalizedName}
-              className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
-            >
-              {fieldValue.name}
-            </label>
-            {enumMap.get(fieldValue.type) === "file" ? (
-              <input
-                type={enumMap.get(fieldValue.type)}
-                required
-                id={fieldValue.normalizedName}
-                accept=".pdf"
-                onChange={(e) =>
-                  handleAdditionalFile(e, fieldValue.normalizedName)
-                }
-                className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
-              />
-            ) : enumMap.get(fieldValue.type) === "select" ? (
-              <Select
-                options={options}
-                required
-                isMulti
-                className="text-slate-900"
-                onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
-              />
-            ) : (
-              <input
-                type={enumMap.get(fieldValue.type)}
-                required
-                id={fieldValue.normalizedName}
-                value={
-                  AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)
-                    ? AdditionalFieldValue[fieldValue.normalizedName]
-                    : ""
-                }
-                onChange={(e) =>
-                  handleAdditionalField(e, fieldValue.normalizedName)
-                }
-                className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
-              />
-            )}
-          </div>
-        ))}
+      <TooltipProvider>
+        {fieldLoaded &&
+          field.map((fieldValue: AdditionalField, id) => (
+            <div key={id} className="flex flex-col">
+              <div className="flex relative">
+                <label
+                  htmlFor={fieldValue.normalizedName}
+                  className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
+                >
+                  {fieldValue.name}
+                </label>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <span className="absolute top-0 w-4 h-4 flex items-center justify-center p-1 pt-1.5 text-sm rounded-full bg-blue-600 font-bold">
+                      ?
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <pre>{fieldValue.description}</pre>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              {enumMap.get(fieldValue.type) === "file" ? (
+                <input
+                  type={enumMap.get(fieldValue.type)}
+                  required
+                  id={fieldValue.normalizedName}
+                  accept=".pdf"
+                  onChange={(e) =>
+                    handleAdditionalFile(e, fieldValue.normalizedName)
+                  }
+                  className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
+                />
+              ) : enumMap.get(fieldValue.type) === "select" ? (
+                <Select
+                  options={options}
+                  required
+                  isMulti
+                  className="text-slate-900"
+                  onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
+                />
+              ) : (
+                <input
+                  type={enumMap.get(fieldValue.type)}
+                  required
+                  id={fieldValue.normalizedName}
+                  value={
+                    AdditionalFieldValue.hasOwnProperty(
+                      fieldValue.normalizedName
+                    )
+                      ? AdditionalFieldValue[fieldValue.normalizedName]
+                      : ""
+                  }
+                  onChange={(e) =>
+                    handleAdditionalField(e, fieldValue.normalizedName)
+                  }
+                  className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
+                />
+              )}
+            </div>
+          ))}
+      </TooltipProvider>
       <button
         type="submit"
         className="mt-6 bg-[#FFA31D] hover:bg-orange-400 rounded-xl py-2 px-4 font-semibold text-2xl antialiased transition-all duration-300 ease-in-out"
