@@ -55,7 +55,7 @@ function MiningCompetition() {
           placeholder="blur"
           quality={50}
         />
-        <div className="grid grid-cols-4 gap-12">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-12">
           <MiningCompetitionList
             src="ventilation_duct_hamping.png"
             text="Ventilation Duct Hamping"

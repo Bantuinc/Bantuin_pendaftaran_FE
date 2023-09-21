@@ -35,7 +35,7 @@ async function page({ params }: { params: { competitionId: string } }) {
 
   return (
     <section
-      className={`relative min-h-[110vh] p-12 pt-28 flex gap-6 justify-end items-center ${hind.className} antialiased overflow-hidden`}
+      className={`relative min-h-[110vh] p-12 pt-28 flex gap-6 md:justify-end justify-center items-center ${hind.className} antialiased overflow-hidden`}
     >
       <Image
         src={Background}

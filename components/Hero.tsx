@@ -21,18 +21,25 @@ function Hero() {
       </div>
 
       <div className="md:max-w-[50%] antialiased drop-shadow-xl">
-        <h1 className={`text-6xl py-2 font-extrabold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text ${cocogoose.className}`}>
-          The <span className={`${hind.className} text-[72px]`}>14</span><span className="align-super text-3xl">th</span> Indonesian Student Mining Competition
+        <h1
+          className={`md:text-6xl text-5xl py-2 font-extrabold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text ${cocogoose.className}`}
+        >
+          The{" "}
+          <span className={`${hind.className} md:text-[72px] text-6xl`}>
+            14
+          </span>
+          <span className="align-super md:text-3xl text-2xl">th</span>{" "}
+          Indonesian Student Mining Competition
         </h1>
         <Link href="/register">
           <button
-            className={`mt-6 px-6 py-2 rounded-lg text-lg text-orange-50 font-semibold bg-[#FFA31D] ${hind.className} hover:text-white hover:bg-orange-400 hover:translate-x-1 transition-all duration-300`}
+            className={`mt-6 px-6 py-2 rounded-lg text-xl text-orange-50 font-bold bg-[#FFA31D] ${hind.className} hover:text-white hover:bg-orange-400 hover:translate-x-1 transition-all duration-300`}
           >
-            Register Now !
+            <span className="drop-shadow-md">Register Now!</span>
           </button>
         </Link>
         <h3
-          className={`mt-6 text-2xl font-bold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text ${hind.className}`}
+          className={`mt-6 md:text-2xl text-xl font-bold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text ${hind.className}`}
         >
           Welcome, let’s embrace unity, knowledge, and excellence here.
           #MineTheFuture
