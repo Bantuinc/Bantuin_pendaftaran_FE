@@ -1,19 +1,23 @@
 import Image from "next/image";
 import Background from "@/public/bg_insight.webp";
+import Background_countdown from "@/public/bg_insight_detail.webp";
 import { ubuntu } from "@/fonts/font";
 import Link from "next/link";
 import { Fingerprint } from "lucide-react";
+import Countdown from "@/components/Countdown";
 
 interface CompetitionDescriptionProps {
   competitionId: string;
   competitionName: string;
   competitionDescription: string;
+  openedAt: string;
 }
 
 function CompetitionDescription({
   competitionId,
   competitionName,
   competitionDescription,
+  openedAt,
 }: CompetitionDescriptionProps) {
   return (
     <>
@@ -62,6 +66,25 @@ function CompetitionDescription({
         <h1 className="text-[9vw] font-black bg-clip-text text-transparent bg-[url('/mining_competition.jpg')]">
           {competitionName}
         </h1>
+      </section>
+      <section className="relative h-screen w-full flex flex-col gap-6 justify-center items-center">
+        <Image
+          src={Background_countdown}
+          alt="Countdown Image"
+          fill
+          sizes="{(max-width: 768px) 768px, (max-width: 1440px) 1440px, 100vw}"
+          placeholder="blur"
+          quality={50}
+          className="z-[-1] object-cover fixed"
+        />
+        <div className="py-8 px-16 flex flex-col items-center gap-12 ring-2 md:max-w-[80vw] ring-slate-200/70 shadow-xl shadow-slate-900/30 rounded-[32px] bg-gradient-to-tr from-[#ccc0] to-[#ccca] backdrop-blur-[12px]">
+          <h1 className="md:text-4xl text-3xl text-center font-extrabold text-slate-900 drop-shadow-md">
+            Countdown to {competitionName}
+          </h1>
+          <div className="">
+            <Countdown targetDate={new Date(openedAt).getTime()} />
+          </div>
+        </div>
       </section>
     </>
   );

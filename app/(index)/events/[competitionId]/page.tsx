@@ -24,6 +24,7 @@ async function CompetitionDetail({
         competitionId={params.competitionId}
         competitionName={selectedCompetition?.name}
         competitionDescription={selectedCompetition?.description}
+        openedAt={selectedCompetition?.openedAt}
       />
       {selectedCompetition?.name === "Poster Contest" && (
         <section className="lg:p-28 lg:pt-40 sm:p-12 sm:pt-40 p-6 pt-40 relative min-h-[100vh] flex gap-6 justify-center items-start">
