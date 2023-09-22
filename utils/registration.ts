@@ -37,4 +37,42 @@ const getCompetition = async (): Promise<Competition[]> => {
   }
 };
 
-export { getAdditionalField, getCompetition };
+const CITIZENSHIP = {
+  domestic: 1,
+  overseas: 2,
+};
+
+const SUBTHEME_OPTION = [
+  { value: "Healthand Safety", label: "Health and Safety" },
+  {
+    value: "Digitalization and Automationin Mine Production",
+    label: "Digitalization and Automation in Mine Production",
+  },
+  { value: "Downstream Industry", label: "Downstream Industry" },
+  {
+    value: "Mining Economics and Management",
+    label: "Mining Economics and Management",
+  },
+  { value: "Geotechnical Engineering", label: "Geotechnical Engineering" },
+  {
+    value: "Drilling and Blasting Technology",
+    label: "Drilling and Blasting Technology",
+  },
+  { value: "Mining Waste and Tailings", label: "Mining Wasteand Tailings" },
+  {
+    value: "Exploration of Coaland Mineral Resources",
+    label: "Exploration of Coaland Mineral Resources",
+  },
+  {
+    value: "Mining Policy and Information",
+    label: "Mining Policy and Information",
+  },
+  { value: "Human Resource Development", label: "Human Resource Development" },
+  {
+    value: "Renewable Energy in Mining Operation",
+    label: "Renewable Energy in Mining Operation",
+  },
+  { value: "Community Empowerment", label: "Community Empowerment" },
+];
+
+export { getAdditionalField, getCompetition, CITIZENSHIP, SUBTHEME_OPTION };
