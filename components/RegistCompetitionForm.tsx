@@ -11,7 +11,7 @@ import {
   previewParticipantDocumentURL,
   uploadParticipantDocument,
 } from "@/lib/bucket";
-
+import { additionalFieldMap } from "@/utils/additionalFieldType";
 import {
   Tooltip,
   TooltipContent,
@@ -26,16 +26,6 @@ const CITIZENSHIP = {
 interface StringObject {
   [key: string]: string;
 }
-
-type AdditionalEntityType = "text" | "number" | "file" | "file" | "select";
-
-const enumMap = new Map<number, AdditionalEntityType>();
-
-enumMap.set(1, "text");
-enumMap.set(2, "number");
-enumMap.set(3, "file");
-enumMap.set(4, "file");
-enumMap.set(5, "select");
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
@@ -258,9 +248,9 @@ function RegistCompetitionForm({
                   </TooltipContent>
                 </Tooltip>
               </div>
-              {enumMap.get(fieldValue.type) === "file" ? (
+              {additionalFieldMap.get(fieldValue.type) === "file" ? (
                 <input
-                  type={enumMap.get(fieldValue.type)}
+                  type={additionalFieldMap.get(fieldValue.type)}
                   required
                   id={fieldValue.normalizedName}
                   accept=".pdf"
@@ -269,7 +259,7 @@ function RegistCompetitionForm({
                   }
                   className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
                 />
-              ) : enumMap.get(fieldValue.type) === "select" ? (
+              ) : additionalFieldMap.get(fieldValue.type) === "select" ? (
                 <Select
                   options={options}
                   required
@@ -279,7 +269,7 @@ function RegistCompetitionForm({
                 />
               ) : (
                 <input
-                  type={enumMap.get(fieldValue.type)}
+                  type={additionalFieldMap.get(fieldValue.type)}
                   required
                   id={fieldValue.normalizedName}
                   value={

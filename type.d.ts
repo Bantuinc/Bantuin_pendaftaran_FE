@@ -9,6 +9,10 @@ interface CompetitionAPIResponse extends APIResponse {
   data: Competition[];
 }
 
+interface UserTeamAPIResponse extends APIResponse {
+  data: Team[];
+}
+
 interface AdditionalFieldAPIResponse extends APIResponse {
   data: AdditionalField[];
 }
@@ -33,6 +37,21 @@ type Competition = {
   openedAt: string;
   closedAt: string;
   status: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type Team = {
+  id: string;
+  teamName: string;
+  status: number;
+  citizenship: string;
+  proofOfPayment: string;
+  teamAdditional: AdditionalField;
+  description: string;
+  competitionId: string;
+  competitionName: string;
+  userId: string;
   createdAt: string;
   updatedAt: string;
 };
