@@ -7,15 +7,17 @@ interface TeamListProps {
   //TITLE for page
   title: String;
   //Where the team is clicked for page
-  States: String
+  States: String;
 }
 
-function TeamList({ team,title,States }: TeamListProps) {
+function TeamList({ team, title, States }: TeamListProps) {
   return (
     <>
       <div className={`${hind.className} flex-1 px-2 sm:px-0`}>
         <div className="flex justify-between items-center">
-          <h3 className="text-3xl font-semibold text-slate-100">{title?title:"Home"}</h3>
+          <h3 className="text-3xl font-semibold text-slate-100">
+            {title ? title : "Home"}
+          </h3>
         </div>
         <div className="mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {team?.map((team: Team, id: number) => (
@@ -34,7 +36,7 @@ function TeamList({ team,title,States }: TeamListProps) {
                 {teamStatusMap.get(team.status)}
                 <span className="ml-2 w-2 h-2 block bg-green-500 rounded-full group-hover:animate-pulse" />
               </p>
-              <Link href={`./${States}/team/${team.id}`}>
+              <Link href={`${States}/team/${team.id}`}>
                 <button
                   type="button"
                   className="bg-[#FFA31D] py-2 px-4 rounded-md text-white font-bold drop-shadow-md hover:bg-[#FFA31D]/90 transition-all"

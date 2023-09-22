@@ -279,7 +279,7 @@ function RegistCompetitionForm({
               ) : (
                 <input
                   type={additionalFieldMap.get(fieldValue.type)}
-                  required
+                  required={fieldValue.priority === 1}
                   id={fieldValue.normalizedName}
                   value={
                     AdditionalFieldValue.hasOwnProperty(

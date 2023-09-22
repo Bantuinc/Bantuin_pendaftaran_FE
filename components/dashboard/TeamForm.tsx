@@ -33,6 +33,7 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
     setIsLoading(true);
     const body = {
       teamName,
+      proofOfPayment: null,
       citizenship: citizenShip,
       teamAdditional: AdditionalFieldValue,
     };
@@ -201,12 +202,19 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
                   handleAdditionalFile(e, fieldValue.normalizedName)
                 }
               />
+              {isLoading && (
+                <>
+                  <div className="w-4 h-4 rounded-full bg-white/75 animate-bounce mx-auto"></div>
+                  <p className="text-white text-center">Uploading...</p>
+                </>
+              )}
             </>
           ) : additionalFieldMap.get(fieldValue.type) === "select" ? (
             <Select
               options={SUBTHEME_OPTION}
-              required={!fieldValue.hasOwnProperty(fieldValue.normalizedName)}
+              // required={!fieldValue.hasOwnProperty(fieldValue.normalizedName)}
               isMulti
+              isDisabled={!editMode}
               className="text-slate-900"
               onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
             />
@@ -252,7 +260,7 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
         <button
           type="submit"
           disabled={isLoading}
-          className="flex-1 py-2 px-4 bg-[#FFA31D] disabled:cursor-not-allowed text-white drop-shadow-md rounded-lg font-semibold shadow-md hover:bg-[#1e4a5d] transition duration-200"
+          className="flex-1 py-2 px-4 bg-[#FFA31D] disabled:cursor-not-allowed text-white drop-shadow-md rounded-lg font-semibold shadow-md enabled:hover:bg-[#1e4a5d] transition duration-200"
         >
           {isLoading ? "Saving..." : "Save Edit"}
         </button>
