@@ -22,6 +22,9 @@ function TeamList({ team }: TeamListProps) {
               <h4 className="text-white text-3xl font-bold capitalize text-center">
                 {team.teamName}
               </h4>
+              <p className="text-white/80 text-lg font-semibold">
+                {team.competitionName}
+              </p>
               <p className="text-white/50">as Manager</p>
               <p className="absolute top-2 text-white inline-flex items-center text-md">
                 {teamStatusMap.get(team.status)}
@@ -37,6 +40,14 @@ function TeamList({ team }: TeamListProps) {
               </Link>
             </div>
           ))}
+          <Link
+            href="/register"
+            className="min-h-[20rem] flex items-center justify-center bg-[#29687533] group transition-all rounded-md hover:bg-[#29687555]"
+          >
+            <div className="py-2 px-4 group-hover:text-slate-200 bg-[#296875] text-white/20 font-semibold rounded">
+              Add Competition
+            </div>
+          </Link>
         </div>
       </div>
     </>
