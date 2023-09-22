@@ -36,7 +36,8 @@ async function Page() {
   return (
     <div className="lg:flex">
       <Sidebar active={"home"} />
-      {userTeam?.length === 0 || userTeam === "Team Not Found" ? <Home /> : <TeamList team={userTeam} />}
+      {userTeam?.length === 0 || userTeam === "Team Not Found" ? <Home /> :
+          <TeamList team={userTeam}  States={"/dashboard"} title={"Home"}/>}
     </div>
   );
 }
