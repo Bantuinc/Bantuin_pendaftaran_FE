@@ -19,6 +19,13 @@ function CompetitionDescription({
   competitionDescription,
   openedAt,
 }: CompetitionDescriptionProps) {
+  const CompetitionOpened = (): boolean => {
+    const res = new Date(openedAt).getTime() - new Date().getTime();
+    if (res <= 0) {
+      return true;
+    }
+    return false;
+  };
   return (
     <>
       <section className="lg:p-28 lg:pt-40 sm:p-12 sm:pt-40 p-6 pt-40 relative min-h-[100vh] flex gap-6 justify-center items-start">
@@ -52,7 +59,14 @@ function CompetitionDescription({
               <p className="font-bold text-slate-50 md:text-lg text-sm">
                 {competitionDescription}
               </p>
-              <Link href={`/register/${competitionId}`} className="mt-6 flex-1">
+              <Link
+                href={`${
+                  CompetitionOpened()
+                    ? `/register/${competitionId}`
+                    : "#countdown"
+                }`}
+                className="mt-6 flex-1"
+              >
                 <button className="py-4 px-8 flex justify-center gap-2 rounded-xl bg-[#FFA31D] w-full font-bold text-lg text-white hover:shadow-lg hover:bg-orange-400 duration-300 ease-in-out transition-all">
                   <Fingerprint className="-ml-4" />
                   <span className="drop-shadow-md">Regist</span>
@@ -67,7 +81,10 @@ function CompetitionDescription({
           {competitionName}
         </h1>
       </section>
-      <section className="relative h-screen w-full flex flex-col gap-6 justify-center items-center">
+      <section
+        id="countdown"
+        className="relative h-screen w-full flex flex-col gap-6 justify-center items-center"
+      >
         <Image
           src={Background_countdown}
           alt="Countdown Image"
@@ -81,7 +98,7 @@ function CompetitionDescription({
           <h1 className="md:text-4xl text-3xl text-center font-extrabold text-slate-900 drop-shadow-md">
             Countdown to {competitionName}
           </h1>
-          <div className="">
+          <div>
             <Countdown targetDate={new Date(openedAt).getTime()} />
           </div>
         </div>
