@@ -1,6 +1,6 @@
 "use client";
 import { hind } from "@/fonts/font";
-import { getAdditionalField } from "@/utils/registration";
+import { getAdditionalField, CITIZENSHIP } from "@/utils/registration";
 import { getUserNameId } from "@/utils/userCredentials";
 import axios, { AxiosError } from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
@@ -18,14 +18,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
-const CITIZENSHIP = {
-  domestic: 1,
-  overseas: 2,
-};
-interface StringObject {
-  [key: string]: string;
-}
+import { useRouter } from "next/navigation";
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
@@ -51,6 +44,7 @@ function RegistCompetitionForm({
   const [cookies] = useCookies(["accessToken"]);
   const accessToken = cookies.accessToken! as string;
   const userNameId = getUserNameId(accessToken);
+  const router = useRouter();
 
   const handleCompetitionRegist = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -75,7 +69,7 @@ function RegistCompetitionForm({
           },
         }
       );
-      Swal.fire({
+      const alert = await Swal.fire({
         title: "Success!",
         text: `${
           competitionType === 1 ? "Your team has" : "You have"
@@ -83,6 +77,9 @@ function RegistCompetitionForm({
         icon: "success",
         confirmButtonText: "OK",
       });
+      if (alert.isConfirmed) {
+        router.push("/dashboard");
+      }
     } catch (error) {
       if (error instanceof AxiosError) {
         Swal.fire({
@@ -131,6 +128,7 @@ function RegistCompetitionForm({
     normalizedName: string
   ): Promise<void> => {
     if (!e.target?.files) return;
+    setIsLoading(true);
     const uploadedFile = e.target?.files[0];
     try {
       const res = await uploadParticipantDocument(uploadedFile);
@@ -138,6 +136,12 @@ function RegistCompetitionForm({
       setAdditionalFieldValue({
         ...AdditionalFieldValue,
         [normalizedName]: previewURL,
+      });
+      Swal.fire({
+        title: "File Uploaded!",
+        text: "File uploaded successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
       });
     } catch (error) {
       if (error instanceof Error)
@@ -149,6 +153,7 @@ function RegistCompetitionForm({
         });
       return;
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -251,20 +256,24 @@ function RegistCompetitionForm({
               {additionalFieldMap.get(fieldValue.type) === "file" ? (
                 <input
                   type={additionalFieldMap.get(fieldValue.type)}
-                  required
+                  required={fieldValue.priority === 1}
                   id={fieldValue.normalizedName}
                   accept=".pdf"
                   onChange={(e) =>
                     handleAdditionalFile(e, fieldValue.normalizedName)
                   }
-                  className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
+                  className={`${
+                    fieldValue.priority !== 1 ? "hidden" : ""
+                  } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none`}
                 />
               ) : additionalFieldMap.get(fieldValue.type) === "select" ? (
                 <Select
                   options={options}
-                  required
+                  required={fieldValue.priority === 1}
                   isMulti
-                  className="text-slate-900"
+                  className={`${
+                    fieldValue.priority !== 1 ? "hidden" : ""
+                  } text-slate-900`}
                   onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
                 />
               ) : (
@@ -282,7 +291,9 @@ function RegistCompetitionForm({
                   onChange={(e) =>
                     handleAdditionalField(e, fieldValue.normalizedName)
                   }
-                  className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
+                  className={`${
+                    fieldValue.priority !== 1 ? "hidden" : ""
+                  } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
                 />
               )}
             </div>
@@ -290,7 +301,7 @@ function RegistCompetitionForm({
       </TooltipProvider>
       <button
         type="submit"
-        className="mt-6 bg-[#FFA31D] hover:bg-orange-400 rounded-xl py-2 px-4 font-semibold text-2xl antialiased transition-all duration-300 ease-in-out"
+        className="mt-6 bg-[#FFA31D] enabled:hover:bg-orange-400 disabled:cursor-not-allowed rounded-xl py-2 px-4 font-semibold text-2xl antialiased transition-all duration-300 ease-in-out"
       >
         {isLoading
           ? "Loading..."
