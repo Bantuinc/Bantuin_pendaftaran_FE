@@ -47,7 +47,7 @@ type Team = {
   status: number;
   citizenship: string;
   proofOfPayment: string;
-  teamAdditional: AdditionalField;
+  teamAdditional: { [key: string]: string };
   description: string;
   competitionId: string;
   competitionName: string;
@@ -55,3 +55,7 @@ type Team = {
   createdAt: string;
   updatedAt: string;
 };
+
+interface StringObject {
+  [key: string]: string;
+}
