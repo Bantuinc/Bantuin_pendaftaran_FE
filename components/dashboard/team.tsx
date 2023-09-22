@@ -61,11 +61,11 @@ export default function Team({team}:teamProps){
                     <Suspense fallback={<Skeleton className="w-64 h-64 rounded-md"/>}>
                         <CreateCardLazy/>
                     </Suspense>
-                    {team? team.map((obj,index)=>{
-                            <Suspense fallback={<Skeleton className="w-64 h-64 rounded-md"/>}>
-                                <MemberCardLazy name={obj.name} image={obj.ktm}/>
+                    {team? team.map((obj,index)=>(
+                            <Suspense key={index} fallback={<Skeleton className="w-64 h-64 rounded-md"/>}>
+                                <MemberCardLazy name={obj.name} image={obj?.ktm!}/>
                             </Suspense>
-                        }):
+                    )):
                         <div/>}
 
                 </div>

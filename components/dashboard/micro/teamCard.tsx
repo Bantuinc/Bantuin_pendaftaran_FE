@@ -5,8 +5,9 @@ interface CreateCardProps {
     teamId:string
 }
 
-export const CreateCard = ({teamId} :CreateCardProps) =>{
-    const link = "/api/team"+teamId+"members"
+// export const CreateCard = ({teamId} :CreateCardProps) =>{
+export const CreateCard = () =>{
+    // const link = "/api/team"+teamId+"members"
     const crateOnClick = () => {
         Swal.fire({
             title: 'Submit your details',

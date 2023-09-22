@@ -14,7 +14,7 @@ const getTeamInformation = async (userId: string, accessToken: string) => {
     if (error instanceof Error) {
       console.log(error.message);
     }
-    console.log(error,"HOAK")
+    console.log(error, "HOAK");
     if (typeof error === "number") {
       if (error === 401) {
         redirect("/login");
@@ -34,7 +34,7 @@ async function TeamDetail({ params }: { params: { teamId: string } }) {
   return (
     <div className="lg:flex">
       <Sidebar active={"group"} />
-      <Team/>
+      {/* <Team /> */}
     </div>
   );
 }
