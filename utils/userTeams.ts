@@ -22,6 +22,7 @@ const getTeamDetail = async (teamId: string, accessToken: string) => {
 
 const getUserTeams = async (userId: string, accessToken: string) => {
   try {
+    console.log(userId)
     const { data: response }: { data: UserTeamAPIResponse } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/user/${userId}/teams`,
       {
