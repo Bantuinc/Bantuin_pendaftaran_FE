@@ -91,7 +91,7 @@ export default function Sidebar({ active }: SidebarProps) {
           </Link>
           <Link
             className="text-white/50 p-4 inline-flex justify-center rounded-md hover:bg-gray-800 hover:text-white smooth-hover"
-            onClick={(e) => removeCookie("accessToken")}
+            onClick={() => removeCookie("accessToken")}
             href={`${origin}`}
           >
             <svg

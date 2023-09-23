@@ -14,7 +14,7 @@ import Select, { MultiValue } from "react-select";
 
 interface TeamFormProps {
   team: Team;
-  additionalField: AdditionalField[];
+  additionalField: AdditionalField[] | null;
 }
 function TeamForm({ team, additionalField }: TeamFormProps) {
   const [teamName, setTeamName] = useState<string>(team.teamName);

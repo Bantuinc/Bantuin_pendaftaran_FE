@@ -13,6 +13,10 @@ interface UserTeamAPIResponse extends APIResponse {
   data: Team[];
 }
 
+interface UserMemberAPIResponse extends APIResponse {
+  data: Member[];
+}
+
 interface AdditionalFieldAPIResponse extends APIResponse {
   data: AdditionalField[];
 }
@@ -52,6 +56,20 @@ type Team = {
   competitionId: string;
   competitionName: string;
   userId: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type Member = {
+  id: string;
+  name: string;
+  nim: number;
+  email: string;
+  phone: string;
+  ktm: string;
+  memberAdditional: { [key: string]: string };
+  teamId: string;
+  role: string;
   createdAt: string;
   updatedAt: string;
 };

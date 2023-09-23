@@ -1,12 +1,21 @@
 import { hind } from "@/fonts/font";
 
-export default function Home(){
+interface DefaultProps {
+    title:string,
+    description: string | null
+}
+
+export default function Default({title,description}:DefaultProps){
+    const origin =
+        typeof window !== "undefined" && window.location.origin
+            ? window.location.origin
+            : "";
     return(
         <>
             {/* Content */}
             <div className={`${hind.className} flex-1 px-2 sm:px-0`}>
                 <div className="flex justify-between items-center">
-                    <h3 className="text-3xl font-extralight text-white/50">Home</h3>
+                    <h3 className="text-3xl font-extralight text-white/50">{title}</h3>
                     <div className="inline-flex items-center space-x-2">
                         <a className="bg-[#296875] text-white/50 p-2 rounded-md hover:text-white smooth-hover"
                            href="#">
@@ -26,14 +35,29 @@ export default function Home(){
                         </a>
                     </div>
                 </div>
-                <div className="flex justify-center items-center h-22">
-                    <div className="my-20">
-                        <h1 className="text-white mb-8 text-2xl font-bold">Anda Belum Registrasi Ke suatu lomba</h1>
-                        <a className="ml-32 bg-[#FFA31D] text-white hover:bg-gray-800 text-white font-bold py-2 px-4 rounded" href="./register">
-                            Register Now
-                        </a>
-                    </div>
-                </div>
+                {description === null ?
+                    ( <div className="flex justify-center items-center h-22">
+                        <div className="my-20">
+                            <h1 className="text-white mb-8 text-2xl font-bold">Anda Belum Registrasi Ke suatu lomba</h1>
+                            <a className="ml-32 bg-[#FFA31D] text-white hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                               href="./register">
+                                Register Now
+                            </a>
+                        </div>
+                    </div> ) :
+                    (
+                        <div className="flex justify-center items-center h-22">
+                            <div className="my-20">
+                                <h1 className="text-white mb-8 text-2xl font-bold">Anda Belum Bisa Melakukan Pembayaran</h1>
+                                <h3 className="ml-4 text-white mb-8 text-xl font-bold">Mohon Isi Data atau tunggu konfirmasi admin</h3>
+                                <a className="ml-48 bg-[#FFA31D] text-white hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                                   href={`${origin}/dashboard`}>
+                                    Back
+                                </a>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </>
     )

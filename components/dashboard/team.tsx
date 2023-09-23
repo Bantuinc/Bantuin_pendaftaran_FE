@@ -9,28 +9,13 @@ const CreateCardLazy = React.lazy(()=>
 const MemberCardLazy = React.lazy(()=>
     import('./micro/teamCard').then(({memberCard}) => ({default:memberCard})))
 
-interface memberType{
-    id: string,
-    name: string ,
-    nim: string | null,
-    email: string | null,
-    phone: string | null,
-    ktm: string | null,
-    memberAdditional: {
-        additionalProp1: string,
-        additionalProp2: string,
-        additionalProp3: string
-    } | null,
-    teamId: string,
-    role: number,
-    createdAt: string,
-    updatedAt: string
-}
 interface teamProps {
-    team:memberType[] | null
+    team:Member[] | null,
+    teamId:string,
+    accessToken:string
 }
 
-export default function Team({team}:teamProps){
+export default function Team({team,teamId,accessToken}:teamProps){
     return(
         <>
             {/* Content */}
@@ -59,11 +44,11 @@ export default function Team({team}:teamProps){
                 <div
                     className="mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <Suspense fallback={<Skeleton className="w-64 h-64 rounded-md"/>}>
-                        <CreateCardLazy/>
+                        <CreateCardLazy teamId={teamId}/>
                     </Suspense>
                     {team? team.map((obj,index)=>(
                             <Suspense key={index} fallback={<Skeleton className="w-64 h-64 rounded-md"/>}>
-                                <MemberCardLazy name={obj.name} image={obj?.ktm!}/>
+                                <MemberCardLazy teamMemberId={obj.id} teamId={teamId} name={obj.name} image={obj?.ktm!}/>
                             </Suspense>
                     )):
                         <div/>}

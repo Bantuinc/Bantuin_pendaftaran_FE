@@ -2877,6 +2877,13 @@
     "lodash.debounce" "^4.0.8"
     "resize-observer-polyfill" "^1.5.0"
 
+"react-sweetalert2@^0.6.0":
+  "integrity" "sha512-4MEWGAJamSfoj56m7MUs7IfBnev9wJYs0RayvoHvxshSQeH62iK0N/EkDiHr3VuZ3vTy34kOpzL1Yg3b3VYF8w=="
+  "resolved" "https://registry.npmjs.org/react-sweetalert2/-/react-sweetalert2-0.6.0.tgz"
+  "version" "0.6.0"
+  dependencies:
+    "sweetalert2" "^11.7.5"
+
 "react-transition-group@^4.3.0":
   "integrity" "sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz"
@@ -3256,7 +3263,7 @@
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
 
-"sweetalert2@^11.7.28":
+"sweetalert2@^11.7.28", "sweetalert2@^11.7.5":
   "integrity" "sha512-9895DVuYTDlV4Hx4IJablFKMdSqzwpy0PKycztbO4cXnOeVMmw55weOq4gcZAh3/tAyunCKjApFDrlSAcswwcA=="
   "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.28.tgz"
   "version" "11.7.28"

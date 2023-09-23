@@ -1,20 +1,20 @@
 import Sidebar from "@/components/dashboard/sidebar";
 import { hind } from "@/fonts/font";
-import { getTeamDetail } from "@/utils/userTeams";
+import { getMemberTeams } from "@/utils/userTeams";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Team from "@/components/dashboard/team";
 
-const getTeamInformation = async (userId: string, accessToken: string) => {
+const getTeamInformation = async (teamId: string, accessToken: string) => {
   try {
-    const res = await getTeamDetail(userId, accessToken);
+    const res = await getMemberTeams(teamId, accessToken);
+
     console.log("res", res);
     return res;
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.log(error.message);
     }
-    console.log(error, "HOAK");
     if (typeof error === "number") {
       if (error === 401) {
         redirect("/login");
@@ -34,7 +34,7 @@ async function TeamDetail({ params }: { params: { teamId: string } }) {
   return (
     <div className="lg:flex">
       <Sidebar active={"group"} />
-      {/* <Team /> */}
+      <Team team={team} accessToken={accessToken} teamId={params.teamId}/>
     </div>
   );
 }

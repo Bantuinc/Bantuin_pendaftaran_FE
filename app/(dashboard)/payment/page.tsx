@@ -7,6 +7,7 @@ import Home from "@/components/dashboard/home";
 import TeamList from "@/components/dashboard/TeamList";
 import {getUserTeams} from "@/utils/userTeams";
 import {redirect} from "next/navigation";
+import Default from "@/components/dashboard/home";
 
 const getTeamList = async (userId: string, accessToken: string) => {
     try {
@@ -38,7 +39,7 @@ async function Page() {
     return (
         <div className="lg:flex">
             <Sidebar active={"payment"} />
-            {userTeam?.length === 0 || userTeam === "Team Not Found" ? <Home /> :
+            {userTeam?.length === 0 || userTeam === "Team Not Found" ? <Default title={"Payment"} /> :
                 <TeamList team={userTeam}  States={"/payment"} title={"Payment"}/>}
         </div>
     );

@@ -21,6 +21,27 @@ const getAdditionalField = async (token: string, competitionId: string) => {
   }
 };
 
+const getAdditionalMemberField = async (token: string, competitionId: string) => {
+  try {
+    const { data }: { data: AdditionalFieldAPIResponse } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/additional/member?competitionId=${competitionId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+    );
+    return data.data as AdditionalField[];
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (error.response?.status === 401) {
+        return null;
+      }
+    }
+    throw error;
+  }
+};
+
 const getCompetition = async (): Promise<Competition[]> => {
   try {
     const res = await fetch(
@@ -75,4 +96,4 @@ const SUBTHEME_OPTION = [
   { value: "Community Empowerment", label: "Community Empowerment" },
 ];
 
-export { getAdditionalField, getCompetition, CITIZENSHIP, SUBTHEME_OPTION };
+export { getAdditionalField,getAdditionalMemberField, getCompetition, CITIZENSHIP, SUBTHEME_OPTION };

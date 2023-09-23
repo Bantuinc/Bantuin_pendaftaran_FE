@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Team from "@/components/dashboard/team";
 import Payment from "@/components/dashboard/payment";
+import Default from "@/components/dashboard/home";
 
 const getTeamInformation = async (userId: string, accessToken: string) => {
   try {
@@ -28,9 +29,18 @@ const getTeamInformation = async (userId: string, accessToken: string) => {
 async function TeamDetail({ params }: { params: { teamId: string } }) {
   const accessToken = cookies().get("accessToken")?.value as string;
   const team = await getTeamInformation(params.teamId, accessToken);
-  console.log(team,"hoak")
+  console.log(team.status,"hoak")
   if (!team) {
     return <div>loading...</div>;
+  }
+  // NOT (STATUS ON PAYMENT or higher)
+  if(team.status < 6){
+    return (
+        <div className="lg:flex">
+          <Sidebar active={"payment"} />
+          <Default title={"Payment"} description={"payment"}  />
+        </div>
+    )
   }
   return (
     <div className="lg:flex">
