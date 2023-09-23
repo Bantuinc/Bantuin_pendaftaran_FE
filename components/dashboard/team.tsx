@@ -78,7 +78,7 @@ export default function Team({
                   teamId={teamId}
                   name={obj.name}
                   image={obj?.ktm!}
-                  role={obj.role}
+                  role={Number(obj.role)}
                 />
               </Suspense>
             ))
