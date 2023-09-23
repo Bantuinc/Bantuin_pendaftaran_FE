@@ -16,7 +16,7 @@ const getTeamInformation = async (userId: string, accessToken: string) => {
     if (error instanceof Error) {
       console.log(error.message);
     }
-    console.log(error,"hoak")
+    console.log(error, "hoak");
     if (typeof error === "number") {
       if (error === 401) {
         redirect("/login");
@@ -29,23 +29,23 @@ const getTeamInformation = async (userId: string, accessToken: string) => {
 async function TeamDetail({ params }: { params: { teamId: string } }) {
   const accessToken = cookies().get("accessToken")?.value as string;
   const team = await getTeamInformation(params.teamId, accessToken);
-  console.log(team.status,"hoak")
+  // console.log(team.status,"hoak")
   if (!team) {
     return <div>loading...</div>;
   }
   // NOT (STATUS ON PAYMENT or higher)
-  if(team.status < 6){
+  if (team.status < 6) {
     return (
-        <div className="lg:flex">
-          <Sidebar active={"payment"} />
-          <Default title={"Payment"} description={"payment"}  />
-        </div>
-    )
+      <div className="lg:flex">
+        <Sidebar active={"payment"} />
+        <Default title={"Payment"} description={"payment"} />
+      </div>
+    );
   }
   return (
     <div className="lg:flex">
       <Sidebar active={"payment"} />
-      <Payment/>
+      <Payment />
     </div>
   );
 }

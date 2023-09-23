@@ -1,4 +1,3 @@
-
 import Sidebar from "@/components/dashboard/sidebar";
 import Home from "@/components/dashboard/home";
 import { cookies } from "next/headers";
@@ -16,8 +15,8 @@ const getTeamList = async (userId: string, accessToken: string) => {
     if (error instanceof Error) {
       console.error(error.message);
     }
-    if(error === 404){
-      return "Team Not Found"
+    if (error === 404) {
+      return "Team Not Found";
     }
     if (typeof error === "number") {
       if (error === 401) {
@@ -32,7 +31,7 @@ async function Page() {
   const accessToken = cookies().get("accessToken")?.value as string;
   const userId = getUserNameId(accessToken);
   const userTeam = await getTeamList(userId, accessToken);
-  console.log(userTeam,"aaa")
+  console.log(userTeam, "aaa");
 
   if (!userTeam) {
     return <div className="animate-pulse">loading...</div>;
@@ -40,8 +39,11 @@ async function Page() {
   return (
     <div className="lg:flex">
       <Sidebar active={"home"} />
-      {userTeam?.length === 0 || userTeam === "Team Not Found" ? <Default title={"Home"} /> :
-          <TeamList team={userTeam}  States={"/dashboard"} title={"Home"}/>}
+      {userTeam?.length === 0 || userTeam === "Team Not Found" ? (
+        <Default title={"Home"} />
+      ) : (
+        <TeamList team={userTeam} States={"/dashboard"} title={"Home"} />
+      )}
     </div>
   );
 }

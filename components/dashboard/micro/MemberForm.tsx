@@ -3,7 +3,7 @@ import { CITIZENSHIP, SUBTHEME_OPTION } from "@/utils/registration";
 import axios, { AxiosError } from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useCookies } from "react-cookie";
-import {redirect, useRouter} from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { additionalFieldMap } from "@/utils/additionalFieldType";
 import {
@@ -13,14 +13,23 @@ import {
 import Select, { MultiValue } from "react-select";
 
 interface MemberFormProps {
+  team?: Team;
   member: Member;
-  additionalField: AdditionalField[] | null;
-  isAdd:Boolean | null;
-  teamId:string
+  additionalField: AdditionalField[];
+  isAdd: Boolean | null;
+  teamId: string;
 }
-function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
+function MemberForm({
+  team,
+  member,
+  additionalField,
+  isAdd,
+  teamId,
+}: MemberFormProps) {
   const [memberName, setmemberName] = useState<string>(member.name);
-  const [memberNim, setmemberNim] = useState<string>((member.nim?member.nim:"").toString());
+  const [memberNim, setmemberNim] = useState<string>(
+    (member.nim ? member.nim : "").toString()
+  );
   const [memberEmail, setmemberEmail] = useState<string>(member.email);
   const [memberPhone, setmemberPhone] = useState<string>(member.phone);
   const [memberKtm, setmemberKtm] = useState<string>(member.ktm);
@@ -31,7 +40,7 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [cookies] = useCookies(["accessToken"]);
   const router = useRouter();
-  const {push} = useRouter();
+  const { push } = useRouter();
   const savememberEdit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
@@ -58,10 +67,10 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
         text: data.message,
         icon: "success",
         confirmButtonText: "OK",
-      }).then(()=>{
-        push(`${origin}/groups`)
+      }).then(() => {
+        push(`${origin}/groups`);
       });
-    }catch (error) {
+    } catch (error) {
       if (error instanceof AxiosError) {
         Swal.fire({
           title: "Error!",
@@ -69,14 +78,14 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
           icon: "error",
           confirmButtonText: "OK",
         });
-      }else{
-        Swal.fire({
-          title: "Error!",
-          text: error,
-          icon: "error",
-          confirmButtonText: "OK",
-        });
-    }}
+      }
+      // Swal.fire({
+      //   title: "Error!",
+      //   text: error,
+      //   icon: "error",
+      //   confirmButtonText: "OK",
+      // });
+    }
     setEditMode(false);
     setIsLoading(false);
   };
@@ -93,16 +102,16 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
       ktm: memberKtm,
       memberAdditional: AdditionalFieldValue,
     };
-    console.log(body)
+    console.log(body);
     try {
       const { data } = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/team/${teamId}/members`,
-          body,
-          {
-            headers: {
-              Authorization: `Bearer ${cookies.accessToken}`,
-            },
-          }
+        `${process.env.NEXT_PUBLIC_API_URL}/api/team/${teamId}/members`,
+        body,
+        {
+          headers: {
+            Authorization: `Bearer ${cookies.accessToken}`,
+          },
+        }
       );
 
       Swal.fire({
@@ -110,8 +119,8 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
         text: data.message,
         icon: "success",
         confirmButtonText: "OK",
-      }).then(()=>{
-        push(`${origin}/groups`)
+      }).then(() => {
+        push(`${origin}/groups`);
       });
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -121,14 +130,15 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
           icon: "error",
           confirmButtonText: "OK",
         });
-      }else{
-        Swal.fire({
-          title: "Error!",
-          text: error,
-          icon: "error",
-          confirmButtonText: "OK",
-        });
       }
+      // else {
+      //   Swal.fire({
+      //     title: "Error!",
+      //     text: error,
+      //     icon: "error",
+      //     confirmButtonText: "OK",
+      //   });
+      // }
     }
     setIsLoading(false);
   };
@@ -165,7 +175,7 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
         text: "File uploaded successfully!",
         icon: "success",
         confirmButtonText: "OK",
-      })
+      });
     } catch (error) {
       if (error instanceof Error)
         Swal.fire({
@@ -181,11 +191,14 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
 
   return (
     <form
-      onSubmit={isAdd?savememberAdd:savememberEdit}
+      onSubmit={isAdd ? savememberAdd : savememberEdit}
       className="p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:w-[30rem]"
     >
       <div className="flex flex-col">
-        <label htmlFor="memberName" className="text-lg text-white font-semibold">
+        <label
+          htmlFor="memberName"
+          className="text-lg text-white font-semibold"
+        >
           Name
         </label>
         <input
@@ -203,70 +216,77 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
           Nim
         </label>
         <input
-            readOnly={!editMode}
-            id="memberNim"
-            required
-            className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
-            value={editMode ? memberNim : member.nim}
-            onChange={(e) => setmemberNim(e.target.value)}
+          readOnly={!editMode}
+          id="memberNim"
+          required
+          className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
+          value={editMode ? memberNim : member.nim}
+          onChange={(e) => setmemberNim(e.target.value)}
         />
       </div>
       <div className="flex flex-col">
-        <label htmlFor="memberName" className="text-lg text-white font-semibold">
+        <label
+          htmlFor="memberName"
+          className="text-lg text-white font-semibold"
+        >
           Email
         </label>
         <input
-            readOnly={!editMode}
-            id="memberEmail"
-            required
-            className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
-            value={isAdd ? memberEmail : member.email}
-            onChange={(e) => setmemberEmail(e.target.value)}
+          readOnly={!editMode}
+          id="memberEmail"
+          required
+          className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
+          value={isAdd ? memberEmail : member.email}
+          onChange={(e) => setmemberEmail(e.target.value)}
         />
       </div>
       <div className="flex flex-col">
-        <label htmlFor="memberName" className="text-lg text-white font-semibold">
+        <label
+          htmlFor="memberName"
+          className="text-lg text-white font-semibold"
+        >
           Phone
         </label>
         <input
-            readOnly={!editMode}
-            id="memberName"
-            required
-            className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
-            value={isAdd ? memberPhone : member.phone}
-            onChange={(e) => setmemberPhone(e.target.value)}
+          readOnly={!editMode}
+          id="memberName"
+          required
+          className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
+          value={isAdd ? memberPhone : member.phone}
+          onChange={(e) => setmemberPhone(e.target.value)}
         />
       </div>
 
       <div className="flex flex-col">
-        <label htmlFor="memberName" className="text-lg text-white font-semibold">
+        <label
+          htmlFor="memberName"
+          className="text-lg text-white font-semibold"
+        >
           Ktm
         </label>
-          <a
-              href={memberKtm}
-              target="_blank"
-              className="text-blue-100 hover:text-blue-300"
-          >
-            Preview Uploaded Document
-          </a>
-          <input
-              id="ktm"
-              type="file"
-              required
-              disabled={!editMode}
-              style={{ display: editMode ? "block" : "none" }}
-              className="text-slate-800 font-semibold bg-white disabled:bg-white/75 text-md py-1 px-3 rounded-md focus:outline-none"
-              accept=".pdf"
-              onChange={(e) => setmemberKtm(e.target.value)
-              }
-          />
-          {isLoading && (
-              <>
-                <div className="w-4 h-4 rounded-full bg-white/75 animate-bounce mx-auto"></div>
-                <p className="text-white text-center">Uploading...</p>
-              </>
-          )}
-
+        <a
+          href={memberKtm}
+          target="_blank"
+          className="text-blue-100 hover:text-blue-300"
+        >
+          Preview Uploaded Document
+        </a>
+        <input
+          id="ktm"
+          type="file"
+          required
+          disabled={!editMode}
+          style={{ display: editMode ? "block" : "none" }}
+          className="text-slate-800 font-semibold bg-white disabled:bg-white/75 text-md py-1 px-3 rounded-md focus:outline-none"
+          accept=".pdf"
+          onChange={(e) => setmemberKtm(e.target.value)}
+        />
+        {isLoading && (
+          <>
+            <div className="w-4 h-4 rounded-full bg-white/75 animate-bounce mx-auto"></div>
+            <p className="text-white text-center">Uploading...</p>
+          </>
+        )}
       </div>
       {additionalField.map((fieldValue: AdditionalField, id) => (
         <div key={id} className="flex flex-col">
@@ -280,9 +300,15 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
             <>
               <a
                 href={
-                  AdditionalFieldValue?.hasOwnProperty(fieldValue.normalizedName)
-                      ? (AdditionalFieldValue[fieldValue.normalizedName]?AdditionalFieldValue[fieldValue.normalizedName]:"")
-                      : (member?.memberAdditional? member?.memberAdditional[fieldValue.normalizedName]:"")
+                  AdditionalFieldValue?.hasOwnProperty(
+                    fieldValue.normalizedName
+                  )
+                    ? AdditionalFieldValue[fieldValue.normalizedName]
+                      ? AdditionalFieldValue[fieldValue.normalizedName]
+                      : ""
+                    : member?.memberAdditional
+                    ? member?.memberAdditional[fieldValue.normalizedName]
+                    : ""
                 }
                 target="_blank"
                 className="text-blue-100 hover:text-blue-300"
@@ -292,11 +318,9 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
               <input
                 id={fieldValue.normalizedName}
                 type="file"
-                required={
-                  AdditionalFieldValue?.hasOwnProperty(
-                    fieldValue.normalizedName
-                  )
-                }
+                required={AdditionalFieldValue?.hasOwnProperty(
+                  fieldValue.normalizedName
+                )}
                 disabled={!editMode}
                 style={{ display: editMode ? "block" : "none" }}
                 className="text-slate-800 font-semibold bg-white disabled:bg-white/75 text-md py-1 px-3 rounded-md focus:outline-none"
@@ -330,8 +354,12 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
               value={
                 editMode &&
                 AdditionalFieldValue?.hasOwnProperty(fieldValue.normalizedName)
-                  ? (AdditionalFieldValue[fieldValue.normalizedName]?AdditionalFieldValue[fieldValue.normalizedName]:"")
-                  : (member?.memberAdditional? member?.memberAdditional[fieldValue.normalizedName]:"")
+                  ? AdditionalFieldValue[fieldValue.normalizedName]
+                    ? AdditionalFieldValue[fieldValue.normalizedName]
+                    : ""
+                  : member?.memberAdditional
+                  ? member?.memberAdditional[fieldValue.normalizedName]
+                  : ""
               }
               onChange={(e) =>
                 setAdditionalFieldValue((value) => ({
@@ -343,33 +371,36 @@ function MemberForm({ member, additionalField,isAdd,teamId }: MemberFormProps) {
           )}
         </div>
       ))}
+      <button
+        type="button"
+        onClick={() => setEditMode((value) => !value)}
+        className={`${
+          editMode ? "hidden" : ""
+        } py-2 px-4 bg-[#FFA31D] text-white drop-shadow-md rounded-lg font-semibold shadow-md hover:bg-[#1e4a5d] transition duration-200`}
+      >
+        Edit member Information
+      </button>
+      <div className={`${editMode ? "flex" : "hidden"} gap-3`}>
+        {!isAdd ? (
           <button
             type="button"
-            onClick={() => setEditMode((value) => !value)}
-            className={`${
-              editMode ? "hidden" : ""
-            } py-2 px-4 bg-[#FFA31D] text-white drop-shadow-md rounded-lg font-semibold shadow-md hover:bg-[#1e4a5d] transition duration-200`}
+            onClick={() => (isAdd ? redirect("../") : setEditMode(false))}
+            className="py-2 px-4 bg-red-500 text-white drop-shadow-md rounded-lg font-semibold shadow-md hover:bg-[#1e4a5d] transition duration-200"
           >
-            Edit member Information
+            Cancel
           </button>
-      <div className={`${editMode ? "flex" : "hidden"} gap-3`}>
-        {!isAdd?(
-            <button
-              type="button"
-              onClick={() => isAdd?redirect('../'):setEditMode(false)}
-              className="py-2 px-4 bg-red-500 text-white drop-shadow-md rounded-lg font-semibold shadow-md hover:bg-[#1e4a5d] transition duration-200"
-            >
-              Cancel
-            </button>
         ) : (
-          <div/>
+          <div />
         )}
         <button
           type="submit"
           disabled={isLoading}
-          className={(!isAdd?"":"mr-4 ")+"flex-1 py-2 px-4 bg-[#FFA31D] disabled:cursor-not-allowed text-white drop-shadow-md rounded-lg font-semibold shadow-md enabled:hover:bg-[#1e4a5d] transition duration-200"}
+          className={
+            (!isAdd ? "" : "mr-4 ") +
+            "flex-1 py-2 px-4 bg-[#FFA31D] disabled:cursor-not-allowed text-white drop-shadow-md rounded-lg font-semibold shadow-md enabled:hover:bg-[#1e4a5d] transition duration-200"
+          }
         >
-          {isLoading ? "Saving..." : isAdd?"Add Member":"Save Edit"}
+          {isLoading ? "Saving..." : isAdd ? "Add Member" : "Save Edit"}
         </button>
       </div>
     </form>
