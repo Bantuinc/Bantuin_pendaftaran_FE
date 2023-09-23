@@ -64,7 +64,7 @@ export default function Default({ title, description }: DefaultProps) {
                 Anda Belum Registrasi Ke suatu lomba
               </h1>
               <a
-                className="ml-32 bg-[#FFA31D] text-white hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                className="ml-32 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
                 href="./register"
               >
                 Register Now
@@ -81,7 +81,7 @@ export default function Default({ title, description }: DefaultProps) {
                 Mohon Isi Data atau tunggu konfirmasi admin
               </h3>
               <a
-                className="ml-48 bg-[#FFA31D] text-white hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                className="ml-48 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
                 href={`${origin}/dashboard`}
               >
                 Back

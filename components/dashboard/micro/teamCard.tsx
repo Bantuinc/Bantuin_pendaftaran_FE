@@ -2,6 +2,7 @@
 import { getTeamDetail } from "@/utils/userTeams";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { memberRoleMap } from "@/utils/memberRoleType";
 
 interface CreateCardProps {
   teamId: string;
@@ -43,6 +44,7 @@ interface memberCardProps {
   teamId: string;
   name: string;
   image: string;
+  role?: number;
 }
 
 export function memberCard({
@@ -50,21 +52,24 @@ export function memberCard({
   teamId,
   name,
   image,
+  role,
 }: memberCardProps) {
   return (
     <>
       <Link href={`${teamId}/${teamMemberId}`}>
-        <div className="min-h-[20rem] relative group bg-[#296875] py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-[#296875]/80 hover:smooth-hover">
-          <div className=" ">
+        <div className="min-h-[20rem] relative group bg-[#296875] py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center justify-center cursor-pointer rounded-md hover:bg-[#296875]/80 hover:smooth-hover">
+          <div className="">
             {/*<img className="w-20 h-20 object-cover object-center rounded-full"*/}
             {/*     src={image}*/}
             {/*     alt="img"/>*/}
             <h4 className="text-white text-2xl font-bold capitalize text-center">
               {name}
             </h4>
-            <p className="text-white/50">members</p>
-            <p className="absolute top-2 text-white/20 inline-flex items-center text-xs">
-              Waiting{" "}
+            <p className="text-white/50 text-center">
+              {memberRoleMap.get(role!)}
+            </p>
+            <p className="absolute left-[40%] top-2 text-white/20 inline-flex items-center text-xs">
+              Waiting
               <span className="ml-2 w-2 h-2 block bg-yellow-500 rounded-full group-hover:animate-pulse" />
             </p>
           </div>
