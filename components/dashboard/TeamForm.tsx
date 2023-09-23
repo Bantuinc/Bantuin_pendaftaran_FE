@@ -118,9 +118,9 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
   };
 
   const setSelectDefaultValue = (selected: string) => {
-    const selectedValue = selected.split(",");
+    const selectedValue = selected?.split(",") || [selected];
     const data: { label: string; value: string }[] = [];
-    const defaultValue = selectedValue.map((value) => {
+    selectedValue?.map((value) => {
       const selected = SUBTHEME_OPTION.find((option) => option.value === value);
       if (selected) data.push(selected);
     });
