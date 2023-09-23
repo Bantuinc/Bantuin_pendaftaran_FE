@@ -1,7 +1,13 @@
 "use client";
 import { CITIZENSHIP, SUBTHEME_OPTION } from "@/utils/registration";
 import axios, { AxiosError } from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useState,
+} from "react";
 import { useCookies } from "react-cookie";
 import { redirect, useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -189,6 +195,36 @@ function MemberForm({
     setIsLoading(false);
   };
 
+  const handleUploadKTM = async (
+    e: ChangeEvent<HTMLInputElement>,
+    callback: Dispatch<SetStateAction<string>>
+  ): Promise<void> => {
+    if (!e.target?.files) return;
+    setIsLoading(true);
+    const uploadedFile = e.target?.files[0];
+    try {
+      const res = await uploadParticipantDocument(uploadedFile);
+      const previewURL = previewParticipantDocumentURL(res.$id);
+      callback(previewURL);
+      Swal.fire({
+        title: "File Uploaded!",
+        text: "File uploaded successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+    } catch (error) {
+      if (error instanceof Error)
+        Swal.fire({
+          title: "Error!",
+          text: error?.message,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      return;
+    }
+    setIsLoading(false);
+  };
+
   return (
     <form
       onSubmit={isAdd ? savememberAdd : savememberEdit}
@@ -218,6 +254,7 @@ function MemberForm({
         <input
           readOnly={!editMode}
           id="memberNim"
+          type="number"
           required
           className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
           value={editMode ? memberNim : member.nim}
@@ -236,7 +273,7 @@ function MemberForm({
           id="memberEmail"
           required
           className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
-          value={isAdd ? memberEmail : member.email}
+          value={isAdd || editMode ? memberEmail : member.email}
           onChange={(e) => setmemberEmail(e.target.value)}
         />
       </div>
@@ -252,7 +289,7 @@ function MemberForm({
           id="memberName"
           required
           className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
-          value={isAdd ? memberPhone : member.phone}
+          value={isAdd || editMode ? memberPhone : member.phone}
           onChange={(e) => setmemberPhone(e.target.value)}
         />
       </div>
@@ -279,7 +316,7 @@ function MemberForm({
           style={{ display: editMode ? "block" : "none" }}
           className="text-slate-800 font-semibold bg-white disabled:bg-white/75 text-md py-1 px-3 rounded-md focus:outline-none"
           accept=".pdf"
-          onChange={(e) => setmemberKtm(e.target.value)}
+          onChange={(e) => handleUploadKTM(e, setmemberKtm)}
         />
         {isLoading && (
           <>
@@ -304,14 +341,14 @@ function MemberForm({
                     fieldValue.normalizedName
                   )
                     ? AdditionalFieldValue[fieldValue.normalizedName]
-                      ? AdditionalFieldValue[fieldValue.normalizedName]
-                      : ""
-                    : member?.memberAdditional
-                    ? member?.memberAdditional[fieldValue.normalizedName]
+                    : member?.memberAdditional?.hasOwnProperty(
+                        fieldValue.normalizedName
+                      )
+                    ? member.memberAdditional[fieldValue.normalizedName]
                     : ""
                 }
                 target="_blank"
-                className="text-blue-100 hover:text-blue-300"
+                className="text-blue-100 hover:text-blue-300 cursor-pointer"
               >
                 Preview Uploaded Document
               </a>
@@ -355,10 +392,10 @@ function MemberForm({
                 editMode &&
                 AdditionalFieldValue?.hasOwnProperty(fieldValue.normalizedName)
                   ? AdditionalFieldValue[fieldValue.normalizedName]
-                    ? AdditionalFieldValue[fieldValue.normalizedName]
-                    : ""
-                  : member?.memberAdditional
-                  ? member?.memberAdditional[fieldValue.normalizedName]
+                  : member?.memberAdditional?.hasOwnProperty(
+                      fieldValue.normalizedName
+                    )
+                  ? member.memberAdditional[fieldValue.normalizedName]
                   : ""
               }
               onChange={(e) =>
