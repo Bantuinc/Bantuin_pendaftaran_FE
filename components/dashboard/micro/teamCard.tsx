@@ -2,6 +2,7 @@
 import { getTeamDetail } from "@/utils/userTeams";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import roleIdToRole from "@/utils/roleIdToRole";
 
 interface CreateCardProps {
   teamId: string;
@@ -42,7 +43,8 @@ interface memberCardProps {
   teamMemberId: string;
   teamId: string;
   name: string;
-  image: string;
+  image?: string;
+  roleId: number
 }
 
 export function memberCard({
@@ -50,6 +52,7 @@ export function memberCard({
   teamId,
   name,
   image,
+  roleId
 }: memberCardProps) {
   return (
     <>
@@ -62,7 +65,7 @@ export function memberCard({
             <h4 className="text-white text-2xl font-bold capitalize text-center">
               {name}
             </h4>
-            <p className="text-white/50">members</p>
+            <p className="text-white/50">{roleIdToRole(roleId)}</p>
             <p className="absolute top-2 text-white/20 inline-flex items-center text-xs">
               Waiting{" "}
               <span className="ml-2 w-2 h-2 block bg-yellow-500 rounded-full group-hover:animate-pulse" />

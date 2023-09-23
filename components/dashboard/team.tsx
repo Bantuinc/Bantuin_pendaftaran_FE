@@ -58,6 +58,7 @@ export default function Team({ team, teamId, accessToken }: teamProps) {
                   teamId={teamId}
                   name={obj.name}
                   image={obj?.ktm!}
+                  roleId={obj.role}
                 />
               </Suspense>
             ))

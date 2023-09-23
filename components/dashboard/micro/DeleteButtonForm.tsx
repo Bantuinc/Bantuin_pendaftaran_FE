@@ -11,8 +11,9 @@ interface MemberFormProps {
     competitionId: string;
     teamId:string;
     accessToken:string
+    roleId:number
 }
-function DeleteButtonForm({ competitionId,teamId,accessToken }: MemberFormProps) {
+function DeleteButtonForm({ competitionId,teamId,accessToken,roleId }: MemberFormProps) {
     const [editMode, setEditMode] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [cookies] = useCookies(["accessToken"]);
@@ -63,29 +64,32 @@ function DeleteButtonForm({ competitionId,teamId,accessToken }: MemberFormProps)
         }
     };
 
+    if(roleId === 1){
+        return <div/>
+    }else{
+        return (
+            <div
 
-    return (
-        <div
-
-            className="max-h-min p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:max-w-[20rem]"
-        >
-            <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-1 py-1 px-4 text-white font-semibold rounded-full bg-[#1e4a5d] w-fit">
-                    <AlertCircle className="w-4 h-4" />
-                    <p>Delete Member</p>
+                className="max-h-min p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:max-w-[20rem]"
+            >
+                <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-1 py-1 px-4 text-white font-semibold rounded-full bg-[#1e4a5d] w-fit">
+                        <AlertCircle className="w-4 h-4" />
+                        <p>Delete Member</p>
+                    </div>
+                    <h3 className="text-white text-lg">
+                        Deleted member cannot be recovered
+                    </h3>
+                    <button
+                        onClick={deleteTeamEdit}
+                        className="py-3 px-6 enabled:bg-red-500 disabled:bg-gray-300 disabled:cursor-not-allowed enabled:hover:bg-[#1e4a5d] rounded-md text-white shadow-md font-bold text-lg transition-all"
+                    >
+                        <p className="drop-shadow-md">Delete This Member</p>
+                    </button>
                 </div>
-                <h3 className="text-white text-lg">
-                    Deleted member cannot be recovered
-                </h3>
-                <button
-                    onClick={deleteTeamEdit}
-                    className="py-3 px-6 enabled:bg-red-500 disabled:bg-gray-300 disabled:cursor-not-allowed enabled:hover:bg-[#1e4a5d] rounded-md text-white shadow-md font-bold text-lg transition-all"
-                >
-                    <p className="drop-shadow-md">Delete This Member</p>
-                </button>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default DeleteButtonForm;
