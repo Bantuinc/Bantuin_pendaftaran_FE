@@ -20,15 +20,19 @@ const getTeamDetail = async (teamId: string, accessToken: string) => {
   }
 };
 
-const getMemberDetail = async (teamId: string, accessToken: string,teamMemberId: string) => {
+const getMemberDetail = async (
+  teamId: string,
+  accessToken: string,
+  teamMemberId: string
+) => {
   try {
     const { data: response }: { data: APIResponse } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/team/${teamId}/members/${teamMemberId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
+      `${process.env.NEXT_PUBLIC_API_URL}/api/team/${teamId}/members/${teamMemberId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
     );
     const team: Member = response.data;
     return team as Member;
@@ -42,7 +46,7 @@ const getMemberDetail = async (teamId: string, accessToken: string,teamMemberId:
 
 const getUserTeams = async (userId: string, accessToken: string) => {
   try {
-    console.log(userId)
+    console.log(userId);
     const { data: response }: { data: UserTeamAPIResponse } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/user/${userId}/teams`,
       {
@@ -63,19 +67,20 @@ const getUserTeams = async (userId: string, accessToken: string) => {
 
 const getMemberTeams = async (teamId: string, accessToken: string) => {
   try {
-    console.log(teamId)
+    console.log(teamId);
     const { data: response }: { data: UserMemberAPIResponse } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/team/${teamId}/members`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
+      `${process.env.NEXT_PUBLIC_API_URL}/api/team/${teamId}/members`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
     );
     const userTeam: Member[] = response.data;
     return userTeam as Member[];
   } catch (error) {
     if (error instanceof AxiosError) {
+      console.log("axios error => ", error?.response?.data);
       throw error?.response?.status;
     }
     throw error;
@@ -97,4 +102,4 @@ const getCompetitionName = async (competitionId: string): Promise<string> => {
     throw error;
   }
 };
-export { getUserTeams, getTeamDetail, getMemberTeams, getMemberDetail};
+export { getUserTeams, getTeamDetail, getMemberTeams, getMemberDetail };

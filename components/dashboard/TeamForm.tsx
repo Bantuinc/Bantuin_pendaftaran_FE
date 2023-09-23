@@ -14,7 +14,7 @@ import Select, { MultiValue } from "react-select";
 
 interface TeamFormProps {
   team: Team;
-  additionalField: AdditionalField[] | null;
+  additionalField: AdditionalField[];
 }
 function TeamForm({ team, additionalField }: TeamFormProps) {
   const [teamName, setTeamName] = useState<string>(team.teamName);
@@ -25,6 +25,8 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
     useState<StringObject>(team.teamAdditional);
   const [editMode, setEditMode] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [idUpload, setIdUpload] = useState<string>("");
   const [cookies] = useCookies(["accessToken"]);
   const router = useRouter();
 
@@ -86,7 +88,8 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
     normalizedName: string
   ): Promise<void> => {
     if (!e.target?.files) return;
-    setIsLoading(true);
+    setIsUploading(true);
+    setIdUpload(normalizedName);
     const uploadedFile = e.target?.files[0];
     try {
       const res = await uploadParticipantDocument(uploadedFile);
@@ -111,7 +114,17 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
         });
       return;
     }
-    setIsLoading(false);
+    setIsUploading(false);
+  };
+
+  const setSelectDefaultValue = (selected: string) => {
+    const selectedValue = selected.split(",");
+    const data: { label: string; value: string }[] = [];
+    const defaultValue = selectedValue.map((value) => {
+      const selected = SUBTHEME_OPTION.find((option) => option.value === value);
+      if (selected) data.push(selected);
+    });
+    return data as MultiValue<{ label: string; value: string }>;
   };
 
   return (
@@ -202,7 +215,7 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
                   handleAdditionalFile(e, fieldValue.normalizedName)
                 }
               />
-              {isLoading && (
+              {isUploading && idUpload === fieldValue.normalizedName && (
                 <>
                   <div className="w-4 h-4 rounded-full bg-white/75 animate-bounce mx-auto"></div>
                   <p className="text-white text-center">Uploading...</p>
@@ -212,11 +225,14 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
           ) : additionalFieldMap.get(fieldValue.type) === "select" ? (
             <Select
               options={SUBTHEME_OPTION}
-              // required={!fieldValue.hasOwnProperty(fieldValue.normalizedName)}
+              required={!fieldValue.hasOwnProperty(fieldValue.normalizedName)}
               isMulti
               isDisabled={!editMode}
               className="text-slate-900"
               onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
+              defaultValue={setSelectDefaultValue(
+                AdditionalFieldValue[fieldValue.normalizedName]
+              )}
             />
           ) : (
             <input
