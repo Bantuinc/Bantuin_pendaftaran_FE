@@ -94,7 +94,7 @@ async function TeamDetail({
             isAdd={false}
           />
           <DeleteButtonForm
-            roleId={member.role}
+            roleId={Number(member.role)}
             competitionId={params.teamId}
             teamId={params.teamMemberId}
             accessToken={accessToken}
