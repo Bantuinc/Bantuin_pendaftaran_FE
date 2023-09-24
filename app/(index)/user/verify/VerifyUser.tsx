@@ -1,4 +1,5 @@
 "use client";
+import { cocogoose } from "@/fonts/font";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -56,7 +57,9 @@ function VerifyUser() {
   }, []);
 
   return (
-    <div className="md:py-8 md:px-16 md:max-w-[24rem] py-4 px-8 text-center bg-white rounded-xl text-slate-800 flex gap-8 flex-col items-center justify-center">
+    <div
+      className={`${cocogoose.className} md:py-8 md:px-16 md:max-w-[24rem] py-4 px-8 text-center bg-white rounded-xl text-slate-800 flex gap-8 flex-col items-center justify-center`}
+    >
       <Image
         src="/logo2.png"
         width={200}
@@ -79,7 +82,8 @@ function VerifyUser() {
             </span>
           </span>
           <p className="font-bold text-lg text-slate-600">
-            Welcome to ISMC 14!
+            Welcome to the 14<span className="text-xs align-super">th</span>{" "}
+            ISMC
           </p>
           <p className="text-sm text-slate-500">
             This might take a few seconds. Please wait while we verify your

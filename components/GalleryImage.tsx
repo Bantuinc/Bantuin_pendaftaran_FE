@@ -20,6 +20,20 @@ function GalleryImage() {
     <Slider {...settings}>
       <div className="rounded-md px-3 h-[768px]">
         <iframe
+          src="https://www.tiktok.com/embed/7281615676685438213"
+          style={{
+            left: 0,
+            width: "100%",
+            height: 768,
+            position: "relative",
+          }}
+          allowFullScreen
+          scrolling="no"
+          allow="encrypted-media;"
+        ></iframe>
+      </div>
+      <div className="rounded-md px-3 h-[768px]">
+        <iframe
           src="https://www.tiktok.com/embed/7278216166827511045"
           style={{
             left: 0,
@@ -34,35 +48,7 @@ function GalleryImage() {
       </div>
       <div className="rounded-md px-3 h-[768px]">
         <iframe
-          src="https://www.tiktok.com/embed/7278293294449265925"
-          style={{
-            left: 0,
-            width: "100%",
-            height: 768,
-            position: "relative",
-          }}
-          allowFullScreen
-          scrolling="no"
-          allow="encrypted-media;"
-        ></iframe>
-      </div>
-      <div className="rounded-md px-3 h-[768px]">
-        <iframe
           src="https://www.tiktok.com/embed/7274560791880142085"
-          style={{
-            left: 0,
-            width: "100%",
-            height: 768,
-            position: "relative",
-          }}
-          allowFullScreen
-          scrolling="no"
-          allow="encrypted-media;"
-        ></iframe>
-      </div>
-      <div className="rounded-md px-3 h-[768px]">
-        <iframe
-          src="https://www.tiktok.com/embed/7271183483962215686"
           style={{
             left: 0,
             width: "100%",
