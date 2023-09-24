@@ -203,6 +203,13 @@ function RegistCompetitionForm({
         onChange={(e) => setTeamName(e.target.value)}
         className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
       />
+      <div>
+        <p className="drop-shadow-md">
+          *Your team name shouldn{"'"}t be included with the university
+          name/acronym and shouldn{"'"}t contain bad words or offend any
+          ethnicity, religion, race, or inter-group relations.
+        </p>
+      </div>
       <label
         htmlFor="citizenShip"
         className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
@@ -286,44 +293,60 @@ function RegistCompetitionForm({
                   onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
                 />
               ) : additionalFieldMap.get(fieldValue.type) === "textarea" ? (
-                <textarea
-                  required={fieldValue.priority === 1}
-                  value={
-                    AdditionalFieldValue.hasOwnProperty(
-                      fieldValue.normalizedName
-                    )
-                      ? AdditionalFieldValue[fieldValue.normalizedName]
-                      : ""
-                  }
-                  id={fieldValue.normalizedName}
-                  onChange={(e) =>
-                    handleAdditionalFieldArea(e, fieldValue.normalizedName)
-                  }
-                  className={`${
-                    fieldValue.priority !== 1 ? "hidden" : ""
-                  } rounded-lg h-32 py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
-                  cols={5}
-                  rows={10}
-                ></textarea>
+                <>
+                  <textarea
+                    required={fieldValue.priority === 1}
+                    value={
+                      AdditionalFieldValue.hasOwnProperty(
+                        fieldValue.normalizedName
+                      )
+                        ? AdditionalFieldValue[fieldValue.normalizedName]
+                        : ""
+                    }
+                    id={fieldValue.normalizedName}
+                    onChange={(e) =>
+                      handleAdditionalFieldArea(e, fieldValue.normalizedName)
+                    }
+                    className={`${
+                      fieldValue.priority !== 1 ? "hidden" : ""
+                    } rounded-lg h-32 py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
+                    cols={5}
+                    rows={10}
+                  ></textarea>
+                  {fieldValue.normalizedName === "university_address" ? (
+                    <div className="mt-3">
+                      <b>Please fill your complete university address.</b>
+                    </div>
+                  ) : null}
+                </>
               ) : (
-                <input
-                  type={additionalFieldMap.get(fieldValue.type)}
-                  required={fieldValue.priority === 1}
-                  id={fieldValue.normalizedName}
-                  value={
-                    AdditionalFieldValue.hasOwnProperty(
-                      fieldValue.normalizedName
-                    )
-                      ? AdditionalFieldValue[fieldValue.normalizedName]
-                      : ""
-                  }
-                  onChange={(e) =>
-                    handleAdditionalField(e, fieldValue.normalizedName)
-                  }
-                  className={`${
-                    fieldValue.priority !== 1 ? "hidden" : ""
-                  } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
-                />
+                <>
+                  <input
+                    type={additionalFieldMap.get(fieldValue.type)}
+                    required={fieldValue.priority === 1}
+                    id={fieldValue.normalizedName}
+                    value={
+                      AdditionalFieldValue.hasOwnProperty(
+                        fieldValue.normalizedName
+                      )
+                        ? AdditionalFieldValue[fieldValue.normalizedName]
+                        : ""
+                    }
+                    onChange={(e) =>
+                      handleAdditionalField(e, fieldValue.normalizedName)
+                    }
+                    className={`${
+                      fieldValue.priority !== 1 ? "hidden" : ""
+                    } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
+                  />
+                  {fieldValue.normalizedName === "university_name" ? (
+                    <div className="mt-3">
+                      <b className="drop-shadow-md">
+                        *Please don{""}t shorten your university name.
+                      </b>
+                    </div>
+                  ) : null}
+                </>
               )}
             </div>
           ))}
