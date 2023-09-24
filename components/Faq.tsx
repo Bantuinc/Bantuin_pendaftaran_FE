@@ -11,7 +11,7 @@ function Faq() {
   return (
     <section
       id="faq"
-      className="p-16 min-h-screen flex flex-col items-center justify-center bg-[#296875]"
+      className={`p-16 min-h-screen flex flex-col items-center justify-center bg-[#296875] ${cocogoose.className}`}
     >
       <div className="mb-12 w-fit">
         <h1 className={`text-6xl font-bold text-white ${cocogoose.className}`}>
