@@ -1,6 +1,10 @@
 import Sidebar from "@/components/dashboard/sidebar";
 import { hind } from "@/fonts/font";
-import { getMemberTeams } from "@/utils/userTeams";
+import {
+  getMemberTeams,
+  getCompetitionDetail,
+  getTeamDetail,
+} from "@/utils/userTeams";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Team from "@/components/dashboard/team";
@@ -27,7 +31,6 @@ const getTeamInformation = async (teamId: string, accessToken: string) => {
 async function TeamDetail({ params }: { params: { teamId: string } }) {
   const accessToken = cookies().get("accessToken")?.value as string;
   const team = await getTeamInformation(params.teamId, accessToken);
-
   if (!team) {
     return <div>loading...{/*LOADING*/}
       <div className="lds-ellipsis">
@@ -37,10 +40,23 @@ async function TeamDetail({ params }: { params: { teamId: string } }) {
       </div>
       {/*LOADING*/}</div>;
   }
+  const teamDetail = await getTeamDetail(params.teamId, accessToken);
+  if (!teamDetail) {
+    return <div>loading...</div>;
+  }
+  const competitionDetail = await getCompetitionDetail(
+    teamDetail.competitionId,
+    accessToken
+  );
   return (
     <div className="lg:flex">
       <Sidebar active={"group"} />
-      <Team team={team} accessToken={accessToken} teamId={params.teamId}/>
+      <Team
+        team={team}
+        accessToken={accessToken}
+        teamId={params.teamId}
+        competitionDetail={competitionDetail}
+      />
     </div>
   );
 }

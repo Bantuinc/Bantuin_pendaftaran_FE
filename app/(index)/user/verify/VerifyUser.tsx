@@ -10,6 +10,7 @@ function VerifyUser() {
   const [statusVerified, setStatusVerified] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const token = searchParams.get("token")!;
+  const id = searchParams.get("id")!;
   const router = useRouter();
 
   const reload = () => {
@@ -22,10 +23,13 @@ function VerifyUser() {
     }, 5000);
   };
 
-  const verifyUser = async (token: string) => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/verify?token=${token}`, {
-      method: "GET",
-    })
+  const verifyUser = async (token: string, id: string) => {
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/user/verify?token=${token}&id=${id}`,
+      {
+        method: "GET",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         Swal.fire({
@@ -48,7 +52,7 @@ function VerifyUser() {
   };
 
   useEffect(() => {
-    verifyUser(token);
+    verifyUser(token, id);
   }, []);
 
   return (

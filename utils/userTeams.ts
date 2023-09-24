@@ -87,19 +87,25 @@ const getMemberTeams = async (teamId: string, accessToken: string) => {
   }
 };
 
-const getCompetitionName = async (competitionId: string): Promise<string> => {
-  try {
-    const { data: response }: { data: APIResponse } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/competition/${competitionId}`
-    );
-    const competition: Competition = response.data;
-    const competitionName = competition.name;
-    return competitionName as string;
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      throw error?.response?.status as number;
+const getCompetitionDetail = async (
+  competitionId: string,
+  token: string
+): Promise<Competition> => {
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/competition/${competitionId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }
-    throw error;
-  }
+  );
+  const data: APIResponse = await res.data;
+  return data.data as Competition;
 };
-export { getUserTeams, getTeamDetail, getMemberTeams, getMemberDetail };
+export {
+  getUserTeams,
+  getTeamDetail,
+  getMemberTeams,
+  getMemberDetail,
+  getCompetitionDetail,
+};

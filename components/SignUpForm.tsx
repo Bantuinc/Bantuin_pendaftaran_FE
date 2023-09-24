@@ -31,7 +31,7 @@ function SignUpForm() {
       );
       const alert = await Swal.fire({
         title: "Success!",
-        text: "Your account has been created successfully!",
+        text: data.message,
         icon: "success",
         confirmButtonText: "OK",
       });

@@ -17,14 +17,19 @@ interface teamProps {
   accessToken?: string;
 }
 
-export default function Team({ team, teamId, accessToken }: teamProps) {
+export default function Team({
+  team,
+  teamId,
+  accessToken,
+  competitionDetail,
+}: teamProps) {
   return (
     <>
       {/* Content */}
       <div className={`${hind.className} flex-1 px-2 sm:px-0`}>
         <div className="flex justify-between items-center">
           <h3 className="text-3xl font-semibold text-slate-100">Groups</h3>
-          {/*<div className="inline-flex items-center space-x-2">*/}
+          {/* <div className="inline-flex items-center space-x-2">*/}
           {/*    <a className="bg-[#296875] text-white/50 p-2 rounded-md hover:text-white smooth-hover"*/}
           {/*       href="#">*/}
           {/*        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"*/}
@@ -40,8 +45,22 @@ export default function Team({ team, teamId, accessToken }: teamProps) {
           {/*            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"*/}
           {/*                  d="M4 6h16M4 10h16M4 14h16M4 18h16"/>*/}
           {/*        </svg>*/}
-          {/*    </a>*/}
+          {/*    </a> */}
           {/*</div>*/}
+          <div className="flex gap-3 text-white font-bold">
+            <span className="flex gap-1 items-center">
+              <h1>Min. Member : </h1>
+              <p className="py-1 px-2 rounded-md bg-[#1e4a5d] text-xl">
+                {competitionDetail?.requiredMember}
+              </p>
+            </span>
+            <span className="flex gap-1 items-center">
+              <h1>Max. Member : </h1>
+              <p className="py-1 px-2 rounded-md bg-[#1e4a5d] text-xl">
+                {competitionDetail?.maxMember}
+              </p>
+            </span>
+          </div>
         </div>
         <div className="mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <Suspense fallback={<Skeleton className="w-64 h-64 rounded-md" />}>
@@ -58,7 +77,7 @@ export default function Team({ team, teamId, accessToken }: teamProps) {
                   teamId={teamId}
                   name={obj.name}
                   image={obj?.ktm!}
-                  roleId={parseInt(obj.role)}
+                  role={Number(obj.role)}
                 />
               </Suspense>
             ))

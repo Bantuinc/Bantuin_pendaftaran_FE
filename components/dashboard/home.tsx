@@ -58,7 +58,7 @@ export default function Default({ title, description }: DefaultProps) {
           {/*</div>*/}
         </div>
 
-        {title === "Payment"? (description === null ? (
+        {title === "Payment"? (description === undefined ? (
           <div className="flex justify-center items-center h-22">
             <div className="my-20">
               <h1 className="text-white mb-8 text-2xl font-bold">
