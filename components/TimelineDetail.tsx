@@ -10,13 +10,13 @@ function TimelineDetail({
   return (
     <div
       className={`relative md:p-8 p-4 flex flex-col gap-3 justify-center items-center shadow-2xl rounded-2xl bg-white/20 w-[300px] ${
-        id % 2 === 1 ? "md:translate-y-[328px] translate-y-[242px]" : ""
+        id % 2 === 1 ? "md:translate-y-[388px] translate-y-[272px]" : ""
       }`}
     >
-      <h1 className="font-bold text-white md:text-2xl text-lg text-center">
+      <h1 className="font-bold text-white md:text-lg text-xs text-center">
         {title}
       </h1>
-      <p className="text-slate-100 md:text-3xl text-xl font-black text-center">
+      <p className="text-slate-100 md:text-xl text-xs font-black text-center">
         {date}
       </p>
       <div
