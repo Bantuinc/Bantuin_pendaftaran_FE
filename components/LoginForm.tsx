@@ -26,7 +26,7 @@ function LoginForm() {
       );
       setCookie("accessToken", res?.data.token, {
         path: "/",
-        maxAge: 3600 * 24,
+        maxAge: 3600 * 6,
         sameSite: true,
       });
       const alert = await Swal.fire({
@@ -110,7 +110,9 @@ function LoginForm() {
           </svg>
         </div>
         {/*  TODO GET NUMBER ADMIN OR GMAIL */}
-        <a href={"https://wa.me/6283893458760"} className="font-medium text-xl">Need Help?</a>
+        <a href={"https://wa.me/6283893458760"} className="font-medium text-xl">
+          Need Help?
+        </a>
       </div>
       <span>
         Dont{"'"} have an account ?{" "}
