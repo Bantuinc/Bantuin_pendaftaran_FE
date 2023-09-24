@@ -3,8 +3,7 @@ import { hind } from "@/fonts/font";
 import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
+import { FormEvent, useState } from "react";
 import Swal from "sweetalert2";
 
 function SignUpForm() {
@@ -13,13 +12,8 @@ function SignUpForm() {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [cookies] = useCookies(["accessToken"]);
 
   const router = useRouter();
-
-  useEffect(() => {
-    if (cookies.accessToken !== undefined) router.push("/login");
-  });
 
   const handleSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
