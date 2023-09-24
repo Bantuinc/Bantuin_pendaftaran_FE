@@ -7,15 +7,31 @@ type RegistProps = {
   name: string;
   description: string;
   imgKey: number;
+  openedAt: string;
 };
 
-function CompetitionList({ id, name, description, imgKey }: RegistProps) {
+function CompetitionList({
+  id,
+  name,
+  description,
+  imgKey,
+  openedAt,
+}: RegistProps) {
   const RegistImg = [
     "background_mining_competition.webp",
     "bg_login.webp",
     "bg_login.webp",
     "background.webp",
   ];
+
+  const CompetitionOpened = (): boolean => {
+    const res = new Date(openedAt).getTime() - new Date().getTime();
+    if (res <= 0) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <div
       className={`flex ${
@@ -32,8 +48,14 @@ function CompetitionList({ id, name, description, imgKey }: RegistProps) {
         </h1>
         <p className="font-bold text-slate-50 text-lg">{description}</p>
         <div className="flex gap-3">
-          <Link href={`register/${id}`} className="flex-1">
-            <button className="py-4 px-8 flex justify-center gap-2 rounded-xl bg-[#FFA31D] w-full font-bold text-lg text-white hover:shadow-lg hover:bg-orange-400 duration-300 ease-in-out transition-all">
+          <Link
+            href={`${CompetitionOpened() ? `/register/${id}` : ""}`}
+            className="flex-1"
+          >
+            <button
+              disabled={!CompetitionOpened()}
+              className="py-4 px-8 flex justify-center gap-2 disabled:cursor-not-allowed disabled:bg-slate-700 rounded-xl bg-[#FFA31D] w-full font-bold text-lg text-white hover:shadow-lg hover:bg-orange-400 duration-300 ease-in-out transition-all"
+            >
               <Fingerprint className="-ml-4" />
               <span className="drop-shadow-md">Register</span>
             </button>

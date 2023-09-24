@@ -32,6 +32,7 @@ async function Register() {
               id={comp.id}
               name={comp.name}
               description={comp.description}
+              openedAt={comp.openedAt}
             />
           ))}
         </div>
