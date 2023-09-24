@@ -1,7 +1,7 @@
 "use client";
 
 import axios, { AxiosError } from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 
@@ -27,7 +27,7 @@ function SubmitTeamButton({ isDisabled, teamDetail }: SubmitButtonProps) {
         icon: "success",
         confirmButtonText: "Ok",
       }).then(() => {
-        router.reload();
+        router.refresh();
       });
     } catch (error) {
       if (error instanceof AxiosError) {
