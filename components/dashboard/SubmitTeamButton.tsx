@@ -1,7 +1,9 @@
 "use client";
 
 import axios, { AxiosError } from "axios";
+import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
+import Swal from "sweetalert2";
 
 interface SubmitButtonProps {
   isDisabled: boolean;
@@ -10,19 +12,35 @@ interface SubmitButtonProps {
 function SubmitTeamButton({ isDisabled, teamDetail }: SubmitButtonProps) {
   const [cookies] = useCookies(["accessToken"]);
   const accessToken = cookies.accessToken;
+  const router = useRouter();
+
   const handleSubmitTeam = async () => {
     try {
-      const { data } = await axios.put(
+      const { data: response }: { data: APIResponse } = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/api/competition/${teamDetail.competitionId}/teams/${teamDetail.id}/submit`,
         null,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
-      console.log(data);
+      Swal.fire({
+        title: "Success!",
+        text: response?.message,
+        icon: "success",
+        confirmButtonText: "Ok",
+      }).then(() => {
+        router.reload();
+      });
     } catch (error) {
       if (error instanceof AxiosError) {
         console.log(error.response?.data?.message);
+        Swal.fire({
+          title: "Error!",
+          text: error.response?.data?.message,
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      } else {
+        console.log(error);
       }
-      console.log(error);
     }
   };
   return (
