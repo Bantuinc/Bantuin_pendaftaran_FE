@@ -15,6 +15,7 @@ interface teamProps {
   team: Member[] | null;
   teamId: string;
   accessToken?: string;
+  competitionDetail:Competition
 }
 
 export default function Team({
