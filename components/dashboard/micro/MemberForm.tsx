@@ -17,7 +17,7 @@ import {
   uploadParticipantDocument,
 } from "@/lib/bucket";
 import Select, { MultiValue } from "react-select";
-import {cocogoose} from "@/fonts/font";
+import { cocogoose } from "@/fonts/font";
 
 interface MemberFormProps {
   team?: Team;
@@ -228,14 +228,13 @@ function MemberForm({
 
   return (
     <form
-
       onSubmit={isAdd ? savememberAdd : savememberEdit}
-      className={`p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:w-[30rem]  ${cocogoose.className}`}
+      className={`p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:w-[30rem]`}
     >
       <div className="flex flex-col">
         <label
           htmlFor="memberName"
-          className="text-lg text-white font-semibold"
+          className={`text-lg text-white font-semibold ${cocogoose.className}`}
         >
           Name
         </label>
@@ -250,7 +249,10 @@ function MemberForm({
       </div>
 
       <div className="flex flex-col">
-        <label htmlFor="memberNim" className="text-lg text-white font-semibold">
+        <label
+          htmlFor="memberNim"
+          className={`text-lg text-white font-semibold ${cocogoose.className}`}
+        >
           Student&apos;s ID Number
         </label>
         <input
@@ -266,7 +268,7 @@ function MemberForm({
       <div className="flex flex-col">
         <label
           htmlFor="memberName"
-          className="text-lg text-white font-semibold"
+          className={`text-lg text-white font-semibold ${cocogoose.className}`}
         >
           Email
         </label>
@@ -282,14 +284,13 @@ function MemberForm({
       <div className="flex flex-col">
         <label
           htmlFor="memberName"
-          className="text-lg text-white font-semibold"
+          className={`text-lg text-white font-semibold ${cocogoose.className}`}
         >
           Phone Number
-          <br/>
+          <br />
           <p className="text-sm text-blue-100">
             *Please include your Whats App registered phone number.
           </p>
-
         </label>
         <input
           readOnly={!editMode}
@@ -304,7 +305,7 @@ function MemberForm({
       <div className="flex flex-col">
         <label
           htmlFor="memberName"
-          className="text-lg text-white font-semibold"
+          className={`text-lg text-white font-semibold ${cocogoose.className}`}
         >
           Student&apos;s ID Card
         </label>
@@ -336,7 +337,7 @@ function MemberForm({
         <div key={id} className="flex flex-col">
           <label
             htmlFor={fieldValue.normalizedName}
-            className="text-lg text-white font-semibold"
+            className={`text-lg text-white font-semibold ${cocogoose.className}`}
           >
             {fieldValue.name}
           </label>
@@ -418,13 +419,17 @@ function MemberForm({
       <button
         type="button"
         onClick={() => setEditMode((value) => !value)}
-        className={`${
-          editMode ? "hidden" : ""
+        className={`${editMode ? "hidden" : ""} ${
+          cocogoose.className
         } py-2 px-4 bg-[#FFA31D] text-white drop-shadow-md rounded-lg font-semibold shadow-md hover:bg-[#1e4a5d] transition duration-200`}
       >
         Edit member Information
       </button>
-      <div className={`${editMode ? "flex" : "hidden"} gap-3`}>
+      <div
+        className={`${editMode ? "flex" : "hidden"} ${
+          cocogoose.className
+        } gap-3`}
+      >
         {!isAdd ? (
           <button
             type="button"

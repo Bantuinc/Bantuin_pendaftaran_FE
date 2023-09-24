@@ -11,6 +11,7 @@ import {
   uploadParticipantDocument,
 } from "@/lib/bucket";
 import Select, { MultiValue } from "react-select";
+import { cocogoose } from "@/fonts/font";
 
 interface TeamFormProps {
   team: Team;
@@ -133,7 +134,10 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
       className="p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:max-w-[20rem]"
     >
       <div className="flex flex-col">
-        <label htmlFor="teamName" className="text-lg text-white font-semibold">
+        <label
+          htmlFor="teamName"
+          className={`text-lg text-white font-semibold ${cocogoose.className}`}
+        >
           Team Name
         </label>
         <input
@@ -146,7 +150,10 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
         />
       </div>
       <div className="flex flex-col">
-        <label htmlFor="teamName" className="text-lg text-white font-semibold">
+        <label
+          htmlFor="teamName"
+          className={`text-lg text-white font-semibold ${cocogoose.className}`}
+        >
           Citizenship
         </label>
         <div className="flex gap-3">
@@ -182,7 +189,7 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
         <div key={id} className="flex flex-col">
           <label
             htmlFor={fieldValue.normalizedName}
-            className="text-lg text-white font-semibold"
+            className={`text-lg text-white font-semibold ${cocogoose.className}`}
           >
             {fieldValue.name}
           </label>

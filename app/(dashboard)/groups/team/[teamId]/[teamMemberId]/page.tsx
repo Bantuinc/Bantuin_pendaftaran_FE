@@ -1,12 +1,12 @@
+import DeleteButtonForm from "@/components/dashboard/micro/DeleteButtonForm";
+import MemberForm from "@/components/dashboard/micro/MemberForm";
 import Sidebar from "@/components/dashboard/sidebar";
-import { hind } from "@/fonts/font";
+import { cocogoose, hind } from "@/fonts/font";
 import { getAdditionalMemberField } from "@/utils/registration";
 import { getMemberDetail, getTeamDetail } from "@/utils/userTeams";
-import { AlertCircle, Users } from "lucide-react";
+import { Users } from "lucide-react";
 import { cookies } from "next/headers";
-import { redirect, useRouter } from "next/navigation";
-import MemberForm from "@/components/dashboard/micro/MemberForm";
-import DeleteButtonForm from "@/components/dashboard/micro/DeleteButtonForm";
+import { redirect } from "next/navigation";
 
 const getMemberInformation = async (
   userId: string,
@@ -46,11 +46,6 @@ const getTeamInformation = async (userId: string, accessToken: string) => {
   }
 };
 
-const canBeSubmitted = (status: number): boolean => {
-  if (status === 3 || status === 5 || status === 10) return true;
-  return false;
-};
-
 async function TeamDetail({
   params,
 }: {
@@ -68,14 +63,19 @@ async function TeamDetail({
     redirect("/login");
   }
   if (!team) {
-    return <div>
-      {/*LOADING*/}
-      <div className="lds-ellipsis">
-          <div/>
-          <div/>
-          <div/>
-      </div></div>;
-    {/*LOADING*/}
+    return (
+      <div>
+        {/*LOADING*/}
+        <div className="lds-ellipsis">
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+    );
+    {
+      /*LOADING*/
+    }
   }
 
   const additionalField = await getAdditionalMemberField(
@@ -91,7 +91,9 @@ async function TeamDetail({
       <div className={`${hind.className} flex-1 px-2 sm:px-0 py-3 md:py-0`}>
         <div className="mb-6 flex gap-2 items-center text-slate-100">
           <Users />
-          <h3 className="text-3xl font-semibold">Member Data</h3>
+          <h3 className={`text-3xl font-semibold ${cocogoose.className}`}>
+            Member Data
+          </h3>
         </div>
         <div className="flex md:flex-row flex-col gap-6">
           <MemberForm

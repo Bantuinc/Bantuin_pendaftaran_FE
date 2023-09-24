@@ -1,5 +1,6 @@
 "use client";
 
+import { cocogoose } from "@/fonts/font";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
@@ -48,9 +49,11 @@ function SubmitTeamButton({ isDisabled, teamDetail }: SubmitButtonProps) {
       type="button"
       onClick={handleSubmitTeam}
       disabled={isDisabled}
-      className="py-3 px-6 enabled:bg-[#FFA31D] disabled:bg-gray-300 disabled:cursor-not-allowed enabled:hover:bg-[#1e4a5d] rounded-md text-white shadow-md font-bold text-lg transition-all"
+      className="py-3 px-6 enabled:bg-[#FFA31D] disabled:bg-gray-300 disabled:cursor-not-allowed enabled:hover:bg-[#1e4a5d] rounded-md text-white shadow-md transition-all"
     >
-      <p className="drop-shadow-md">Submit your Team</p>
+      <p className={`drop-shadow-md font-bold text-md ${cocogoose.className}`}>
+        Submit your Team
+      </p>
     </button>
   );
 }
