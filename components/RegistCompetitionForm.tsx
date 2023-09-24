@@ -315,7 +315,7 @@ function RegistCompetitionForm({
                   ></textarea>
                   {fieldValue.normalizedName === "university_address" ? (
                     <div className="mt-3">
-                      <b>Please fill your complete university address.</b>
+                      <b>*Please fill your complete university address.</b>
                     </div>
                   ) : null}
                 </>
