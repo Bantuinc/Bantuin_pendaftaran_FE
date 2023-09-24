@@ -4,51 +4,51 @@ function Timeline() {
   const timelineData = [
     {
       title: "Mining Competition Registration Open",
-      date: "25th September 2023",
+      date: "25 September 2023",
     },
     {
       title: "Mining Insight Registration Open",
-      date: "2nd October 2023",
+      date: "2 October 2023",
     },
     {
       title: "Mine Design (Part of Mining Comp.)",
-      date: "25th – 26th January 2024",
+      date: "25 – 26 January 2024",
     },
     {
       title: "Opening Ceremony",
-      date: "18th Feb 2024",
+      date: "18 Feb 2024",
     },
     {
       title: "Mining Competition",
-      date: "18th – 24th February 2024",
+      date: "18 – 24 February 2024",
     },
     {
       title: "Mine Exhibition",
-      date: "19th – 24th February 2024",
+      date: "19 – 24 February 2024",
     },
     {
       title: "Mining Insight Presentation",
-      date: "20th – 22th February 2024",
+      date: "20 – 22 February 2024",
     },
     {
       title: "Mining Expo & Job Fair",
-      date: "23th – 24th February 2024",
+      date: "23 – 24 February 2024",
     },
     {
       title: "Miners’ Day",
-      date: "23th February 2024",
+      date: "23 February 2024",
     },
     {
       title: "Youth Mining Conference",
-      date: "24th February 2024",
+      date: "24 February 2024",
     },
     {
       title: "Mining Talks",
-      date: "24th February 2024",
+      date: "24 February 2024",
     },
     {
       title: "Closing Ceremony",
-      date: "25th February 2024",
+      date: "25 February 2024",
     },
   ];
   return (
