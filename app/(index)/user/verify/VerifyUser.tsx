@@ -90,7 +90,8 @@ function VerifyUser() {
         <>
           <h1 className="text-4xl font-extrabold">Verified!</h1>
           <p className="text-slate-700 text-md">
-            Welcome to ISMC 14. Your account has verified successfully
+            Welcome to the 14<span className="text-xs align-super">th</span>{" "}
+            ISMC. Your account has verified successfully
           </p>
           <Link href="/login">
             <button className="py-2 px-4 rounded-md bg-slate-800 text-white font-bold">
