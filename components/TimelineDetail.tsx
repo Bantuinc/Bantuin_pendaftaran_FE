@@ -47,9 +47,9 @@ function TimelineDetail({
       <h1 className="font-bold text-white md:text-lg text-xs text-center">
         {title}
       </h1>
-      <p className="text-slate-100 md:text-xl text-xs font-black text-center">
-        <div dangerouslySetInnerHTML={{ __html: formatDate(date) }}></div>
-      </p>
+      <div className="text-slate-100 md:text-xl text-xs font-black text-center">
+        <p dangerouslySetInnerHTML={{ __html: formatDate(date) }}></p>
+      </div>
       <div
         className={`${
           id % 2 === 1

@@ -17,7 +17,14 @@ function Hero() {
         quality={50}
       />
       <div className="flex px-9 py-16 ring-2 ring-slate-200/70 rounded-[25px] bg-gradient-to-tr from-[#ccc3] to-[#ccca] backdrop-blur-sm">
-        <Image src="/logo2.png" height={300} width={400} alt="Hero" />
+        <Image
+          src="/logo2.png"
+          height={100}
+          width={370}
+          quality={50}
+          alt="Hero"
+          className="object-contain w-auto h-auto"
+        />
       </div>
 
       <div className="md:max-w-[50%] antialiased drop-shadow-xl">

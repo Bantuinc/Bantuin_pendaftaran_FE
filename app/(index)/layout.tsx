@@ -2,11 +2,8 @@ import "../globals.css";
 import type { Metadata } from "next";
 import Footer from "./Footer";
 import { inter } from "@/fonts/font";
-import dynamic from "next/dynamic";
+import Headers from "./headers";
 
-const Headers = dynamic(() => import("./headers"), {
-  ssr: false,
-});
 export const metadata: Metadata = {
   title: "ISMC 14 | 2023",
   description: "The 14th Indonesian Student Mining Competition",

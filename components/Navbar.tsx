@@ -1,13 +1,16 @@
 "use client";
-import Link from "next/link";
-import NavbarDropdown from "./NavbarDropdown";
-import { useState } from "react";
 import { AlignJustify } from "lucide-react";
-import { useCookies } from "react-cookie";
+import Link from "next/link";
+import { useState } from "react";
+import NavbarDropdown from "./NavbarDropdown";
 
-function Navbar() {
+interface NavbarProps {
+  competition: Competition[];
+  isLogin: boolean;
+}
+
+function Navbar({ competition, isLogin }: NavbarProps) {
   const [open, setOpen] = useState<boolean>(false);
-  const [cookies] = useCookies(["accessToken"]);
 
   return (
     <>
@@ -16,7 +19,7 @@ function Navbar() {
           open ? "flex" : "md:flex hidden"
         }`}
       >
-        <NavbarDropdown />
+        <NavbarDropdown competition={competition} />
         <li className="drop-shadow-md">
           <Link href="/about">About Us</Link>
         </li>
@@ -24,7 +27,7 @@ function Navbar() {
         <li className="drop-shadow-md">
           <Link href="/#faq">FAQ</Link>
         </li>
-        {cookies.accessToken === undefined ? (
+        {!isLogin ? (
           <li className="drop-shadow-md">
             <Link href="/login">Login</Link>
           </li>
