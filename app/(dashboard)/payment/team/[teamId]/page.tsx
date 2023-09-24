@@ -29,16 +29,30 @@ const getTeamInformation = async (userId: string, accessToken: string) => {
 async function TeamDetail({ params }: { params: { teamId: string } }) {
   const accessToken = cookies().get("accessToken")?.value as string;
   const team = await getTeamInformation(params.teamId, accessToken);
+
   // console.log(team.status,"hoak")
   if (!team) {
-    return <div>loading...</div>;
+    return (
+        <>
+        {/*LOADING*/}
+        <div className="lds-ellipsis">
+          <div/>
+          <div/>
+          <div/>
+        </div>
+        {/*LOADING*/}
+        </>
+    )
   }
+  const desc = team.status <= 3 || team.status === 5? "Please complete the data" : (
+               team.status === 4 ? "Please wait for confirmation from our admin" : (
+               team.status === 8? "Please wait patiently, because you are on the waiting list. Stay tuned" :null))
   // NOT (STATUS ON PAYMENT or higher)
-  if (team.status < 6) {
+  if (team.status < 6  || team.status === 8) {
     return (
       <div className="lg:flex">
         <Sidebar active={"payment"} />
-        <Default title={"Payment"} description={"payment"} />
+        <Default title={"Payment"} description={desc} />
       </div>
     );
   }

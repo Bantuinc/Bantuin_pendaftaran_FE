@@ -1,4 +1,4 @@
-import { roboto } from "@/fonts/font";
+import { cocogoose } from "@/fonts/font";
 import Underline from "./Underline";
 import {
   Accordion,
@@ -14,7 +14,7 @@ function Faq() {
       className="p-16 min-h-screen flex flex-col items-center justify-center bg-[#296875]"
     >
       <div className="mb-12 w-fit">
-        <h1 className={`text-6xl font-bold text-white ${roboto.className}`}>
+        <h1 className={`text-6xl font-bold text-white ${cocogoose.className}`}>
           FAQ
         </h1>
         <Underline />

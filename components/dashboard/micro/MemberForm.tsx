@@ -11,11 +11,12 @@ import {
   uploadParticipantDocument,
 } from "@/lib/bucket";
 import Select, { MultiValue } from "react-select";
+import {cocogoose} from "@/fonts/font";
 
 interface MemberFormProps {
   team?: Team;
   member: Member;
-  additionalField: AdditionalField[];
+  additionalField: AdditionalField[] | null;
   isAdd: Boolean | null;
   teamId: string;
 }
@@ -191,8 +192,9 @@ function MemberForm({
 
   return (
     <form
+
       onSubmit={isAdd ? savememberAdd : savememberEdit}
-      className="p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:w-[30rem]"
+      className={`p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:w-[30rem]  ${cocogoose.className}`}
     >
       <div className="flex flex-col">
         <label
@@ -213,7 +215,7 @@ function MemberForm({
 
       <div className="flex flex-col">
         <label htmlFor="memberNim" className="text-lg text-white font-semibold">
-          Nim
+          Student&apos;s ID Number
         </label>
         <input
           readOnly={!editMode}
@@ -245,7 +247,12 @@ function MemberForm({
           htmlFor="memberName"
           className="text-lg text-white font-semibold"
         >
-          Phone
+          Phone Number
+          <br/>
+          <p className="text-sm text-blue-100">
+            *Please include your Whats App registered phone number.
+          </p>
+
         </label>
         <input
           readOnly={!editMode}
@@ -262,7 +269,7 @@ function MemberForm({
           htmlFor="memberName"
           className="text-lg text-white font-semibold"
         >
-          Ktm
+          Student&apos;s ID Card
         </label>
         <a
           href={memberKtm}
@@ -288,7 +295,7 @@ function MemberForm({
           </>
         )}
       </div>
-      {additionalField.map((fieldValue: AdditionalField, id) => (
+      {additionalField?.map((fieldValue: AdditionalField, id) => (
         <div key={id} className="flex flex-col">
           <label
             htmlFor={fieldValue.normalizedName}

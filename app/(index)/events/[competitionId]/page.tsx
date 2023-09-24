@@ -22,9 +22,9 @@ async function CompetitionDetail({
     <>
       <CompetitionDescription
         competitionId={params.competitionId}
-        competitionName={selectedCompetition?.name}
-        competitionDescription={selectedCompetition?.description}
-        openedAt={selectedCompetition?.openedAt}
+        competitionName={selectedCompetition?.name as string}
+        competitionDescription={selectedCompetition?.description as string}
+        openedAt={selectedCompetition?.openedAt as string}
       />
       {selectedCompetition?.name === "Poster Contest" && (
         <section className="lg:p-28 lg:pt-40 sm:p-12 sm:pt-40 p-6 pt-40 relative min-h-[100vh] flex gap-6 justify-center items-start">
@@ -40,7 +40,7 @@ async function CompetitionDetail({
           />
           <div className="flex lg:flex-row flex-col gap-12 px-9 py-12 ring-2 ring-slate-200/70 shadow-xl rounded-[32px] bg-gradient-to-tr from-[#ccc0] to-[#ccca] backdrop-blur-[12px] md:w-[80vw] w-full">
             <div
-              className={`text-left flex flex-col items-center gap-3 md:max-w-[100%]`}
+              className={`text-left flex flex-col items-center gap-3 w-[100%]`}
             >
               <h1 className="mb-6 text-white md:text-5xl text-4xl font-bold drop-shadow-md">
                 Theme
@@ -126,9 +126,9 @@ async function CompetitionDetail({
               route="orienteering"
             />
             <MiningCompetitionList
-              src="pit_design.png"
-              text="Pit Design"
-              route="pit_design"
+              src="mine_design.png"
+              text="Mine Design"
+              route="mine_design"
             />
             <MiningCompetitionList
               src="rock_drill.png"
@@ -137,8 +137,8 @@ async function CompetitionDetail({
             />
             <MiningCompetitionList
               src="rock_mineral_identification&grain_counting.png"
-              text="Rock Mineral 
-            Identification 
+              text="Rock Mineral
+            Identification
             & Grain Counting"
               route="rock_mineral_identification"
             />
@@ -169,7 +169,7 @@ async function CompetitionDetail({
             />
             <MiningCompetitionList
               src="underground_mine_surveying.png"
-              text="Underground 
+              text="Underground
             Mine Surveying"
               route="underground_mine"
             />

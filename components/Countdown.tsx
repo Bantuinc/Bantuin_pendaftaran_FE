@@ -2,6 +2,7 @@
 import { useCountdown } from "@/utils/useCountdown";
 
 interface CountdownProps {
+  competitionName: string;
   targetDate: number;
 }
 
@@ -45,7 +46,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }: CounterProps) => {
   );
 };
 
-const ExpiredNotice = () => {
+const ExpiredNotice = ({competitionName}:{competitionName:string}) => {
   return (
     <>
       <div className="flex items-center gap-6">
@@ -58,16 +59,16 @@ const ExpiredNotice = () => {
         <DateTimeDisplay value={0} type="Seconds" />
       </div>
       <p className="mt-6 text-center text-2xl font-bold text-slate-900">
-        Competition is now open!
+          {competitionName === "Mining Competition" ? "Competition is now open!" : "Contest is now open!"}
       </p>
     </>
   );
 };
 
-function Countdown({ targetDate }: CountdownProps) {
+function Countdown({competitionName,targetDate }: CountdownProps) {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
   if (days + hours + minutes + seconds <= 0) {
-    return <ExpiredNotice />;
+    return <ExpiredNotice competitionName={competitionName}/>;
   }
   return (
     <div>

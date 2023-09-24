@@ -1,4 +1,4 @@
-import { roboto } from "@/fonts/font";
+import { cocogoose } from "@/fonts/font";
 import GalleryImage from "./GalleryImage";
 import Underline from "./Underline";
 
@@ -12,7 +12,7 @@ function Gallery() {
     >
       <div className="w-fit">
         <h1
-          className={`text-[#2A6876] md:text-6xl text-4xl font-bold text-center ${roboto.className}`}
+          className={`text-[#2A6876] md:text-6xl text-4xl font-bold text-center ${cocogoose.className}`}
         >
           Let’s take a look at our content!
         </h1>

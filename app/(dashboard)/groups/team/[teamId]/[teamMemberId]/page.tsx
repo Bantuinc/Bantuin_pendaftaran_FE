@@ -68,7 +68,14 @@ async function TeamDetail({
     redirect("/login");
   }
   if (!team) {
-    return <div>loading...</div>;
+    return <div>
+      {/*LOADING*/}
+      <div className="lds-ellipsis">
+          <div/>
+          <div/>
+          <div/>
+      </div></div>;
+    {/*LOADING*/}
   }
 
   const additionalField = await getAdditionalMemberField(
@@ -94,7 +101,7 @@ async function TeamDetail({
             isAdd={false}
           />
           <DeleteButtonForm
-            roleId={member.role}
+            roleId={parseInt(member.role)}
             competitionId={params.teamId}
             teamId={params.teamMemberId}
             accessToken={accessToken}

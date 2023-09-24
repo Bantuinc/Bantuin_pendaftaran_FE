@@ -40,7 +40,13 @@ async function TeamDetail({ params }: { params: { teamId: string } }) {
   const team = await getTeamInformation(params.teamId, accessToken);
 
   if (!team) {
-    return <div>loading...</div>;
+    return <div>loading...{/*LOADING*/}
+      <div className="lds-ellipsis">
+        <div/>
+        <div/>
+        <div/>
+      </div>
+      {/*LOADING*/}</div>;
   }
 
   const additionalField = await getAdditionalField(

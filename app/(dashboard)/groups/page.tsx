@@ -33,7 +33,13 @@ async function Page() {
   const userTeam = await getTeamList(userId, accessToken);
   console.log(userTeam);
   if (!userTeam) {
-    return <div className="animate-pulse">loading...</div>;
+    return <div className="animate-pulse">loading...{/*LOADING*/}
+      <div className="lds-ellipsis">
+        <div/>
+        <div/>
+        <div/>
+      </div>
+      {/*LOADING*/}</div>;
   }
   return (
     <div className="lg:flex">

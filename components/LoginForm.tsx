@@ -109,7 +109,8 @@ function LoginForm() {
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
-        <p className="font-medium text-xl">Need Help?</p>
+        {/*  TODO GET NUMBER ADMIN OR GMAIL */}
+        <a href={"https://wa.me/6283893458760"} className="font-medium text-xl">Need Help?</a>
       </div>
       <span>
         Dont{"'"} have an account ?{" "}

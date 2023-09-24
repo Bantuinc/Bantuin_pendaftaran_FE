@@ -6,25 +6,25 @@ function Language() {
 
   return (
     <div className="flex items-center gap-1">
-      <button
-        type="button"
-        onClick={() => setLanguage("EN")}
-        className={`font-bold ${
-          language === "EN" ? "text-[#FFA31D]" : "text-white"
-        }`}
-      >
-        EN
-      </button>
-      <span className="text-white font-bold">/</span>
-      <button
-        type="button"
-        onClick={() => setLanguage("ID")}
-        className={`font-bold ${
-          language === "ID" ? "text-[#FFA31D]" : "text-white"
-        }`}
-      >
-        ID
-      </button>
+      {/*<button*/}
+      {/*  type="button"*/}
+      {/*  onClick={() => setLanguage("EN")}*/}
+      {/*  className={`font-bold ${*/}
+      {/*    language === "EN" ? "text-[#FFA31D]" : "text-white"*/}
+      {/*  }`}*/}
+      {/*>*/}
+      {/*  EN*/}
+      {/*</button>*/}
+      {/*<span className="text-white font-bold">/</span>*/}
+      {/*<button*/}
+      {/*  type="button"*/}
+      {/*  onClick={() => setLanguage("ID")}*/}
+      {/*  className={`font-bold ${*/}
+      {/*    language === "ID" ? "text-[#FFA31D]" : "text-white"*/}
+      {/*  }`}*/}
+      {/*>*/}
+      {/*  ID*/}
+      {/*</button>*/}
     </div>
   );
 }

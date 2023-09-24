@@ -1,7 +1,14 @@
+'use client';
 import Image from "next/image";
 import { hind } from "@/fonts/font";
+import {useEffect, useState} from "react";
 
 function AboutUs() {
+  const [bgColor, setBgColor] = useState("");
+
+  useEffect(() => {
+    setBgColor(bgColor);
+  }, [bgColor]);
   return (
     <>
       <section className="p-12 pt-28 md:p-6 relative min-h-[110vh] flex flex-col-reverse md:flex-row gap-12 justify-center items-center">
@@ -12,6 +19,15 @@ function AboutUs() {
           className="z-[-1] object-cover"
           sizes="{(max-width: 768px) 768px, (max-width: 1440px) 1440px, 100vw}"
           priority={true}
+          onLoadingComplete={(result) => {
+            if (result.naturalWidth === 0) {
+              // Broken image
+              setBgColor("bg-[#296875]");
+            }
+          }}
+          onError={() => {
+            setBgColor("bg-[#296875]");
+          }}
         />
         <div className="flex px-9 py-16 ring-2 ring-slate-200/70 rounded-[25px] bg-gradient-to-tr from-[#ccc3] to-[#ccca] backdrop-blur-sm">
           <h1

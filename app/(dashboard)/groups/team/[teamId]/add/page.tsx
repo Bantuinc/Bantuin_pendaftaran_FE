@@ -1,6 +1,6 @@
 import TeamForm from "@/components/dashboard/TeamForm";
 import Sidebar from "@/components/dashboard/sidebar";
-import { hind } from "@/fonts/font";
+import {cocogoose, hind} from "@/fonts/font";
 import { getAdditionalMemberField } from "@/utils/registration";
 import { teamStatusMap } from "@/utils/teamStatusType";
 import { getTeamDetail } from "@/utils/userTeams";
@@ -32,20 +32,27 @@ async function TeamDetail({ params }: { params: { teamId: string } }) {
     const team = await getTeamInformation(params.teamId, accessToken);
     const member:Member={} as Member
     if (!team) {
-        return <div>loading...</div>;
+        return <div>loading...{/*LOADING*/}
+            <div className="lds-ellipsis">
+                <div/>
+                <div/>
+                <div/>
+            </div>
+            {/*LOADING*/}</div>;
     }
 
     const additionalField = await getAdditionalMemberField(
         accessToken,
         team.competitionId
     );
+
     console.log(additionalField,"hoaks")
     if (additionalField === null) redirect("/login");
 
     return (
         <div className="lg:flex">
             <Sidebar active={"group"} />
-            <div className={`${hind.className} flex-1 px-2 sm:px-0 py-3 md:py-0`}>
+            <div className={`${cocogoose.className} flex-1 px-2 sm:px-0 py-3 md:py-0`}>
                 <div className="mb-6 flex gap-2 items-center text-slate-100">
                     <Users />
                     <h3 className="text-3xl font-semibold">Member Data</h3>

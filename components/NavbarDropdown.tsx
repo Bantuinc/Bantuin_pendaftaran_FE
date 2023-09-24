@@ -112,7 +112,13 @@ function NavbarDropdown() {
                   </Link>
                 ))
               ) : (
-                <div>Loading...</div>
+                <div>Loading...{/*LOADING*/}
+                  <div className="lds-ellipsis">
+                    <div/>
+                    <div/>
+                    <div/>
+                  </div>
+                  {/*LOADING*/}</div>
               )}
             </ul>
           </Transition>
