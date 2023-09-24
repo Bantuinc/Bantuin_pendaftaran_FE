@@ -1,42 +1,36 @@
 "use client";
-import { hind } from "@/fonts/font";
-import { getAdditionalField, CITIZENSHIP } from "@/utils/registration";
-import { getUserNameId } from "@/utils/userCredentials";
-import axios, { AxiosError } from "axios";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
-import Swal from "sweetalert2";
-import Select, { MultiValue } from "react-select";
-import {
-  previewParticipantDocumentURL,
-  uploadParticipantDocument,
-} from "@/lib/bucket";
-import { additionalFieldMap } from "@/utils/additionalFieldType";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { hind } from "@/fonts/font";
+import {
+  previewParticipantDocumentURL,
+  uploadParticipantDocument,
+} from "@/lib/bucket";
+import { additionalFieldMap } from "@/utils/additionalFieldType";
+import { CITIZENSHIP } from "@/utils/registration";
+import { getUserNameId } from "@/utils/userCredentials";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useCookies } from "react-cookie";
+import { MultiValue } from "react-select";
+import Swal from "sweetalert2";
 
 function RegistCompetitionForm({
   competitionId,
   competitionType,
+  additionalFields,
 }: {
   competitionId: string;
   competitionType: number;
+  additionalFields: AdditionalField[];
 }) {
   const [teamName, setTeamName] = useState<string>("");
-  const [citizenShip, setCitizenShip] = useState<1 | 2>(1);
-  const [fieldLoaded, setFieldLoaded] = useState<boolean>(false);
-  const [field, setField] = useState<AdditionalField[]>([]);
+  const [citizenShip, setCitizenShip] = useState<number>(1);
   const [AdditionalFieldValue, setAdditionalFieldValue] =
     useState<StringObject>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -93,29 +87,13 @@ function RegistCompetitionForm({
     setIsLoading(false);
   };
 
-  const getFormFields = async () => {
-    const response = await getAdditionalField(accessToken, competitionId);
-    if (response === null) throw "User not Authorized, Please Login Again!";
-    setField(response);
-    setFieldLoaded(true);
-  };
-
   const handleAdditionalField = (
-    e: ChangeEvent<HTMLInputElement>,
+    value: string,
     normalizedName: string
   ): void => {
     setAdditionalFieldValue({
       ...AdditionalFieldValue,
-      [normalizedName]: e.target.value,
-    });
-  };
-  const handleAdditionalFieldArea = (
-    e: ChangeEvent<HTMLTextAreaElement>,
-    normalizedName: string
-  ): void => {
-    setAdditionalFieldValue({
-      ...AdditionalFieldValue,
-      [normalizedName]: e.target.value,
+      [normalizedName]: value,
     });
   };
 
@@ -164,10 +142,6 @@ function RegistCompetitionForm({
     }
     setIsLoading(false);
   };
-
-  useEffect(() => {
-    getFormFields();
-  }, []);
 
   return (
     <form onSubmit={handleCompetitionRegist} className="flex flex-col gap-3">
@@ -243,113 +217,108 @@ function RegistCompetitionForm({
         </div>
       </div>
       <TooltipProvider>
-        {fieldLoaded &&
-          field.map((fieldValue: AdditionalField, id) => (
-            <div
-              key={id}
-              className={`flex flex-col ${
-                fieldValue.priority !== 1 ? "hidden" : ""
-              }`}
-            >
-              <div className="flex relative">
-                <label
-                  htmlFor={fieldValue.normalizedName}
-                  className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
-                >
-                  {fieldValue.name}
-                </label>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <span className="absolute top-0 w-4 h-4 flex items-center justify-center p-1 pt-1.5 text-sm rounded-full bg-blue-600 font-bold">
-                      ?
-                    </span>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <pre>{fieldValue.description}</pre>
-                  </TooltipContent>
-                </Tooltip>
-              </div>
-              {additionalFieldMap.get(fieldValue.type) === "file" ? (
+        {additionalFields?.map((fieldValue: AdditionalField, id) => (
+          <div
+            key={id}
+            className={`flex flex-col ${
+              fieldValue.priority !== 1 ? "hidden" : ""
+            }`}
+          >
+            <div className="flex relative">
+              <label
+                htmlFor={fieldValue.normalizedName}
+                className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
+              >
+                {fieldValue.name}
+              </label>
+              <Tooltip>
+                <TooltipTrigger>
+                  <span className="absolute top-0 w-4 h-4 flex items-center justify-center p-1 pt-1.5 text-sm rounded-full bg-blue-600 font-bold">
+                    ?
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <pre>{fieldValue.description}</pre>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+            {additionalFieldMap.get(fieldValue.type) === "file" ? (
+              <input
+                type={additionalFieldMap.get(fieldValue.type)}
+                required={fieldValue.priority === 1}
+                id={fieldValue.normalizedName}
+                accept=".pdf"
+                onChange={(e) =>
+                  handleAdditionalFile(e, fieldValue.normalizedName)
+                }
+                className={`${
+                  fieldValue.priority !== 1 ? "hidden" : ""
+                } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none`}
+              />
+            ) : additionalFieldMap.get(fieldValue.type) === "textarea" ? (
+              <>
+                <textarea
+                  required={fieldValue.priority === 1}
+                  value={
+                    AdditionalFieldValue.hasOwnProperty(
+                      fieldValue.normalizedName
+                    )
+                      ? AdditionalFieldValue[fieldValue.normalizedName]
+                      : ""
+                  }
+                  id={fieldValue.normalizedName}
+                  onChange={(e) =>
+                    handleAdditionalField(
+                      e.target.value,
+                      fieldValue.normalizedName
+                    )
+                  }
+                  className={`${
+                    fieldValue.priority !== 1 ? "hidden" : ""
+                  } rounded-lg h-32 py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
+                  cols={5}
+                  rows={10}
+                ></textarea>
+                {fieldValue.normalizedName === "university_address" ? (
+                  <div className="mt-3">
+                    <b>*Please fill your complete university address.</b>
+                  </div>
+                ) : null}
+              </>
+            ) : (
+              <>
                 <input
                   type={additionalFieldMap.get(fieldValue.type)}
                   required={fieldValue.priority === 1}
                   id={fieldValue.normalizedName}
-                  accept=".pdf"
+                  value={
+                    AdditionalFieldValue.hasOwnProperty(
+                      fieldValue.normalizedName
+                    )
+                      ? AdditionalFieldValue[fieldValue.normalizedName]
+                      : ""
+                  }
                   onChange={(e) =>
-                    handleAdditionalFile(e, fieldValue.normalizedName)
+                    handleAdditionalField(
+                      e.target.value,
+                      fieldValue.normalizedName
+                    )
                   }
                   className={`${
                     fieldValue.priority !== 1 ? "hidden" : ""
-                  } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none`}
+                  } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
                 />
-              ) : additionalFieldMap.get(fieldValue.type) === "select" ? (
-                <Select
-                  options={options}
-                  required={fieldValue.priority === 1}
-                  isMulti
-                  className={`${
-                    fieldValue.priority !== 1 ? "hidden" : ""
-                  } text-slate-900`}
-                  onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
-                />
-              ) : additionalFieldMap.get(fieldValue.type) === "textarea" ? (
-                <>
-                  <textarea
-                    required={fieldValue.priority === 1}
-                    value={
-                      AdditionalFieldValue.hasOwnProperty(
-                        fieldValue.normalizedName
-                      )
-                        ? AdditionalFieldValue[fieldValue.normalizedName]
-                        : ""
-                    }
-                    id={fieldValue.normalizedName}
-                    onChange={(e) =>
-                      handleAdditionalFieldArea(e, fieldValue.normalizedName)
-                    }
-                    className={`${
-                      fieldValue.priority !== 1 ? "hidden" : ""
-                    } rounded-lg h-32 py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
-                    cols={5}
-                    rows={10}
-                  ></textarea>
-                  {fieldValue.normalizedName === "university_address" ? (
-                    <div className="mt-3">
-                      <b>*Please fill your complete university address.</b>
-                    </div>
-                  ) : null}
-                </>
-              ) : (
-                <>
-                  <input
-                    type={additionalFieldMap.get(fieldValue.type)}
-                    required={fieldValue.priority === 1}
-                    id={fieldValue.normalizedName}
-                    value={
-                      AdditionalFieldValue.hasOwnProperty(
-                        fieldValue.normalizedName
-                      )
-                        ? AdditionalFieldValue[fieldValue.normalizedName]
-                        : ""
-                    }
-                    onChange={(e) =>
-                      handleAdditionalField(e, fieldValue.normalizedName)
-                    }
-                    className={`${
-                      fieldValue.priority !== 1 ? "hidden" : ""
-                    } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
-                  />
-                  {fieldValue.normalizedName === "university_name" ? (
-                    <div className="mt-3">
-                      <b className="drop-shadow-md">
-                        *Please don{""}t shorten your university name.
-                      </b>
-                    </div>
-                  ) : null}
-                </>
-              )}
-            </div>
-          ))}
+                {fieldValue.normalizedName === "university_name" ? (
+                  <div className="mt-3">
+                    <b className="drop-shadow-md">
+                      *Please don{""}t shorten your university name.
+                    </b>
+                  </div>
+                ) : null}
+              </>
+            )}
+          </div>
+        ))}
       </TooltipProvider>
       <button
         type="submit"

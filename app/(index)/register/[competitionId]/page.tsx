@@ -5,6 +5,7 @@ import RegistCompetitionForm from "@/components/RegistCompetitionForm";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { getAdditionalField } from "@/utils/registration";
 
 const getTypeOfCompetition = async (
   competitionId: string,
@@ -39,6 +40,14 @@ async function page({ params }: { params: { competitionId: string } }) {
     accessToken
   );
 
+  const additionalFields = await getAdditionalField(
+    accessToken,
+    Competition.id
+  );
+  if (additionalFields === null) {
+    redirect("/login");
+  }
+
   return (
     <section
       className={`relative min-h-[110vh] p-12 pt-28 flex gap-6 md:justify-end justify-center items-center ${hind.className} antialiased overflow-hidden`}
@@ -66,6 +75,7 @@ async function page({ params }: { params: { competitionId: string } }) {
         <RegistCompetitionForm
           competitionId={params.competitionId}
           competitionType={Competition?.type}
+          additionalFields={additionalFields}
         />
       </div>
     </section>
