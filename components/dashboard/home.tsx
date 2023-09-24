@@ -1,4 +1,5 @@
 import { hind } from "@/fonts/font";
+import Link from "next/link";
 
 interface DefaultProps {
   title: string;
@@ -57,18 +58,18 @@ export default function Default({ title, description }: DefaultProps) {
             </a>
           </div>
         </div>
-        {description === null ? (
+        {description === undefined ? (
           <div className="flex justify-center items-center h-22">
             <div className="my-20">
               <h1 className="text-white mb-8 text-2xl font-bold">
                 Anda Belum Registrasi Ke suatu lomba
               </h1>
-              <a
+              <Link
                 className="ml-32 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
                 href="./register"
               >
                 Register Now
-              </a>
+              </Link>
             </div>
           </div>
         ) : (
@@ -80,12 +81,12 @@ export default function Default({ title, description }: DefaultProps) {
               <h3 className="ml-4 text-white mb-8 text-xl font-bold">
                 Mohon Isi Data atau tunggu konfirmasi admin
               </h3>
-              <a
+              <Link
                 className="ml-48 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
                 href={`${origin}/dashboard`}
               >
                 Back
-              </a>
+              </Link>
             </div>
           </div>
         )}

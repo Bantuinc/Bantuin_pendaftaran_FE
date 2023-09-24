@@ -109,6 +109,15 @@ function RegistCompetitionForm({
       [normalizedName]: e.target.value,
     });
   };
+  const handleAdditionalFieldArea = (
+    e: ChangeEvent<HTMLTextAreaElement>,
+    normalizedName: string
+  ): void => {
+    setAdditionalFieldValue({
+      ...AdditionalFieldValue,
+      [normalizedName]: e.target.value,
+    });
+  };
 
   const handleSelect = (
     e: MultiValue<{ value: string; label: string }>,
@@ -276,6 +285,26 @@ function RegistCompetitionForm({
                   } text-slate-900`}
                   onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
                 />
+              ) : additionalFieldMap.get(fieldValue.type) === "textarea" ? (
+                <textarea
+                  required={fieldValue.priority === 1}
+                  value={
+                    AdditionalFieldValue.hasOwnProperty(
+                      fieldValue.normalizedName
+                    )
+                      ? AdditionalFieldValue[fieldValue.normalizedName]
+                      : ""
+                  }
+                  id={fieldValue.normalizedName}
+                  onChange={(e) =>
+                    handleAdditionalFieldArea(e, fieldValue.normalizedName)
+                  }
+                  className={`${
+                    fieldValue.priority !== 1 ? "hidden" : ""
+                  } rounded-lg h-32 py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
+                  cols={5}
+                  rows={10}
+                ></textarea>
               ) : (
                 <input
                   type={additionalFieldMap.get(fieldValue.type)}

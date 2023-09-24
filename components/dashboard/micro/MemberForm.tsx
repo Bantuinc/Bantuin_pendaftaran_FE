@@ -242,7 +242,7 @@ function MemberForm({
           id="memberName"
           required
           className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
-          value={isAdd ? memberName : member.name}
+          value={isAdd || editMode ? memberName : member.name}
           onChange={(e) => setmemberName(e.target.value)}
         />
       </div>
