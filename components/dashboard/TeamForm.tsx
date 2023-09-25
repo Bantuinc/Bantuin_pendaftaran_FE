@@ -293,7 +293,7 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
         onClick={() => setEditMode((value) => !value)}
         className={`${
           editMode ? "hidden" : ""
-        } py-2 px-4 disabled:cursor-not-allowed active:bg-[#FFA31D] text-white drop-shadow-md rounded-lg font-semibold shadow-md active:hover:bg-[#1e4a5d] transition duration-200`}
+        } py-2 px-4 disabled:cursor-not-allowed bg-[#FFA31D] text-white drop-shadow-md rounded-lg font-semibold shadow-md active:hover:bg-[#1e4a5d] transition duration-200`}
       >
         Edit Team Information
       </button>
