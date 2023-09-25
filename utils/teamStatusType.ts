@@ -12,4 +12,18 @@ teamStatusMap.set(9, "Declined");
 teamStatusMap.set(10, "Need Further Data");
 teamStatusMap.set(11, "Selection Process");
 
-export { teamStatusMap };
+const TEAM_STATUS = {
+  NeedFillData: 1,
+  NeedMoreMember: 2,
+  CanBeSubmited: 3,
+  OnReview: 4,
+  NeedRevision: 5,
+  NeedPayment: 6,
+  Accepted: 7,
+  WaitingList: 8,
+  Declined: 9,
+  NeedFurtherData: 10,
+  SelectionProcess: 11,
+};
+
+export { teamStatusMap, TEAM_STATUS };

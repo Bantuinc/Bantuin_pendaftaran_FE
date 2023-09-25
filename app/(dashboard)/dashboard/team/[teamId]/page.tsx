@@ -3,7 +3,7 @@ import TeamForm from "@/components/dashboard/TeamForm";
 import Sidebar from "@/components/dashboard/sidebar";
 import { cocogoose, hind } from "@/fonts/font";
 import { getAdditionalField } from "@/utils/registration";
-import { teamStatusMap } from "@/utils/teamStatusType";
+import { TEAM_STATUS, teamStatusMap } from "@/utils/teamStatusType";
 import { getTeamDetail } from "@/utils/userTeams";
 import { AlertCircle, BookMarked } from "lucide-react";
 import { cookies } from "next/headers";
@@ -27,7 +27,12 @@ const getTeamInformation = async (userId: string, accessToken: string) => {
 };
 
 const canBeSubmitted = (status: number): boolean => {
-  if (status === 3 || status === 5 || status === 10) return true;
+  if (
+    status === TEAM_STATUS.CanBeSubmited ||
+    status === TEAM_STATUS.NeedRevision ||
+    status === TEAM_STATUS.NeedFurtherData
+  )
+    return true;
   return false;
 };
 

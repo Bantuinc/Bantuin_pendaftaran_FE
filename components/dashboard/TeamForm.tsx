@@ -5,13 +5,17 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { additionalFieldMap } from "@/utils/additionalFieldType";
+import {
+  ADDITIONAL_FIELD_PRIORITY,
+  additionalFieldMap,
+} from "@/utils/additionalFieldType";
 import {
   previewParticipantDocumentURL,
   uploadParticipantDocument,
 } from "@/lib/bucket";
 import Select, { MultiValue } from "react-select";
 import { cocogoose } from "@/fonts/font";
+import { TEAM_STATUS } from "@/utils/teamStatusType";
 
 interface TeamFormProps {
   team: Team;
@@ -186,7 +190,17 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
         </div>
       </div>
       {additionalField.map((fieldValue: AdditionalField, id) => (
-        <div key={id} className="flex flex-col">
+        <div
+          key={id}
+          className={`flex flex-col ${
+            fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData &&
+            team.status === TEAM_STATUS.NeedFurtherData
+              ? "block"
+              : fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
+              ? "block"
+              : "hidden"
+          }`}
+        >
           <label
             htmlFor={fieldValue.normalizedName}
             className={`text-lg text-white font-semibold ${cocogoose.className}`}
@@ -232,7 +246,12 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
           ) : additionalFieldMap.get(fieldValue.type) === "select" ? (
             <Select
               options={SUBTHEME_OPTION}
-              required={!fieldValue.hasOwnProperty(fieldValue.normalizedName)}
+              required={
+                fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData &&
+                team.status === TEAM_STATUS.NeedFurtherData
+                  ? true
+                  : fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
+              }
               isMulti
               isDisabled={!editMode}
               className="text-slate-900"
@@ -265,10 +284,16 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
       ))}
       <button
         type="button"
+        disabled={
+          team.status === TEAM_STATUS.OnReview ||
+          team.status === TEAM_STATUS.SelectionProcess ||
+          team.status === TEAM_STATUS.NeedPayment ||
+          team.status === TEAM_STATUS.Accepted
+        }
         onClick={() => setEditMode((value) => !value)}
         className={`${
           editMode ? "hidden" : ""
-        } py-2 px-4 bg-[#FFA31D] text-white drop-shadow-md rounded-lg font-semibold shadow-md hover:bg-[#1e4a5d] transition duration-200`}
+        } py-2 px-4 disabled:cursor-not-allowed active:bg-[#FFA31D] text-white drop-shadow-md rounded-lg font-semibold shadow-md active:hover:bg-[#1e4a5d] transition duration-200`}
       >
         Edit Team Information
       </button>

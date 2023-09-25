@@ -15,4 +15,9 @@ additionalFieldMap.set(4, "file");
 additionalFieldMap.set(5, "select");
 additionalFieldMap.set(6, "textarea");
 
-export { additionalFieldMap };
+const ADDITIONAL_FIELD_PRIORITY = {
+  First: 1,
+  FurtherData: 2,
+};
+
+export { additionalFieldMap, ADDITIONAL_FIELD_PRIORITY };
