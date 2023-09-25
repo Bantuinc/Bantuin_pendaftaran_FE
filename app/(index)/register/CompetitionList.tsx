@@ -24,6 +24,8 @@ function CompetitionList({
     "background.webp",
   ];
 
+  const BookletList = ["https://bit.ly/MiningCompetitionBooklet", "", "", ""];
+
   const CompetitionOpened = (): boolean => {
     const res = new Date(openedAt).getTime() - new Date().getTime();
     if (res <= 0) {
@@ -60,10 +62,7 @@ function CompetitionList({
               <span className="drop-shadow-md">Register</span>
             </button>
           </Link>
-          <a
-            href={"https://bit.ly/MiningCompetitionBooklet"}
-            className="flex-1"
-          >
+          <a href={`${BookletList[imgKey]}`} className="flex-1">
             <button className="py-4 px-8 flex justify-center gap-2 rounded-xl ring-1 ring-slate-400 w-full font-semibold text-md text-slate-900 bg-gradient-to-tr from-slate-600/10 to-slate-600/20 hover:shadow-lg transition-all">
               <FileText className="-ml-4" />
               Booklet
