@@ -66,12 +66,6 @@ function MiningCompetitionDetail() {
             <p className="text-slate-800 text-sm tracking-wide">
               {content.description}
             </p>
-            <h2 className="mt-6 text-slate-500 font-semibold">Participants</h2>
-            <p
-              className={`${hind.className} text-slate-800 text-2xl font-bold tracking-wide`}
-            >
-              {content.participant}
-            </p>
           </div>
         </div>
       </Transition>
@@ -154,7 +148,7 @@ const MiningCompetitionData: MiningDataType[] = [
     data: {
       competitionName: "Mine Excavation",
       description:
-        "Players will utilize laboratory-scale excavators to determine the optimal initial digging angle that results in the minimum specific energy, with the objective of reducing mining production costs through fuel efficiency on the excavator.",
+        "Players will utilize laboratory-scale excavator to achieve the goal of finding the minimum spesific energy from the intial digging angle which has been specified.",
       participant: "50+",
     },
   },
@@ -244,7 +238,7 @@ const MiningCompetitionData: MiningDataType[] = [
     data: {
       competitionName: "Underground Mine Surveying",
       description:
-        "The players will measure the tunnel dimensions using a total station. Players  will be given the task to measure the tunnel progress appropriately.",
+        "The players will measure the deformation of the tunnel walls using a total station, then they can analyze the tunnel stability.",
       participant: "75+",
     },
   },

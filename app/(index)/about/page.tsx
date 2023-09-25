@@ -1,7 +1,7 @@
-'use client';
+"use client";
 import Image from "next/image";
 import { hind } from "@/fonts/font";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 function AboutUs() {
   const [bgColor, setBgColor] = useState("");
@@ -41,7 +41,7 @@ function AboutUs() {
           <h3
             className={`mt-6 text-2xl font-bold bg-gradient-to-r from-[#ffffffdb] to-[#FFF] text-transparent bg-clip-text drop-shadow-md ${hind.className}`}
           >
-            ISMC stands for Indonesian Student Mining Competition that has been
+            ISMC stands for Indonesian Students Mining Competition that has been
             held for the 13th time. In 2024, we will hold the 14th Indonesian
             Student Mining Competition (ISMC XIV). ISMC XIV is an
             international-scale student mining competition, stemming from the

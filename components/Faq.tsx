@@ -28,7 +28,7 @@ function Faq() {
               </AccordionTrigger>
               <AccordionContent>
                 <div className="px-10 py-5">
-                  ISMC, or Indonesian Student Mining Competition, is an
+                  ISMC, or Indonesian Students Mining Competition, is an
                   international-scale student mining competition stemming from
                   the experience of the HMT-ITB team participating in the AusIMM
                   Students Mining Competition held by the University of
