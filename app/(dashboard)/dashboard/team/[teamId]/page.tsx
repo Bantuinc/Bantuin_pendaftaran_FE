@@ -7,6 +7,7 @@ import { TEAM_STATUS, teamStatusMap } from "@/utils/teamStatusType";
 import { getTeamDetail } from "@/utils/userTeams";
 import { AlertCircle, BookMarked } from "lucide-react";
 import { cookies } from "next/headers";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const getTeamInformation = async (userId: string, accessToken: string) => {
@@ -82,6 +83,19 @@ async function TeamDetail({ params }: { params: { teamId: string } }) {
             >
               {teamStatusMap.get(team.status)}
             </h1>
+            {team.status === TEAM_STATUS.NeedPayment ? (
+              <div className="flex flex-col gap-2">
+                <p className="text-white">
+                  You have to pay the registration fee
+                </p>
+                <Link
+                  href={`/payment/team/${team.id}`}
+                  className="py-2 px-4 text-lg shadow-md shadow-emerald-600 bg-emerald-500 text-center hover:bg-emerald-600 transition-all text-white font-bold rounded-md"
+                >
+                  <button type="button">Pay Now</button>
+                </Link>
+              </div>
+            ) : null}
             <SubmitTeamButton
               isDisabled={!canBeSubmitted(team.status)}
               teamDetail={team}

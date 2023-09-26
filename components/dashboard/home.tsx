@@ -1,4 +1,5 @@
-import {cocogoose, hind} from "@/fonts/font";
+import { cocogoose, hind } from "@/fonts/font";
+import Link from "next/link";
 
 interface DefaultProps {
   title: string;
@@ -15,7 +16,11 @@ export default function Default({ title, description }: DefaultProps) {
       {/* Content */}
       <div className={`${cocogoose.className} flex-1 px-2 sm:px-0`}>
         <div className="flex justify-between items-center">
-          <h3 className={`${cocogoose.className} text-3xl font-extralight text-white/50`}>{title}</h3>
+          <h3
+            className={`${cocogoose.className} text-3xl font-extralight text-white/50`}
+          >
+            {title}
+          </h3>
           {/*<div className="inline-flex items-center space-x-2">*/}
           {/*  <a*/}
           {/*    className="bg-[#296875] text-white/50 p-2 rounded-md hover:text-white smooth-hover"*/}
@@ -58,46 +63,53 @@ export default function Default({ title, description }: DefaultProps) {
           {/*</div>*/}
         </div>
 
-        {title === "Payment"? (description === undefined ? (
-          <div className="flex justify-center items-center h-22">
-            <div className="my-20">
-              <h1 className="text-white mb-8 text-2xl font-bold">
-                You cannot make payments at this time
-              </h1>
-              <a
-                className="ml-32 bg-[#FFA31D] text-white hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
-                href="./register"
-              >
-                Register Now
-              </a>
+        {title === "Payment" ? (
+          description === undefined ? (
+            <div className="flex justify-center items-center h-22">
+              <div className="my-20">
+                <h1 className="text-white mb-8 text-2xl font-bold">
+                  You cannot make payments at this time
+                </h1>
+                <Link
+                  className="ml-32 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                  href="/register"
+                >
+                  Register Now
+                </Link>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex justify-center items-center h-22">
+              <div className="my-20">
+                <h1 className="text-center text-white mb-8 text-2xl font-bold">
+                  You cannot make payments at this time
+                </h1>
+                <h3 className="text-center text-white mb-8 text-xl font-bold">
+                  {description}
+                </h3>
+                <Link
+                  className="ml-60 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                  href={`${origin}/dashboard`}
+                >
+                  Back
+                </Link>
+              </div>
+            </div>
+          )
         ) : (
           <div className="flex justify-center items-center h-22">
             <div className="my-20">
-              <h1 className="text-center text-white mb-8 text-2xl font-bold">
-                You cannot make payments at this time
+              <h1 className="text-white mb-8 text-2xl font-bold">
+                You haven’t registered for any competitions yet
               </h1>
-              <h3 className="text-center text-white mb-8 text-xl font-bold">
-                {description}
-              </h3>
-              <a
-                className="ml-60 bg-[#FFA31D] text-white hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
-                href={`${origin}/dashboard`}
+              <Link
+                className="ml-52 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                href="/register"
               >
-                Back
-              </a>
+                Register Now
+              </Link>
             </div>
           </div>
-        )): (
-            <div className="flex justify-center items-center h-22">
-              <div className="my-20">
-                <h1 className="text-white mb-8 text-2xl font-bold">You haven’t registered for any competitions yet</h1>
-                <a className="ml-52 bg-[#FFA31D] text-white hover:bg-gray-800 text-white font-bold py-2 px-4 rounded" href="./register">
-                  Register Now
-                </a>
-              </div>
-            </div>
         )}
       </div>
     </>

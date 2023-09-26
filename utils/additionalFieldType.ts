@@ -18,6 +18,7 @@ additionalFieldMap.set(6, "textarea");
 const ADDITIONAL_FIELD_PRIORITY = {
   First: 1,
   FurtherData: 2,
+  Last: 3,
 };
 
 export { additionalFieldMap, ADDITIONAL_FIELD_PRIORITY };
