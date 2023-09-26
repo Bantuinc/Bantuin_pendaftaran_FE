@@ -17,7 +17,7 @@ import {
   uploadParticipantDocument,
 } from "@/lib/bucket";
 import Select, { MultiValue } from "react-select";
-import { cocogoose } from "@/fonts/font";
+import { cocogoose, hind } from "@/fonts/font";
 
 interface MemberFormProps {
   team?: Team;
@@ -229,7 +229,7 @@ function MemberForm({
   return (
     <form
       onSubmit={isAdd ? savememberAdd : savememberEdit}
-      className={`p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:w-[30rem]`}
+      className={`p-8 flex flex-col gap-3 rounded-xl bg-[#296875] md:w-[30rem] ${hind.className}`}
     >
       <div className="flex flex-col">
         <label
