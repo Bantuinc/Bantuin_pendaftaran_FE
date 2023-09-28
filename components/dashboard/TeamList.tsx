@@ -21,8 +21,9 @@ function TeamList({ team, title, States }: TeamListProps) {
 
         </div>
           {title === "Home"?
-            <a href={"https://bit.ly/MiningCompetitionBooklet"} className="text-sm text-blue-100">
-              *Don&apos;t forget to read the Mining Competition Booklet first.
+            // <a href={"https://bit.ly/MiningCompetitionBooklet"} className="text-sm text-blue-100">
+              <a href={"../"} className="text-sm text-blue-100">
+              *Don&apos;t forget to read the Each Contest Booklet first.
             </a>
             :<div/>}
         <div className="mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

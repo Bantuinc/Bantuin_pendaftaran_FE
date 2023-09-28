@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "ISMC 14 | 2023",
-  description: "The 14th Indonesian Student Mining Competition",
+  description: "The 14th Indonesian Students Mining Competition",
 };
 
 export default function DashboardLayout({

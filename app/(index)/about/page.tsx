@@ -43,7 +43,7 @@ function AboutUs() {
           >
             ISMC stands for Indonesian Students Mining Competition that has been
             held for the 13th time. In 2024, we will hold the 14th Indonesian
-            Student Mining Competition (ISMC XIV). ISMC XIV is an
+            Students Mining Competition (ISMC XIV). ISMC XIV is an
             international-scale student mining competition, stemming from the
             experience of the HMT-ITB team participating in the AusIMM Students
             Mining Competition held by the University of Queensland (UQ) in 1996

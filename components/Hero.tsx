@@ -36,7 +36,7 @@ function Hero() {
             14
           </span>
           <span className="align-super md:text-3xl text-2xl">th</span>{" "}
-          Indonesian Student Mining Competition
+          Indonesian Students Mining Competition
         </h1>
         <Link href="/register">
           <button

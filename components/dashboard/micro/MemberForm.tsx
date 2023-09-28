@@ -33,9 +33,10 @@ function MemberForm({
   isAdd,
   teamId,
 }: MemberFormProps) {
+  const isHackaton = team?.competitionId === "d1cc9eda-7e0b-4446-9762-858c4bef3d4c"
   const [memberName, setmemberName] = useState<string>(member.name);
   const [memberNim, setmemberNim] = useState<string>(
-    (member.nim ? member.nim : "").toString()
+    (member.nim ? member.nim : (isHackaton?"0":"")).toString()
   );
   const [memberEmail, setmemberEmail] = useState<string>(member.email);
   const [memberPhone, setmemberPhone] = useState<string>(member.phone);
@@ -247,24 +248,26 @@ function MemberForm({
           onChange={(e) => setmemberName(e.target.value)}
         />
       </div>
+      {isHackaton?<div/>:
+          <div className="flex flex-col">
+            <label
+                htmlFor="memberNim"
+                className={`text-lg text-white font-semibold ${cocogoose.className}`}
+            >
+              Student&apos;s ID Number
+            </label>
+            <input
+                readOnly={!editMode}
+                id="memberNim"
+                type="number"
+                required
+                className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
+                value={editMode ? memberNim : member.nim}
+                onChange={(e) => setmemberNim(e.target.value)}
+            />
+          </div>
+      }
 
-      <div className="flex flex-col">
-        <label
-          htmlFor="memberNim"
-          className={`text-lg text-white font-semibold ${cocogoose.className}`}
-        >
-          Student&apos;s ID Number
-        </label>
-        <input
-          readOnly={!editMode}
-          id="memberNim"
-          type="number"
-          required
-          className="text-slate-800 read-only:bg-white/75 text-md py-1 px-3 font-semibold rounded-md focus:outline-none"
-          value={editMode ? memberNim : member.nim}
-          onChange={(e) => setmemberNim(e.target.value)}
-        />
-      </div>
       <div className="flex flex-col">
         <label
           htmlFor="memberName"
@@ -307,7 +310,7 @@ function MemberForm({
           htmlFor="memberName"
           className={`text-lg text-white font-semibold ${cocogoose.className}`}
         >
-          Student&apos;s ID Card
+          {isHackaton?"":"Student`s"} ID Card
         </label>
         <a
           href={memberKtm}
