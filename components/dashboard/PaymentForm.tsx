@@ -223,6 +223,15 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
           >
             {fieldValue.name}
           </label>
+          {fieldValue.normalizedName === "statement_of_participant" && (
+            <a
+              href="https://bit.ly/StatementofParticipants"
+              target="_blank"
+              className="mb-2 px-3 py-1 rounded-md bg-sky-600 w-fit text-white/80 font-semibold hover:text-white hover:bg-sky-700 cursor-pointer"
+            >
+              Example Document
+            </a>
+          )}
           {additionalFieldMap.get(fieldValue.type) === "file" ? (
             <>
               <a
