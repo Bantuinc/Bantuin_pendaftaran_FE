@@ -191,7 +191,7 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
         <input
           id="proof_of_payment"
           type="file"
-          required={team.proofOfPayment !== null}
+          required={team.proofOfPayment === null}
           disabled={!editMode}
           style={{ display: editMode ? "block" : "none" }}
           className="text-slate-800 font-semibold bg-white disabled:bg-white/75 text-md py-1 px-3 rounded-md focus:outline-none"
