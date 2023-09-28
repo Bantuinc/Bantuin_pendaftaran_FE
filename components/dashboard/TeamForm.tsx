@@ -193,10 +193,8 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
         <div
           key={id}
           className={`flex flex-col ${
-            fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData &&
-            team.status === TEAM_STATUS.NeedFurtherData
-              ? "block"
-              : fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
+            fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData ||
+            fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
               ? "block"
               : "hidden"
           }`}
@@ -247,10 +245,8 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
             <Select
               options={SUBTHEME_OPTION}
               required={
-                fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData &&
-                team.status === TEAM_STATUS.NeedFurtherData
-                  ? true
-                  : fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
+                fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData ||
+                fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
               }
               isMulti
               isDisabled={!editMode}
