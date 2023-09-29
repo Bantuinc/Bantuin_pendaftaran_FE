@@ -212,7 +212,8 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
             fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.Last &&
             team.status === TEAM_STATUS.NeedPayment
               ? "block"
-              : team.status === TEAM_STATUS.Accepted
+              : team.status === TEAM_STATUS.Accepted &&
+                fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.Last
               ? "block"
               : "hidden"
           }`}
@@ -331,7 +332,7 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
         </button>
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={team.status === TEAM_STATUS.Accepted || isLoading}
           className="flex-1 py-2 px-4 bg-[#FFA31D] disabled:cursor-not-allowed text-white drop-shadow-md rounded-lg font-semibold shadow-md enabled:hover:bg-[#1e4a5d] transition duration-200"
         >
           {isLoading ? "Saving..." : "Submit Data"}
