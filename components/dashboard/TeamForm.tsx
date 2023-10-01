@@ -262,6 +262,29 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
                 AdditionalFieldValue[fieldValue.normalizedName]
               )}
             />
+          ) : additionalFieldMap.get(fieldValue.type) === "textarea" ? (
+            <textarea
+              required={fieldValue.priority === 1}
+              value={
+                AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)
+                  ? AdditionalFieldValue[fieldValue.normalizedName]
+                  : ""
+              }
+              id={fieldValue.normalizedName}
+              onChange={(e) =>
+                setAdditionalFieldValue((value) => ({
+                  ...value,
+                  [fieldValue.normalizedName]: e.target.value,
+                }))
+              }
+              className={`${
+                fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.Last
+                  ? "hidden"
+                  : ""
+              } rounded-lg h-32 py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
+              cols={5}
+              rows={10}
+            ></textarea>
           ) : (
             <input
               id={fieldValue.normalizedName}
