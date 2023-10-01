@@ -204,7 +204,13 @@ function RegistCompetitionForm({
           />
           <label htmlFor="domestic">Domestic</label>
         </div>
-        <div className="px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit">
+        <div
+          className={`px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit ${
+            competitionId !== "4136c5a5-d92d-4117-b283-ca87bc738b67"
+              ? "hidden"
+              : "block"
+          }`}
+        >
           <input
             name="citizenShip"
             type="radio"
