@@ -264,7 +264,7 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
             />
           ) : additionalFieldMap.get(fieldValue.type) === "textarea" ? (
             <textarea
-              required={fieldValue.priority === 1}
+              required={!AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)}
               value={
                 AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)
                   ? AdditionalFieldValue[fieldValue.normalizedName]
