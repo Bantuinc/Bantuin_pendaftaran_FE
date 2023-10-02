@@ -56,7 +56,7 @@ function Faq() {
                   Competition, which consists of{" "}
                   <span className={`${hind.className}`}>16</span> kinds of
                   practical mining competitions: paper contests, poster
-                  contests, hackathon contests, mining exhibitions and
+                  contests, hackathon, mining exhibitions and
                   exhibitions, mining talks, youth mining conferences, and more.
                   We also provide spectacular prizes for the winners of our
                   competition and contest.
