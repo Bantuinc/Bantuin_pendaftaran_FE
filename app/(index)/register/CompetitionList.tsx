@@ -24,7 +24,12 @@ function CompetitionList({
     "background.webp",
   ];
 
-  const BookletList = ["https://bit.ly/MiningCompetitionBooklet", "https://bit.ly/ISMCXIV-PaperContestGuidebook", "https://bit.ly/ISMCXIV-PosterContestGuidebook", "https://bit.ly/ISMCXIV-HackathonGuidebook"];
+  const BookletList = [
+    "https://bit.ly/MiningCompetitionBooklet",
+    "https://bit.ly/ISMCXIV-PaperContestGuidebook",
+    "https://bit.ly/ISMCXIV-PosterContestGuidebook",
+    "https://bit.ly/ISMCXIV-HackathonGuidebook",
+  ];
 
   const CompetitionOpened = (): boolean => {
     const res = new Date(openedAt).getTime() - new Date().getTime();

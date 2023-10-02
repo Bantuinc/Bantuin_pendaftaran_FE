@@ -3,7 +3,7 @@ import Background from "@/public/bg_insight.webp";
 import Background_countdown from "@/public/bg_insight_detail.webp";
 import { ubuntu } from "@/fonts/font";
 import Link from "next/link";
-import { Fingerprint } from "lucide-react";
+import { FileText, Fingerprint } from "lucide-react";
 import Countdown from "@/components/Countdown";
 
 interface CompetitionDescriptionProps {
@@ -59,19 +59,38 @@ function CompetitionDescription({
               <p className="font-bold text-slate-50 md:text-lg text-sm">
                 {competitionDescription}
               </p>
-              <Link
-                href={`${
-                  CompetitionOpened()
-                    ? `/register/${competitionId}`
-                    : "#countdown"
-                }`}
-                className="mt-6 flex-1"
-              >
-                <button className="py-4 px-8 flex justify-center gap-2 rounded-xl bg-[#FFA31D] w-full font-bold text-lg text-white hover:shadow-lg hover:bg-orange-400 duration-300 ease-in-out transition-all">
-                  <Fingerprint className="-ml-4" />
-                  <span className="drop-shadow-md">Register</span>
-                </button>
-              </Link>
+              <div className="mt-6 flex md:flex-row flex-col gap-3">
+                <Link
+                  href={`${
+                    CompetitionOpened()
+                      ? `/register/${competitionId}`
+                      : "#countdown"
+                  }`}
+                  className="flex-1"
+                >
+                  <button className="py-4 px-8 flex justify-center gap-2 rounded-xl bg-[#FFA31D] w-full font-bold text-lg text-white hover:shadow-lg hover:bg-orange-400 duration-300 ease-in-out transition-all">
+                    <Fingerprint className="-ml-4" />
+                    <span className="drop-shadow-md">Register</span>
+                  </button>
+                </Link>
+                <a
+                  href={`${
+                    competitionId === "4136c5a5-d92d-4117-b283-ca87bc738b67"
+                      ? "https://bit.ly/MiningCompetitionBooklet"
+                      : competitionId === "db021fec-f11a-462c-af14-2a52cdb15597"
+                      ? "https://bit.ly/ISMCXIV-PaperContestGuidebook"
+                      : competitionId === "c93d3696-a5b3-458b-813e-5d729e9fe44a"
+                      ? "https://bit.ly/ISMCXIV-PosterContestGuidebook"
+                      : "https://bit.ly/ISMCXIV-HackathonGuidebook"
+                  }`}
+                  className="flex-1"
+                >
+                  <button className="py-4 px-8 flex justify-center gap-2 rounded-xl ring-1 ring-slate-400 w-full font-semibold text-md text-slate-900 bg-gradient-to-tr from-slate-600/10 to-slate-600/20 hover:shadow-lg transition-all">
+                    <FileText className="-ml-4" />
+                    Booklet
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -99,7 +118,10 @@ function CompetitionDescription({
             Countdown to {competitionName}
           </h1>
           <div>
-            <Countdown competitionName={competitionName} targetDate={new Date(openedAt).getTime()} />
+            <Countdown
+              competitionName={competitionName}
+              targetDate={new Date(openedAt).getTime()}
+            />
           </div>
         </div>
       </section>
