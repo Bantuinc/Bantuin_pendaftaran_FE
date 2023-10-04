@@ -16,6 +16,30 @@ function LoginForm() {
 
   const router = useRouter();
 
+  const resendEmail = async () => {
+    try {
+      const { data: res } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/resend-verification`,
+        { email }
+      );
+      Swal.fire({
+        title: "Success!",
+        text: res?.message,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        Swal.fire({
+          title: "Error!",
+          text: err.response?.data?.message,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    }
+  };
+
   const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -43,12 +67,30 @@ function LoginForm() {
       }
     } catch (err) {
       if (err instanceof AxiosError) {
-        Swal.fire({
-          title: "Error!",
-          text: err.response?.data?.message,
-          icon: "error",
-          confirmButtonText: "OK",
-        });
+        if (
+          err.response?.data?.message ===
+          "Please check your inbox or spam email to confirm your email."
+        ) {
+          const alert = await Swal.fire({
+            title: "Error!",
+            text: err.response?.data?.message,
+            icon: "error",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Resend Verification Email!",
+            cancelButtonText: "OK",
+          });
+          if (alert.isConfirmed) {
+            resendEmail();
+          }
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: err.response?.data?.message,
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+        }
       }
     }
     setLoading(false);

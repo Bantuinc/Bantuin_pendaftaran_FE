@@ -1,5 +1,5 @@
 "use client";
-import { cocogoose } from "@/fonts/font";
+import { cocogoose, hind } from "@/fonts/font";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -82,8 +82,8 @@ function VerifyUser() {
             </span>
           </span>
           <p className="font-bold text-lg text-slate-600">
-            Welcome to the 14<span className="text-xs align-super">th</span>{" "}
-            ISMC
+            Welcome to the <span className={hind.className}>14</span>
+            <span className="text-xs align-super">th</span> ISMC
           </p>
           <p className="text-sm text-slate-500">
             This might take a few seconds. Please wait while we verify your
