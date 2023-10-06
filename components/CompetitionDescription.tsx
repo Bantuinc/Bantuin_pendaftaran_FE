@@ -76,12 +76,12 @@ function CompetitionDescription({
                 <a
                   href={`${
                     competitionId === "4136c5a5-d92d-4117-b283-ca87bc738b67"
-                      ? "https://bit.ly/MiningCompetitionBooklet"
+                      ? "https://drive.google.com/file/d/1l2coRf-9zQHeECRZL1b_VAawrO2EvwX_/view"
                       : competitionId === "db021fec-f11a-462c-af14-2a52cdb15597"
-                      ? "https://bit.ly/ISMCXIV-PaperContestGuidebook"
+                      ? "https://drive.google.com/file/d/1j0NvyahgcUM8UphUcB90o8MuxEd9xv-S/view?usp=drivesdk"
                       : competitionId === "c93d3696-a5b3-458b-813e-5d729e9fe44a"
-                      ? "https://bit.ly/ISMCXIV-PosterContestGuidebook"
-                      : "https://bit.ly/ISMCXIV-HackathonGuidebook"
+                      ? "https://drive.google.com/file/d/1HtwhNE6WRL7rN5_nlTS5muRFc10KxILg/view?usp=drivesdk"
+                      : "https://drive.google.com/file/d/1kUgIv4eRW-cULPz-pILYagnAL8NRoSSi/view?usp=drivesdk"
                   }`}
                   className="flex-1"
                 >
