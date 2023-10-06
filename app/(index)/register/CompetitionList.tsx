@@ -25,10 +25,10 @@ function CompetitionList({
   ];
 
   const BookletList = [
-    "https://bit.ly/MiningCompetitionBooklet",
-    "https://bit.ly/ISMCXIV-PaperContestGuidebook",
-    "https://bit.ly/ISMCXIV-PosterContestGuidebook",
-    "https://bit.ly/ISMCXIV-HackathonGuidebook",
+    "https://drive.google.com/file/d/1l2coRf-9zQHeECRZL1b_VAawrO2EvwX_/view",
+    "https://drive.google.com/file/d/1j0NvyahgcUM8UphUcB90o8MuxEd9xv-S/view?usp=drivesdk",
+    "https://drive.google.com/file/d/1HtwhNE6WRL7rN5_nlTS5muRFc10KxILg/view?usp=drivesdk",
+    "https://drive.google.com/file/d/1kUgIv4eRW-cULPz-pILYagnAL8NRoSSi/view?usp=drivesdk",
   ];
 
   const CompetitionOpened = (): boolean => {
