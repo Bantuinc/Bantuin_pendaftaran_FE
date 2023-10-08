@@ -28,7 +28,7 @@ function CompetitionDescription({
   };
   return (
     <>
-      <section className="lg:p-28 lg:pt-40 sm:p-12 sm:pt-40 p-6 pt-40 relative min-h-[100vh] flex gap-6 justify-center items-start">
+      <section className=" lg:p-28 lg:pt-40 sm:p-12 sm:pt-40 p-6 pt-40 relative min-h-[100vh] flex gap-6 justify-center items-start">
         <Image
           src={Background}
           alt="Mining Insight Image"

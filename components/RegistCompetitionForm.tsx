@@ -248,6 +248,12 @@ function RegistCompetitionForm({
                 </TooltipContent>
               </Tooltip>
             </div>
+            <div className="flex">
+              {fieldValue.description2?
+                  <div dangerouslySetInnerHTML={{__html: fieldValue.description2}}/>
+                  :
+                  <div/>}
+            </div>
             {additionalFieldMap.get(fieldValue.type) === "file" ? (
               <input
                 type={additionalFieldMap.get(fieldValue.type)}
@@ -284,7 +290,7 @@ function RegistCompetitionForm({
                   } rounded-lg h-32 py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
                   cols={5}
                   rows={10}
-                ></textarea>
+                />
                 {fieldValue.normalizedName === "university_address" ? (
                   <div className="mt-3">
                     <b>*Please fill your complete university address.</b>

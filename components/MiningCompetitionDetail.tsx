@@ -47,7 +47,7 @@ function MiningCompetitionDetail() {
         leave="transition-all duration-150 ease-in-out"
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-0"
-        className={`fixed z-10 top-[calc(50%-6rem)] md:left-[calc(50%-35vw)] left-[calc(50%-45vw)] md:max-w-[70vw] w-[90vw] bg-white rounded-2xl flex items-center justify-center`}
+        className={`overflow-hidden fixed z-10 top-[calc(50%-6rem)] md:left-[calc(50%-35vw)] left-[calc(50%-45vw)] md:max-w-[70vw] w-[90vw] bg-white rounded-2xl flex items-center justify-center`}
       >
         <div className="relative w-full h-full pt-4 p-8">
           <div className="flex flex-row-reverse">
@@ -69,7 +69,7 @@ function MiningCompetitionDetail() {
           </div>
         </div>
       </Transition>
-      <section className="lg:p-28 lg:pt-40 sm:p-12 sm:pt-40 p-6 pt-40 relative min-h-[2  00vh] flex gap-6 justify-center items-start">
+      <section className=" lg:p-28 lg:pt-40 sm:p-12 sm:pt-40 p-6 pt-40 relative min-h-[2  00vh] flex gap-6 justify-center items-start">
         <Image
           src={Background_mining}
           alt="Mining Competition List Image"

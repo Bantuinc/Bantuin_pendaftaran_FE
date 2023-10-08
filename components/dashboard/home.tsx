@@ -65,13 +65,13 @@ export default function Default({ title, description }: DefaultProps) {
 
         {title === "Payment" ? (
           description === undefined ? (
-            <div className="flex justify-center items-center h-22">
-              <div className="my-20">
-                <h1 className="text-white mb-8 text-2xl font-bold">
+            <div className="h-22">
+              <div className="flex flex-wrap min-w-full align-middle text-center justify-center my-20">
+                <h1 className="min-w-full text-white mb-8 text-2xl font-bold">
                   You cannot make payments at this time
                 </h1>
                 <Link
-                  className="ml-32 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                  className=" bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
                   href="/register"
                 >
                   Register Now
@@ -97,13 +97,13 @@ export default function Default({ title, description }: DefaultProps) {
             </div>
           )
         ) : (
-          <div className="flex justify-center items-center h-22">
-            <div className="my-20">
-              <h1 className="text-white mb-8 text-2xl font-bold">
+          <div className=" h-22">
+            <div className="flex flex-wrap min-w-full align-middle text-center justify-center my-20">
+              <h1 className="min-w-full text-white mb-8 text-2xl font-bold ">
                 You haven’t registered for any competitions yet
               </h1>
               <Link
-                className="ml-52 bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+                className=" bg-[#FFA31D] hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
                 href="/register"
               >
                 Register Now

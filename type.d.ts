@@ -27,6 +27,7 @@ type AdditionalField = {
   normalizedName: string;
   competitionId: string;
   description: string;
+  description2?: string;
   priority: number;
 };
 
