@@ -284,7 +284,7 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
               } rounded-lg h-32 py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-non`}
               cols={5}
               rows={10}
-            ></textarea>
+            />
           ) : (
             <input
               id={fieldValue.normalizedName}

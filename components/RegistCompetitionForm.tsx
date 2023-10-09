@@ -10,14 +10,15 @@ import {
   previewParticipantDocumentURL,
   uploadParticipantDocument,
 } from "@/lib/bucket";
-import { additionalFieldMap } from "@/utils/additionalFieldType";
-import { CITIZENSHIP } from "@/utils/registration";
+import {ADDITIONAL_FIELD_PRIORITY, additionalFieldMap} from "@/utils/additionalFieldType";
+import {CITIZENSHIP, SUBTHEME_OPTION} from "@/utils/registration";
 import { getUserNameId } from "@/utils/userCredentials";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
+import Select, {MultiValue} from "react-select";
 
 function RegistCompetitionForm({
   competitionId,
@@ -95,7 +96,18 @@ function RegistCompetitionForm({
       [normalizedName]: value,
     });
   };
-
+  const handleSelect = (
+      e: MultiValue<{ value: string; label: string }>,
+      normalizedName: string
+  ): void => {
+    let selectedValue: string[] = [];
+    selectedValue = e.map((select) => select.value);
+    const selectedValueInString: string = selectedValue.join(",");
+    setAdditionalFieldValue({
+      ...AdditionalFieldValue,
+      [normalizedName]: selectedValueInString,
+    });
+  };
   const handleAdditionalFile = async (
     e: ChangeEvent<HTMLInputElement>,
     normalizedName: string
@@ -130,7 +142,7 @@ function RegistCompetitionForm({
   };
 
   return (
-    <form onSubmit={handleCompetitionRegist} className="flex flex-col gap-3">
+    <form onSubmit={handleCompetitionRegist} className=" flex flex-col gap-3">
       <div className="flex relative">
         <label
           htmlFor="teamName"
@@ -249,6 +261,21 @@ function RegistCompetitionForm({
                 fieldValue.priority !== 1 ? "hidden" : ""
               } rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none`}
             />
+          ): additionalFieldMap.get(fieldValue.type) === "select" ? (
+              <Select
+                  options={SUBTHEME_OPTION}
+                  required={
+                      fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData ||
+                      fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
+                  }
+                  isMulti
+                  menuPortalTarget={document.body}
+                  styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}
+                  className={`${
+                      fieldValue.priority !== 1 ? "hidden" : ""
+                  }z-20 text-lg text-slate-800  shadow-md ring-1 ring-white/50 outline-none`}
+                  onChange={(e) => handleSelect(e, fieldValue.normalizedName)}
+              />
           ) : additionalFieldMap.get(fieldValue.type) === "textarea" ? (
             <>
               <textarea
