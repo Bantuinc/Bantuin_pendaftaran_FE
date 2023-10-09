@@ -1,21 +1,21 @@
 "use client";
-import { CITIZENSHIP, SUBTHEME_OPTION } from "@/utils/registration";
-import axios, { AxiosError } from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
-import { useCookies } from "react-cookie";
-import { useRouter } from "next/navigation";
-import Swal from "sweetalert2";
-import {
-  ADDITIONAL_FIELD_PRIORITY,
-  additionalFieldMap,
-} from "@/utils/additionalFieldType";
+import { cocogoose, hind } from "@/fonts/font";
 import {
   previewParticipantDocumentURL,
   uploadParticipantDocument,
 } from "@/lib/bucket";
-import Select, { MultiValue } from "react-select";
-import { cocogoose, hind } from "@/fonts/font";
+import {
+  ADDITIONAL_FIELD_PRIORITY,
+  additionalFieldMap,
+} from "@/utils/additionalFieldType";
+import { SUBTHEME_OPTION } from "@/utils/registration";
 import { TEAM_STATUS } from "@/utils/teamStatusType";
+import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useCookies } from "react-cookie";
+import Select, { MultiValue } from "react-select";
+import Swal from "sweetalert2";
 
 interface TeamFormProps {
   team: Team;
@@ -224,7 +224,7 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
           >
             {fieldValue.name}
           </label>
-          {fieldValue.normalizedName === "statement_of_participant" && (
+          {/* {fieldValue.normalizedName === "statement_of_participant" && (
             <a
               href="https://bit.ly/StatementofParticipants"
               target="_blank"
@@ -232,7 +232,7 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
             >
               Example Document
             </a>
-          )}
+          )} */}
           {additionalFieldMap.get(fieldValue.type) === "file" ? (
             <>
               <a
@@ -310,6 +310,14 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
               }
             />
           )}
+          <div className="mt-3 font-bold text-white drop-shadow-sm">
+            {fieldValue?.description2 !== "<br>" &&
+            fieldValue.description2 !== "" ? (
+              <RawHTML className="mb-2 px-3 py-1 rounded-md bg-sky-600 w-fit text-white/80 font-semibold hover:text-white cursor-pointer">
+                {fieldValue.description2 as string}
+              </RawHTML>
+            ) : null}
+          </div>
         </div>
       ))}
       <button
@@ -341,5 +349,27 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
     </form>
   );
 }
+
+const RawHTML = ({
+  children,
+  className = "",
+}: {
+  children: string;
+  className: string;
+}) => {
+  if (CleanHTML(children) === "") return null;
+  return (
+    <div
+      className={className}
+      dangerouslySetInnerHTML={{ __html: CleanHTML(children) }}
+    />
+  );
+};
+
+const CleanHTML = (html: string | undefined) => {
+  if (!html) return "";
+  html?.replace("<br>", "");
+  return html as string;
+};
 
 export default PaymentForm;
