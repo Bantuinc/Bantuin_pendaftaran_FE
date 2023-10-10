@@ -203,11 +203,13 @@ function RegistCompetitionForm({
           <label htmlFor="domestic">Domestic</label>
         </div>
         <div
-          className={`px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit ${
-            competitionId !== "4136c5a5-d92d-4117-b283-ca87bc738b67"
-              ? "hidden"
-              : "block"
-          }`}
+          className={`px-4 py-2 flex gap-3 rounded-lg text-slate-900 font-bold bg-[#D9D9D9] w-fit `}
+          // ${
+          //   competitionId !== "4136c5a5-d92d-4117-b283-ca87bc738b67"
+          //     ? "hidden"
+          //     : "block"
+          // }
+          // `}
         >
           <input
             name="citizenShip"
@@ -223,7 +225,7 @@ function RegistCompetitionForm({
       {additionalFields?.map((fieldValue: AdditionalField, id) => (
         <div
           key={id}
-          className={`flex flex-col ${
+          className={`flex flex-col mt-2 ${
             fieldValue.priority !== 1 ? "hidden" : ""
           }`}
         >
@@ -246,6 +248,19 @@ function RegistCompetitionForm({
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
+          </div>
+          <div className=" drop-shadow-sm">
+            {fieldValue.description2 ? (
+                <div>
+                  <p>Please Check this document </p>
+                  <div
+                      className="text-orange-100 hover:text-blue-100 font-bold "
+                      dangerouslySetInnerHTML={{ __html: fieldValue.description2 }}
+                  />
+                </div>
+            ) : (
+                <div />
+            )}
           </div>
 
           {additionalFieldMap.get(fieldValue.type) === "file" ? (
@@ -334,15 +349,7 @@ function RegistCompetitionForm({
                 ) : null} */}
             </>
           )}
-          <div className="mt-3 font-bold drop-shadow-sm">
-            {fieldValue.description2 ? (
-              <div
-                dangerouslySetInnerHTML={{ __html: fieldValue.description2 }}
-              />
-            ) : (
-              <div />
-            )}
-          </div>
+
         </div>
       ))}
       <button

@@ -311,7 +311,17 @@ function MemberForm({
           className={`text-lg text-white font-semibold ${cocogoose.className}`}
         >
           {isHackaton?"":"Student`s"} ID Card
+
+
         </label>
+        {isHackaton?(
+
+                <p className="my-2 text-sm text-white font-notmal">
+
+                  {"ID cards, student cards, driving licences, or others similar ID are valid"}
+                </p>)
+            :
+            ""}
         <a
           href={memberKtm}
           target="_blank"
