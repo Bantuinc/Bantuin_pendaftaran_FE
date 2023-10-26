@@ -97,6 +97,7 @@ async function TeamDetail({
         </div>
         <div className="flex md:flex-row flex-col gap-6">
           <MemberForm
+            team={team}
             teamId={params.teamId}
             member={member}
             additionalField={additionalField}
