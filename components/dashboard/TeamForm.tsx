@@ -199,7 +199,8 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
         <div
           key={id}
           className={`flex flex-col ${
-            fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData ||
+            (fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData &&
+              team.status >= TEAM_STATUS.NeedRevision) ||
             fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
               ? "block"
               : "hidden"
@@ -228,9 +229,13 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
                 id={fieldValue.normalizedName}
                 type="file"
                 required={
-                  !AdditionalFieldValue.hasOwnProperty(
-                    fieldValue.normalizedName
-                  )
+                  fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.FurtherData
+                    ? team.status === TEAM_STATUS.NeedFurtherData
+                    : fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.Last
+                    ? team.status === TEAM_STATUS.NeedPayment
+                    : !AdditionalFieldValue.hasOwnProperty(
+                        fieldValue.normalizedName
+                      )
                 }
                 disabled={!editMode}
                 style={{ display: editMode ? "block" : "none" }}
@@ -264,7 +269,9 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
             />
           ) : additionalFieldMap.get(fieldValue.type) === "textarea" ? (
             <textarea
-              required={!AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)}
+              required={
+                !AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)
+              }
               value={
                 AdditionalFieldValue.hasOwnProperty(fieldValue.normalizedName)
                   ? AdditionalFieldValue[fieldValue.normalizedName]

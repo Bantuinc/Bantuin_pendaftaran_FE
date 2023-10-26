@@ -1,19 +1,29 @@
 "use client";
 
 import { cocogoose } from "@/fonts/font";
+import { TEAM_STATUS } from "@/utils/teamStatusType";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 
 interface SubmitButtonProps {
-  isDisabled: boolean;
   teamDetail: Team;
 }
-function SubmitTeamButton({ isDisabled, teamDetail }: SubmitButtonProps) {
+function SubmitTeamButton({ teamDetail }: SubmitButtonProps) {
   const [cookies] = useCookies(["accessToken"]);
   const accessToken = cookies.accessToken;
   const router = useRouter();
+
+  const canBeSubmitted = (status: number): boolean => {
+    if (
+      status === TEAM_STATUS.CanBeSubmited ||
+      status === TEAM_STATUS.NeedRevision ||
+      status === TEAM_STATUS.NeedFurtherData
+    )
+      return true;
+    return false;
+  };
 
   const handleSubmitTeam = async () => {
     try {
@@ -48,7 +58,7 @@ function SubmitTeamButton({ isDisabled, teamDetail }: SubmitButtonProps) {
     <button
       type="button"
       onClick={handleSubmitTeam}
-      disabled={isDisabled}
+      disabled={!canBeSubmitted(teamDetail.status)}
       className="py-3 px-6 enabled:bg-[#FFA31D] disabled:bg-gray-300 disabled:cursor-not-allowed enabled:hover:bg-[#1e4a5d] rounded-md text-white shadow-md transition-all"
     >
       <p className={`drop-shadow-md font-bold text-md ${cocogoose.className}`}>

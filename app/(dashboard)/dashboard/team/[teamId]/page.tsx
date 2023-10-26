@@ -1,5 +1,6 @@
 import SubmitTeamButton from "@/components/dashboard/SubmitTeamButton";
 import TeamForm from "@/components/dashboard/TeamForm";
+import TeamStatus from "@/components/dashboard/TeamStatus";
 import Sidebar from "@/components/dashboard/sidebar";
 import { cocogoose, hind } from "@/fonts/font";
 import { getAdditionalField } from "@/utils/registration";
@@ -74,32 +75,7 @@ async function TeamDetail({ params }: { params: { teamId: string } }) {
         <div className="flex md:flex-row flex-col gap-6">
           <TeamForm team={team} additionalField={additionalField} />
           <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-1 py-1 px-4 text-white font-semibold rounded-full bg-[#1e4a5d] w-fit">
-              <AlertCircle className="w-4 h-4" />
-              <p>Team Status</p>
-            </div>
-            <h1
-              className={`text-white font-bold text-3xl ${cocogoose.className}`}
-            >
-              {teamStatusMap.get(team.status)}
-            </h1>
-            {team.status === TEAM_STATUS.NeedPayment ? (
-              <div className="flex flex-col gap-2">
-                <p className="text-white">
-                  You have to pay the registration fee
-                </p>
-                <Link
-                  href={`/payment/team/${team.id}`}
-                  className="py-2 px-4 text-lg shadow-md shadow-emerald-600 bg-emerald-500 text-center hover:bg-emerald-600 transition-all text-white font-bold rounded-md"
-                >
-                  <button type="button">Pay Now</button>
-                </Link>
-              </div>
-            ) : null}
-            <SubmitTeamButton
-              isDisabled={!canBeSubmitted(team.status)}
-              teamDetail={team}
-            />
+            <TeamStatus team={team} />
           </div>
         </div>
       </div>
