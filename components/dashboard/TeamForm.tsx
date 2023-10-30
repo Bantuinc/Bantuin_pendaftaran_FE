@@ -238,7 +238,19 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
                       )
                 }
                 disabled={!editMode}
-                style={{ display: editMode ? "block" : "none" }}
+                style={{
+                  display:
+                    fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
+                      ? "none"
+                      : AdditionalFieldValue.hasOwnProperty(
+                          fieldValue.normalizedName
+                        ) &&
+                        AdditionalFieldValue[fieldValue.normalizedName] !== ""
+                      ? "none"
+                      : editMode
+                      ? "block"
+                      : "none",
+                }}
                 className="text-slate-800 font-semibold bg-white disabled:bg-white/75 text-md py-1 px-3 rounded-md focus:outline-none"
                 accept=".pdf"
                 onChange={(e) =>
