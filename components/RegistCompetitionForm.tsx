@@ -268,7 +268,7 @@ function RegistCompetitionForm({
               type={additionalFieldMap.get(fieldValue.type)}
               required={fieldValue.priority === 1}
               id={fieldValue.normalizedName}
-              accept=".pdf"
+              accept=".pdf,.png,.jpg"
               onChange={(e) =>
                 handleAdditionalFile(e, fieldValue.normalizedName)
               }
