@@ -252,7 +252,7 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
                       : "none",
                 }}
                 className="text-slate-800 font-semibold bg-white disabled:bg-white/75 text-md py-1 px-3 rounded-md focus:outline-none"
-                accept=".pdf"
+                accept=".pdf,.png,.jpg"
                 onChange={(e) =>
                   handleAdditionalFile(e, fieldValue.normalizedName)
                 }
