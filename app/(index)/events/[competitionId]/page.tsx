@@ -23,6 +23,7 @@ async function CompetitionDetail({
         competitionName={selectedCompetition?.name as string}
         competitionDescription={selectedCompetition?.description as string}
         openedAt={selectedCompetition?.openedAt as string}
+        closedAt={selectedCompetition?.closedAt as string}
       />
       {selectedCompetition?.name === "Poster Contest" && (
         <PosterContestDetail />

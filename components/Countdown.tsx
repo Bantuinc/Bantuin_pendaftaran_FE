@@ -4,6 +4,7 @@ import { useCountdown } from "@/utils/useCountdown";
 interface CountdownProps {
   competitionName: string;
   targetDate: number;
+  closedAt: string;
 }
 
 interface CounterProps {
@@ -65,10 +66,25 @@ const ExpiredNotice = ({competitionName}:{competitionName:string}) => {
   );
 };
 
-function Countdown({competitionName,targetDate }: CountdownProps) {
-  const [days, hours, minutes, seconds] = useCountdown(targetDate);
-  if (days + hours + minutes + seconds <= 0) {
-    return <ExpiredNotice competitionName={competitionName}/>;
+const EndedNotice = ({competitionName}:{competitionName:string}) => {
+    return (
+        <>
+            <p className="mb-4 text-center text-2xl font-bold text-[#FFA31D]">
+                {competitionName === "Mining Competition" ? "Competition is now Closed!" : "Contest is now Closed!"}
+            </p>
+        </>
+    );
+};
+
+function Countdown({competitionName,targetDate,closedAt }: CountdownProps) {
+    const [days, hours, minutes, seconds] = useCountdown(targetDate);
+    const dateTimeClose = new Date(closedAt);
+    const dateTimeNow = new Date(Date.now());
+
+    if(dateTimeClose < dateTimeNow){
+        return <EndedNotice competitionName={competitionName}/>;
+    }else if (days + hours + minutes + seconds <= 0) {
+        return <ExpiredNotice competitionName={competitionName}/>;
   }
   return (
     <div>

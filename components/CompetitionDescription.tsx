@@ -11,6 +11,7 @@ interface CompetitionDescriptionProps {
   competitionName: string;
   competitionDescription: string;
   openedAt: string;
+  closedAt: string;
 }
 
 function CompetitionDescription({
@@ -18,6 +19,7 @@ function CompetitionDescription({
   competitionName,
   competitionDescription,
   openedAt,
+  closedAt,
 }: CompetitionDescriptionProps) {
   const CompetitionOpened = (): boolean => {
     const res = new Date(openedAt).getTime() - new Date().getTime();
@@ -121,6 +123,7 @@ function CompetitionDescription({
             <Countdown
               competitionName={competitionName}
               targetDate={new Date(openedAt).getTime()}
+              closedAt={closedAt}
             />
           </div>
         </div>
