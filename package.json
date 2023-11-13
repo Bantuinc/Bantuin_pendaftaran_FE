@@ -2,6 +2,9 @@
   "name": "bantuin_pendaftaran_fe",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.18.2"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -26,7 +29,7 @@
     "jquery": ">=1.8.0",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.274.0",
-    "next": "^14.0.0",
+    "next": "13.4.19",
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-cookie": "^6.1.1",
