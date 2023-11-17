@@ -254,9 +254,7 @@ function PaymentForm({ team, additionalField }: TeamFormProps) {
                 id={fieldValue.normalizedName}
                 type="file"
                 required={
-                  !AdditionalFieldValue.hasOwnProperty(
-                    fieldValue.normalizedName
-                  )
+                  fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.Last
                 }
                 disabled={!editMode}
                 style={{ display: editMode ? "block" : "none" }}
