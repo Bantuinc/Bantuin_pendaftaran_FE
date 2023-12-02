@@ -240,7 +240,9 @@ function TeamForm({ team, additionalField }: TeamFormProps) {
                 disabled={!editMode}
                 style={{
                   display:
-                    fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
+                    fieldValue.normalizedName === "upload_poster" && editMode
+                      ? "block"
+                      : fieldValue.priority === ADDITIONAL_FIELD_PRIORITY.First
                       ? "none"
                       : AdditionalFieldValue.hasOwnProperty(
                           fieldValue.normalizedName
