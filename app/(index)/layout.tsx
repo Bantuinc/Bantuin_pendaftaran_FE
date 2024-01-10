@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Footer from "./Footer";
 import { inter } from "@/fonts/font";
 import Headers from "./headers";
+import {Toaster} from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "ISMC 14 | 2023",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <Headers />
         <div>{children}</div>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );

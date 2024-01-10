@@ -19,9 +19,10 @@ import { SUBTHEME_OPTION } from "@/utils/registration";
 import axios, { AxiosError } from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, FormEvent, useState } from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import Select, { MultiValue } from "react-select";
 import Swal from "sweetalert2";
+import { useToast } from "@/components/ui/use-toast"
 
 function RegistEventForm({
   competitionId,
@@ -32,6 +33,7 @@ function RegistEventForm({
   competitionType: number;
   additionalFields: AdditionalField[];
 }) {
+  const { toast } = useToast()
   const [email, setEmail] = useState<string>("");
   const [teamName, setTeamName] = useState<string>("");
   const [proofOfPayments, setProofOfPayments] = useState<string>("");
@@ -80,7 +82,21 @@ function RegistEventForm({
     }
     setIsLoading(false);
   };
-
+  const handleOptionChange = (
+      value: string,
+      normalizedName: string
+  ): void => {
+    Swal.fire({
+      title: "Amount !",
+      text: value === "student"?"Student must pay Rp. 40.000,00":"General must pay Rp. 60.000,00",
+      icon: "info",
+      confirmButtonText: "Ok",
+    })
+    setAdditionalFieldValue({
+      ...AdditionalFieldValue,
+      [normalizedName]: value,
+    });
+  };
   const handleAdditionalField = (
     value: string,
     normalizedName: string
@@ -165,7 +181,14 @@ function RegistEventForm({
   };
 
   const copyContent = async (text: string) => {
+    toast({
+      description: "Your message has been sent.",
+    })
     try {
+      toast({
+        title: "Copied to clipboard",
+        description: text,
+      })
       await navigator.clipboard.writeText(text);
       console.log("Content copied to clipboard");
     } catch (err) {
@@ -339,7 +362,7 @@ function RegistEventForm({
                         : false
                     }
                     onChange={(e) =>
-                      handleAdditionalField(
+                        handleOptionChange(
                         e.target.value,
                         fieldValue.normalizedName
                       )
@@ -383,6 +406,11 @@ function RegistEventForm({
           )}
         </div>
       ))}
+      {
+        competitionId === "b9306b9a-423a-460a-b71e-926d9c5ebf0a"?
+            <div/>
+            :
+            <div>
 
       <label
         htmlFor="payment"
@@ -425,6 +453,8 @@ function RegistEventForm({
           ) : null}
         </div>
       </div>
+            </div>
+      }
       <button
         type="submit"
         className="mt-6 bg-[#FFA31D] enabled:hover:bg-orange-400 disabled:cursor-not-allowed rounded-xl py-2 px-4 font-semibold text-2xl antialiased transition-all duration-300 ease-in-out"
