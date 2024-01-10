@@ -63,7 +63,7 @@ function RegistEventForm({
       );
       const alert = await Swal.fire({
         title: "Success!",
-        text: `Congratulations ${teamName}! You're officially registered as one of our Participants. Please Look forward to this event and keep your excitement!. Please check your email, we have sent you a confirmation email`,
+        text: `Congratulations ${teamName}! You're officially registered as one of our Participants. Please check your email, we have sent you a confirmation email`,
         icon: "success",
         confirmButtonText: "OK",
       });

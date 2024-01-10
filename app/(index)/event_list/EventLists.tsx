@@ -18,8 +18,8 @@ function EventLists({
   openedAt,
 }: RegistProps) {
   const RegistImg = [
-    "background_mining_competition.webp",
-    "bg_login.webp",
+    "event.webp",
+    "event.webp",
     "bg_login.webp",
     "background.webp",
   ];
