@@ -164,14 +164,14 @@ function RegistEventForm({
     setIsLoading(false);
   };
 
-  const copyContent = async (text:string) => {
+  const copyContent = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      console.log('Content copied to clipboard');
+      console.log("Content copied to clipboard");
     } catch (err) {
-      console.error('Failed to copy: ', err);
+      console.error("Failed to copy: ", err);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleCompetitionRegist} className=" flex flex-col gap-3">
@@ -226,28 +226,6 @@ function RegistEventForm({
         onChange={(e) => setEmail(e.target.value)}
         className="rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none"
       />
-      <label
-        htmlFor="payment"
-        className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
-      >
-        Proof Of Payment
-      </label>
-      <input
-        type="file"
-        required
-        id="proof_of_payment"
-        accept=".png,.jpg"
-        onChange={(e) => handleProofOfPayments(e)}
-        className={` rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none`}
-      />
-       <div>
-        <div className="drop-shadow-md text-lg">
-          *Payment to BCA <div className="bg-slate-700 py-1 px-3 flex items-center w-fit gap-6 justify-between rounded-md tracking-widest cursor-pointer" onClick={e=>copyContent("7772867399")}><p>7772867399</p> <Image src="/copy-icon.svg" width={16} height={16} alt="copy" className="invert w-auto h-4"/></div> <p>Zaizafafun Zahra</p>
-          {AdditionalFieldValue.hasOwnProperty("option") ? (
-            <p>Amount : Rp.{AdditionalFieldValue["option"] === "student" ? "40.000":"60.000"}</p>
-          ):null}
-        </div>
-      </div>
 
       {additionalFields?.map((fieldValue: AdditionalField, id) => (
         <div
@@ -405,6 +383,48 @@ function RegistEventForm({
           )}
         </div>
       ))}
+
+      <label
+        htmlFor="payment"
+        className={`${hind.className} text-2xl font-semibold drop-shadow-md`}
+      >
+        Proof Of Payment
+      </label>
+      <input
+        type="file"
+        required
+        id="proof_of_payment"
+        accept=".png,.jpg"
+        onChange={(e) => handleProofOfPayments(e)}
+        className={` rounded-lg py-2 px-4 bg-[#D9D9D9] text-lg text-slate-800 font-semibold shadow-md ring-1 ring-white/50 outline-none`}
+      />
+      <div>
+        <div className="drop-shadow-md text-lg">
+          *Payment to BCA{" "}
+          <div
+            className="bg-slate-700 py-1 px-3 flex items-center w-fit gap-6 justify-between rounded-md tracking-widest cursor-pointer"
+            onClick={(e) => copyContent("7772867399")}
+          >
+            <p>7772867399</p>{" "}
+            <Image
+              src="/copy-icon.svg"
+              width={16}
+              height={16}
+              alt="copy"
+              className="invert w-auto h-4"
+            />
+          </div>{" "}
+          <p>Zaizafafun Zahra</p>
+          {AdditionalFieldValue.hasOwnProperty("option") ? (
+            <p>
+              Amount : Rp.
+              {AdditionalFieldValue["option"] === "student"
+                ? "40.000"
+                : "60.000"}
+            </p>
+          ) : null}
+        </div>
+      </div>
       <button
         type="submit"
         className="mt-6 bg-[#FFA31D] enabled:hover:bg-orange-400 disabled:cursor-not-allowed rounded-xl py-2 px-4 font-semibold text-2xl antialiased transition-all duration-300 ease-in-out"
