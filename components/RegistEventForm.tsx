@@ -403,7 +403,7 @@ function RegistEventForm({
           *Payment to BCA{" "}
           <div
             className="bg-slate-700 py-1 px-3 flex items-center w-fit gap-6 justify-between rounded-md tracking-widest cursor-pointer"
-            onClick={(e) => copyContent("7772867399")}
+            onClick={(e) => copyContent("7772867339")}
           >
             <p>7772867399</p>{" "}
             <Image
