@@ -56,7 +56,7 @@ function EventLists({
         <p className="font-bold text-slate-50 text-lg">{description}</p>
         <div className="flex gap-3">
           <Link
-            href={`${CompetitionOpened() ? `/register/${id}` : ""}`}
+            href={`${CompetitionOpened() ? `/register/event/${id}` : ""}`}
             className="flex-1"
           >
             <button

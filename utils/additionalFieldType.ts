@@ -4,7 +4,8 @@ type AdditionalEntityType =
   | "file"
   | "file"
   | "select"
-  | "textarea";
+  | "textarea"
+  | "option";
 
 const additionalFieldMap = new Map<number, AdditionalEntityType>();
 
@@ -14,6 +15,7 @@ additionalFieldMap.set(3, "file");
 additionalFieldMap.set(4, "file");
 additionalFieldMap.set(5, "select");
 additionalFieldMap.set(6, "textarea");
+additionalFieldMap.set(7, "option");
 
 const ADDITIONAL_FIELD_PRIORITY = {
   First: 1,
