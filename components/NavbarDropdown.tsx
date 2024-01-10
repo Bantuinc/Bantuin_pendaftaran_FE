@@ -51,10 +51,10 @@ function NavbarDropdown({ competition }: NavbarDropdownProps) {
               <Link href={"/events/"}>
                 <li>Ceremonies</li>
               </Link>
-              <Link href={"/events/"}>
+              <Link href={"/event_list/"}>
                 <li>Youth Mining Conference</li>
               </Link>
-              <Link href={"/events/"}>
+              <Link href={"/event_list/"}>
                 <li>Mining Talks</li>
               </Link>
               <Link href={"/events/"}>
@@ -98,7 +98,7 @@ function NavbarDropdown({ competition }: NavbarDropdownProps) {
             className="absolute box-border md:top-8 top-0 md:left-0 -left-56 bg-[#5B99A8] rounded-md text-[#468091] shadow-sm shadow-[#46809166]"
           >
             <ul className="flex flex-col items-stretch gap-1 [&>a]:bg-white [&>a:hover]:bg-slate-200 [&>a]:py-3 [&>a]:px-6 [&>a:first-child]:rounded-t-md [&>a:last-child]:rounded-b-md [&>a]:w-52 [&>a]:text-sm [&>a]:transition-all">
-              {competition.map((comp: Competition, id: number) => (
+              {competition.filter((comp)=>comp.type !== 3).map((comp: Competition, id: number) => (
                 <Link key={id} href={`/events/${comp.id}`}>
                   <li>{comp.name}</li>
                 </Link>

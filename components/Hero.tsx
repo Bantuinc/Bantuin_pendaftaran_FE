@@ -38,7 +38,7 @@ function Hero() {
           <span className="align-super md:text-3xl text-2xl">th</span>{" "}
           Indonesian Students Mining Competition
         </h1>
-        <Link href="/register">
+        <Link href="/event_list">
           <button
             className={`mt-6 px-6 py-2 rounded-lg text-xl text-orange-50 font-bold bg-[#FFA31D] ${hind.className} hover:text-white hover:bg-orange-400 hover:translate-x-1 transition-all duration-300`}
           >
