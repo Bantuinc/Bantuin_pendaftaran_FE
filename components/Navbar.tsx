@@ -23,7 +23,9 @@ function Navbar({ competition, isLogin }: NavbarProps) {
         <li className="drop-shadow-md">
           <Link href="/about">About Us</Link>
         </li>
-        <li className="drop-shadow-md">Partnership</li>
+        <li className="drop-shadow-md">
+          <Link href={"/partnership"}>Partnership</Link>
+        </li>
         <li className="drop-shadow-md">
           <Link href="/#faq">FAQ</Link>
         </li>
