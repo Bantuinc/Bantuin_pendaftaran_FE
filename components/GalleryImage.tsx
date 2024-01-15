@@ -10,6 +10,7 @@ function GalleryImage() {
     className: "center",
     infinite: true,
     centerPadding: "60px",
+    align: "center",
     slidesToShow: 1,
     adaptiveHeight: true,
     speed: 500,
@@ -18,9 +19,24 @@ function GalleryImage() {
   };
   return (
     <Slider {...settings}>
+      <div>
+        <div
+          className="rounded-md px-auto flex justify-center items-center h-[768px]"
+          style={{ display: "flex !important" }}
+        >
+          <iframe
+            className="w-[853px] h-[480px]"
+            src="https://www.youtube.com/embed/AurO1RCq5IM?si=PgEiCidQloyS3ZJx"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
       <div className="rounded-md px-3 h-[768px]">
         <iframe
-          src="https://www.tiktok.com/embed/7281615676685438213"
+          src="https://www.tiktok.com/embed/7296434833750756614"
           style={{
             left: 0,
             width: "100%",
@@ -34,21 +50,7 @@ function GalleryImage() {
       </div>
       <div className="rounded-md px-3 h-[768px]">
         <iframe
-          src="https://www.tiktok.com/embed/7278216166827511045"
-          style={{
-            left: 0,
-            width: "100%",
-            height: 768,
-            position: "relative",
-          }}
-          allowFullScreen
-          scrolling="no"
-          allow="encrypted-media;"
-        ></iframe>
-      </div>
-      <div className="rounded-md px-3 h-[768px]">
-        <iframe
-          src="https://www.tiktok.com/embed/7274560791880142085"
+          src="https://www.tiktok.com/embed/7319840869383851269"
           style={{
             left: 0,
             width: "100%",
