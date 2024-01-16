@@ -51,50 +51,50 @@ function page() {
                 className="h-auto md:w-[6rem] w-[3rem] object-contain"
               />
             </div>
-            <div className="flex justify-center gap-6 items-center flex-wrap">
+            <div className="flex justify-center sm:gap-6 gap-3 items-center flex-wrap">
               <img
                 src="/sponsor/M/bib.png"
                 width={4207}
                 height={542}
                 alt="bib"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
-              />
-              <img
-                src="/sponsor/M/antam.jpg"
-                width={2537}
-                height={933}
-                alt="antam"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                className="sm:h-[5rem] h-[3rem] rounded-lg max-w-[15rem] object-contain"
               />
               <img
                 src="/sponsor/M/aptekindo.jpg"
                 width={1455}
                 height={717}
                 alt="Aptekindo"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                className="sm:h-[5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <img
                 src="/sponsor/M/mifa.jpg"
                 width={1294}
                 height={527}
                 alt="Mifa"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                className="sm:h-[5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <img
                 src="/sponsor/M/ptar.jpg"
                 width={1250}
                 height={1005}
                 alt="PTAR"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                className="sm:h-[5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
             </div>
-            <div className="flex justify-center gap-6 items-center flex-wrap">
+            <div className="flex justify-center sm:gap-6 gap-3 items-center flex-wrap">
+              <img
+                src="/sponsor/S/antam.jpg"
+                width={2537}
+                height={933}
+                alt="antam"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain rounded-lg"
+              />
               <img
                 src="/sponsor/S/aldzama.jpg"
                 width={1280}
                 height={647}
                 alt="Aldzama"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
               />
               <img
                 src="/sponsor/S/BSSR.png"
@@ -108,7 +108,14 @@ function page() {
                 width={1500}
                 height={1250}
                 alt="DYNO"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
+              />
+              <img
+                src="/sponsor/S/pertamina_ep.jpg"
+                width={1024}
+                height={208}
+                alt="Pertamina EP"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
               />
               <img
                 src="/sponsor/S/gmb.png"
@@ -116,6 +123,13 @@ function page() {
                 height={993}
                 alt="gmb"
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              />
+              <img
+                src="/sponsor/S/geomine.jpg"
+                width={400}
+                height={79}
+                alt="geomine"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
               />
               <img
                 src="/sponsor/S/harita.png"
@@ -129,7 +143,7 @@ function page() {
                 width={1277}
                 height={500}
                 alt="Pama"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
               />
               <img
                 src="/sponsor/S/powerchem.png"
@@ -158,76 +172,76 @@ function page() {
         <div className="mt-8 flex flex-col items-center gap-3 px-6 py-6 ring-2 ring-slate-200/70 rounded-[32px] bg-gradient-to-tr from-[#ccc6] to-[#cccc] backdrop-blur-[12px] w-fit shadow-lg">
           <p className="font-bold text-slate-900 text-sm">MEDIA PARTNER</p>
           <div className="flex flex-col gap-8 items-center w-full">
-            <div className="flex flex-col items-center justify-center gap-6 flex-wrap">
+            <div className="flex items-center justify-center sm:gap-6 gap-3 flex-wrap">
               <Image
                 src="/media/anak_tambang.png"
-                width={1334}
-                height={628}
-                alt="ibes"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={338}
+                height={114}
+                alt="anak_tambang"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/beh.png"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={1777}
+                height={922}
+                alt="beh"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/dunia_tambang.jpg"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={554}
+                height={554}
+                alt="dunia_tambang"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/eventcampus.png"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={480}
+                height={450}
+                alt="eventCampus"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/imsn.png"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={807}
+                height={807}
+                alt="ismn"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/lomba_mahasiswa.png"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={1248}
+                height={517}
+                alt="lomba_mahasiswa"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/majalah_tambang.png"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={1036}
+                height={337}
+                alt="majalah_tambang"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/media_tambang.jpg"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={1080}
+                height={1080}
+                alt="media_tambang"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/update_lomba_id.jpg"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={2272}
+                height={1230}
+                alt="update_lomba_id"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/media/urban_radio.jpg"
-                width={600}
-                height={600}
-                alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                width={1000}
+                height={1000}
+                alt="urban radio"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
             </div>
           </div>
@@ -241,14 +255,14 @@ function page() {
                 width={1334}
                 height={628}
                 alt="ibes"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                className="sm:h-[5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/support/perhapi.png"
                 width={5294}
                 height={4102}
                 alt="perhapi"
-                className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
+                className="sm:h-[5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
             </div>
           </div>
