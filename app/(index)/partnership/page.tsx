@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 function page() {
@@ -56,6 +57,7 @@ function page() {
                 width={4207}
                 height={542}
                 alt="bib"
+                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <Image
@@ -63,6 +65,7 @@ function page() {
                 width={2537}
                 height={933}
                 alt="antam"
+                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <Image
@@ -70,20 +73,23 @@ function page() {
                 width={1455}
                 height={717}
                 alt="Aptekindo"
+                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/sponsor/M/mifa.jpg"
-                width={6468}
-                height={1318}
+                width={1294}
+                height={527}
                 alt="Mifa"
+                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <Image
                 src="/sponsor/M/ptar.jpg"
-                width={8334}
-                height={6700}
+                width={1250}
+                height={1005}
                 alt="PTAR"
+                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
             </div>
@@ -93,13 +99,15 @@ function page() {
                 width={1280}
                 height={647}
                 alt="Aldzama"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <Image
-                src="/sponsor/S/BSSR.gif"
-                width={1200}
-                height={1600}
+                src="/sponsor/S/BSSR.png"
+                width={720}
+                height={960}
                 alt="BSSR"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <Image
@@ -107,27 +115,32 @@ function page() {
                 width={1500}
                 height={1250}
                 alt="DYNO"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <Image
                 src="/sponsor/S/gmb.png"
-                width={2339}
-                height={3308}
+                width={702}
+                height={993}
                 alt="gmb"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <Image
                 src="/sponsor/S/harita.png"
-                width={3032}
-                height={1000}
+                width={1213}
+                height={400}
                 alt="Harita"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <Image
                 src="/sponsor/S/pama.jpg"
-                width={4257}
-                height={5001}
+                width={1277}
+                height={500}
+                priority
                 alt="Pama"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <Image
@@ -135,6 +148,7 @@ function page() {
                 width={3508}
                 height={955}
                 alt="PowerChem"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <Image
@@ -142,6 +156,7 @@ function page() {
                 width={3000}
                 height={3000}
                 alt="PYC"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <Image
@@ -149,6 +164,7 @@ function page() {
                 width={2684}
                 height={1512}
                 alt="United Tractors"
+                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
             </div>
