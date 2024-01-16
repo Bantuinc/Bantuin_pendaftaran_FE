@@ -57,17 +57,14 @@ function NavbarDropdown({ competition }: NavbarDropdownProps) {
               <Link href={"/event_list/"}>
                 <li>Mining Talks</li>
               </Link>
-              <Link href={"/events/"}>
+              <Link href={"/event_list/mining_expo"}>
                 <li>Mining Expo and Job Fair</li>
               </Link>
-              <Link href={"/events"}>
+              <Link href={"/event_list/mining_exhibition"}>
                 <li>Mining Exhibition</li>
               </Link>
-              <Link href={"/events"}>
-                <li>Bandung Tour and Outbond</li>
-              </Link>
-              <Link href={"/events"}>
-                <li>Laboratory Tour</li>
+              <Link href={"/event_list/miners_day"}>
+                <li>Miners' Day</li>
               </Link>
             </ul>
           </Transition>
