@@ -19,7 +19,7 @@ function page() {
         <div className="flex flex-col items-center gap-3 px-6 py-6 ring-2 ring-slate-200/70 rounded-[32px] bg-gradient-to-tr from-[#ccc6] to-[#cccc] backdrop-blur-[12px] md:w-[80vw] w-full shadow-lg">
           <p className="font-bold text-slate-900 text-sm">SPONSORED BY</p>
           <div className="flex flex-col gap-8 items-center w-full">
-            <Image
+            <img
               src="/sponsor/XXL/maa.png"
               alt="MAA"
               width={1600}
@@ -27,14 +27,14 @@ function page() {
               className="h-[10rem] object-center w-full object-contain bg-white rounded-xl"
             />
             <div className="flex justify-center gap-6 items-center flex-wrap">
-              <Image
+              <img
                 src={"/sponsor/XL/pertamina.png"}
                 width={2339}
                 height={1654}
                 alt="pertamina"
                 className="w-auto md:h-[10rem] h-[6rem] object-contain rounded-2xl"
               />
-              <Image
+              <img
                 src={"/sponsor/XL/orica.png"}
                 width={2615}
                 height={1177}
@@ -43,7 +43,7 @@ function page() {
               />
             </div>
             <div className="flex items-center">
-              <Image
+              <img
                 src="/sponsor/L/migc.png"
                 width={440}
                 height={798}
@@ -52,119 +52,104 @@ function page() {
               />
             </div>
             <div className="flex justify-center gap-6 items-center flex-wrap">
-              <Image
+              <img
                 src="/sponsor/M/bib.png"
                 width={4207}
                 height={542}
                 alt="bib"
-                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/M/antam.jpg"
                 width={2537}
                 height={933}
                 alt="antam"
-                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/M/aptekindo.jpg"
                 width={1455}
                 height={717}
                 alt="Aptekindo"
-                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/M/mifa.jpg"
                 width={1294}
                 height={527}
                 alt="Mifa"
-                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/M/ptar.jpg"
                 width={1250}
                 height={1005}
                 alt="PTAR"
-                quality={100}
                 className="sm:h-[4rem] h-[3rem] rounded-lg w-auto object-contain"
               />
             </div>
             <div className="flex justify-center gap-6 items-center flex-wrap">
-              <Image
+              <img
                 src="/sponsor/S/aldzama.jpg"
                 width={1280}
                 height={647}
                 alt="Aldzama"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/S/BSSR.png"
                 width={720}
                 height={960}
                 alt="BSSR"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/S/dyno.jpg"
                 width={1500}
                 height={1250}
                 alt="DYNO"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/S/gmb.png"
                 width={702}
                 height={993}
                 alt="gmb"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/S/harita.png"
                 width={1213}
                 height={400}
                 alt="Harita"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/S/pama.jpg"
                 width={1277}
                 height={500}
-                priority
                 alt="Pama"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/S/powerchem.png"
                 width={3508}
                 height={955}
                 alt="PowerChem"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/S/pyc.png"
                 width={3000}
                 height={3000}
                 alt="PYC"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
-              <Image
+              <img
                 src="/sponsor/S/united_tractors.png"
                 width={2684}
                 height={1512}
                 alt="United Tractors"
-                quality={100}
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
             </div>
