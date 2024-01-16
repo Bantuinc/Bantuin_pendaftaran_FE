@@ -32,7 +32,7 @@ function MiningExpo() {
               </h1>
               <p className="font-bold text-slate-50 md:text-lg text-sm">
                 an event that promises an immersive exploration of the mining
-                industry, with a distinguished lineup of Indonesia's leading
+                industry, with a distinguished lineup of Indonesia{"'"}s leading
                 mining companies in attendance. Brace yourself to be exposed
                 with products, innovations, technologies, and services from
                 various companies in the mining industry. Join us for a

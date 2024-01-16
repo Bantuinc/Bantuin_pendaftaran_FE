@@ -89,7 +89,7 @@ function CompetitionDescription() {
           </h1>
           <p>
             a remarkable end to the 14th ISMC. This event is a farewell ceremony
-            for the delegations of the event. The competition's winners will
+            for the delegations of the event. The competition{"'"}s winners will
             also be announced at the closing ceremony. In addition, the Closing
             ceremony is expected to build internalization and memories among
             fellow players and the committee of the 14th ISMC.

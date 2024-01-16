@@ -64,7 +64,7 @@ function NavbarDropdown({ competition }: NavbarDropdownProps) {
                 <li>Mining Exhibition</li>
               </Link>
               <Link href={"/event_list/miners_day"}>
-                <li>Miners' Day</li>
+                <li>Miners{"'"} Day</li>
               </Link>
             </ul>
           </Transition>

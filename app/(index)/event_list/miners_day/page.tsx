@@ -28,7 +28,7 @@ function MinersDay() {
             </div>
             <div className={`text-left flex flex-col gap-3 md:max-w-[50%]`}>
               <h1 className="mb-6 text-white text-6xl font-bold drop-shadow-md">
-                Miners' Day
+                Miners{"'"} Day
               </h1>
               <p className="font-bold text-slate-50 md:text-lg text-sm">
                 Consists of Bandung tour & outbound and Laboratory tour
@@ -47,7 +47,7 @@ function MinersDay() {
       </section>
       <section className="w-screen py-4 bg-white text-center">
         <h1 className="text-[9vw] font-black bg-clip-text text-transparent bg-[url('/mining_competition.jpg')]">
-          Miners' Day
+          Miners{"'"} Day
         </h1>
       </section>
       <section
