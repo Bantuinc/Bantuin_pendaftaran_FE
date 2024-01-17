@@ -24,7 +24,7 @@ function page() {
               alt="MAA"
               width={1600}
               height={1200}
-              className="h-[10rem] object-center w-full object-contain bg-white rounded-xl"
+              className="h-[10rem] object-center w-full object-contain  rounded-xl"
             />
             <div className="flex justify-center gap-6 items-center flex-wrap">
               <img
@@ -39,7 +39,7 @@ function page() {
                 width={2615}
                 height={1177}
                 alt="orica"
-                className="w-auto md:h-[10rem] h-[6rem] object-contain bg-white rounded-xl"
+                className="w-auto md:h-[10rem] h-[6rem] object-contain  rounded-xl"
               />
             </div>
             <div className="flex items-center">
@@ -60,21 +60,21 @@ function page() {
                 className="sm:h-[5rem] h-[3rem] rounded-lg max-w-[15rem] object-contain"
               />
               <img
-                src="/sponsor/M/aptekindo.jpg"
+                src="/sponsor/M/aptekindo.png"
                 width={1455}
                 height={717}
                 alt="Aptekindo"
                 className="sm:h-[5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <img
-                src="/sponsor/M/mifa.jpg"
+                src="/sponsor/M/mifa.png"
                 width={1294}
                 height={527}
                 alt="Mifa"
                 className="sm:h-[5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <img
-                src="/sponsor/M/ptar.jpg"
+                src="/sponsor/M/ptar.png"
                 width={1250}
                 height={1005}
                 alt="PTAR"
@@ -83,18 +83,18 @@ function page() {
             </div>
             <div className="flex justify-center sm:gap-6 gap-3 items-center flex-wrap">
               <img
-                src="/sponsor/S/antam.jpg"
+                src="/sponsor/S/antam.png"
                 width={2537}
                 height={933}
                 alt="antam"
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain rounded-lg"
               />
               <img
-                src="/sponsor/S/aldzama.jpg"
+                src="/sponsor/S/aldzama.png"
                 width={1280}
                 height={647}
                 alt="Aldzama"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2  rounded-lg"
               />
               <img
                 src="/sponsor/S/BSSR.png"
@@ -104,18 +104,18 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <img
-                src="/sponsor/S/dyno.jpg"
+                src="/sponsor/S/dyno.png"
                 width={1500}
                 height={1250}
                 alt="DYNO"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2  rounded-lg"
               />
               <img
-                src="/sponsor/S/pertamina_ep.jpg"
+                src="/sponsor/S/pertamina_ep.png"
                 width={1024}
                 height={208}
                 alt="Pertamina EP"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2  rounded-lg"
               />
               <img
                 src="/sponsor/S/gmb.png"
@@ -125,11 +125,11 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <img
-                src="/sponsor/S/geomine.jpg"
+                src="/sponsor/S/geomine.png"
                 width={400}
                 height={79}
                 alt="geomine"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2  rounded-lg"
               />
               <img
                 src="/sponsor/S/harita.png"
@@ -139,11 +139,11 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <img
-                src="/sponsor/S/pama.jpg"
+                src="/sponsor/S/pama.png"
                 width={1277}
                 height={500}
                 alt="Pama"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2 bg-white rounded-lg"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain p-2  rounded-lg"
               />
               <img
                 src="/sponsor/S/powerchem.png"
@@ -188,7 +188,7 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
-                src="/media/dunia_tambang.jpg"
+                src="/media/dunia_tambang.png"
                 width={554}
                 height={554}
                 alt="dunia_tambang"
@@ -223,14 +223,14 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
-                src="/media/media_tambang.jpg"
+                src="/media/media_tambang.png"
                 width={1080}
                 height={1080}
                 alt="media_tambang"
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <Image
-                src="/media/update_lomba_id.jpg"
+                src="/media/update_lomba_id.png"
                 width={2272}
                 height={1230}
                 alt="update_lomba_id"
