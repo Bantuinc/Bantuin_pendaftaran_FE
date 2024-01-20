@@ -200,6 +200,13 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <img
+                src="/media/lomba_mahasiswa.png"
+                width={1248}
+                height={517}
+                alt="lomba_mahasiswa"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
+              />
+              <img
                 src="/media/majalah_tambang.png"
                 width={1036}
                 height={337}
@@ -214,10 +221,17 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <img
-                src="/media/anak_tambang.png"
-                width={338}
-                height={114}
-                alt="anak_tambang"
+                src="/media/media_tambang.png"
+                width={231}
+                height={231}
+                alt="media_tambang"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
+              />
+              <img
+                src="/media/whats_new_bandung.png"
+                width={425}
+                height={230}
+                alt="whats new bandung"
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <img
@@ -235,17 +249,33 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <img
-                src="/media/lomba_mahasiswa.png"
-                width={1248}
-                height={517}
-                alt="lomba_mahasiswa"
+                src="/media/innovators.png"
+                width={682}
+                height={682}
+                alt="innovators"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
+              />
+            </div>
+            <div className="flex items-center justify-center sm:gap-6 gap-3 flex-wrap">
+              <img
+                src="/media/event_bandung.png"
+                width={3200}
+                height={484}
+                alt="event_bandung"
+                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
+              />{" "}
+              <img
+                src="/media/anak_tambang.png"
+                width={338}
+                height={114}
+                alt="anak_tambang"
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <img
-                src="/media/media_tambang.png"
-                width={1080}
-                height={1080}
-                alt="media_tambang"
+                src="/media/urban_radio.jpg"
+                width={969}
+                height={201}
+                alt="urban radio"
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
               <img
@@ -253,13 +283,6 @@ function page() {
                 width={2272}
                 height={1230}
                 alt="update_lomba_id"
-                className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
-              />
-              <img
-                src="/media/urban_radio.jpg"
-                width={1000}
-                height={1000}
-                alt="urban radio"
                 className="sm:h-[3rem] h-[2rem] rounded-lg w-auto object-contain"
               />
             </div>
