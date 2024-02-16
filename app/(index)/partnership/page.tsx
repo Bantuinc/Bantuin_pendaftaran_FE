@@ -62,14 +62,35 @@ function page() {
                 alt="migc"
                 className="sm:h-[7rem] h-[4.5rem] sm:w-auto object-contain"
               />
+              <img
+                src="/sponsor/L/ptfi.png"
+                width={2134}
+                height={272}
+                alt="ptfi"
+                className="sm:h-[7rem] h-[4.5rem] sm:w-auto object-contain"
+              />
               {/* L */}
               {/* M */}
+              <img
+                src="/sponsor/M/antam.png"
+                width={2537}
+                height={933}
+                alt="antam"
+                className="sm:h-[4.5rem] h-[3rem] w-auto object-contain rounded-lg"
+              />
               <img
                 src="/sponsor/M/bib.png"
                 width={4207}
                 height={542}
                 alt="bib"
                 className="sm:h-[2.5rem] h-[1.75rem] w-auto rounded-lg object-contain"
+              />
+              <img
+                src="/sponsor/M/ptar.png"
+                width={1250}
+                height={1005}
+                alt="PTAR"
+                className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
               <img
                 src="/sponsor/M/aptekindo.png"
@@ -81,24 +102,17 @@ function page() {
             </div>
             <div className="mb-6 flex justify-center sm:gap-6 gap-3 items-center flex-wrap">
               <img
+                src="/sponsor/M/wbk.png"
+                width={883}
+                height={149}
+                alt="wbk"
+                className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain"
+              />
+              <img
                 src="/sponsor/M/mifa.png"
                 width={1294}
                 height={527}
                 alt="Mifa"
-                className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain"
-              />
-              <img
-                src="/sponsor/M/antam.png"
-                width={2537}
-                height={933}
-                alt="antam"
-                className="sm:h-[4.5rem] h-[3rem] w-auto object-contain rounded-lg"
-              />
-              <img
-                src="/sponsor/M/ptar.png"
-                width={1250}
-                height={1005}
-                alt="PTAR"
                 className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain"
               />
             </div>
@@ -106,17 +120,31 @@ function page() {
             {/* S */}
             <div className="mb-6 flex justify-center sm:gap-12 gap-3 items-center flex-wrap">
               <img
-                src="/sponsor/S/pyc.png"
-                width={3000}
-                height={3000}
-                alt="PYC"
+                src="/sponsor/S/berau.png"
+                width={559}
+                height={255}
+                alt="berau"
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <img
-                src="/sponsor/S/united_tractors.png"
-                width={2684}
-                height={1512}
-                alt="United Tractors"
+                src="/sponsor/S/peb.png"
+                width={502}
+                height={497}
+                alt="peb"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              />
+              <img
+                src="/sponsor/S/gmb.png"
+                width={702}
+                height={993}
+                alt="gmb"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              />
+              <img
+                src="/sponsor/S/BSSR.png"
+                width={720}
+                height={960}
+                alt="BSSR"
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <img
@@ -134,6 +162,13 @@ function page() {
                 className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <img
+                src="/sponsor/S/pyc.png"
+                width={3000}
+                height={3000}
+                alt="PYC"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              />
+              <img
                 src="/sponsor/S/pertamina_ep.png"
                 width={1024}
                 height={208}
@@ -143,25 +178,25 @@ function page() {
             </div>
             <div className="flex justify-center sm:gap-9 gap-3 items-center flex-wrap">
               <img
+                src="/sponsor/S/ptba.png"
+                width={1404}
+                height={993}
+                alt="ptba"
+                className="sm:h-[2rem] h-[2rem] w-auto object-contain"
+              />
+              <img
+                src="/sponsor/S/united_tractors.png"
+                width={2684}
+                height={1512}
+                alt="United Tractors"
+                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              />
+              <img
                 src="/sponsor/S/powerchem.png"
                 width={3508}
                 height={955}
                 alt="PowerChem"
                 className="sm:h-[2.5rem] h-[2rem] w-auto object-contain"
-              />
-              <img
-                src="/sponsor/S/BSSR.png"
-                width={720}
-                height={960}
-                alt="BSSR"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
-              />
-              <img
-                src="/sponsor/S/gmb.png"
-                width={702}
-                height={993}
-                alt="gmb"
-                className="sm:h-[3rem] h-[2rem] w-auto object-contain"
               />
               <img
                 src="/sponsor/S/geomine.png"
