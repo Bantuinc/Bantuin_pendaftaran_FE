@@ -17,7 +17,7 @@ export type PopupSponsorProps = {
   name: string;
 };
 
-function page() {
+function SponsorPage() {
   const [isShowingPopup, setIsShowingPopup] = useState<boolean>(false);
   const [sponsorContent, setSponsorContent] = useState<PopupSponsorProps>({
     logo: "",
@@ -111,4 +111,4 @@ function page() {
   );
 }
 
-export default page;
+export default SponsorPage;
