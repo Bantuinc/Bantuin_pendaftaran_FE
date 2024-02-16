@@ -101,7 +101,7 @@ const MiningCompetitionData: MiningDataType[] = [
   {
     src: "ventilation_duct_hamping.png",
     data: {
-      competitionName: "Ventilation Duct Hamping",
+      competitionName: "Ventilation Duct Hanging",
       description:
         "Players will install ducts using provided equipment, then measure the quantity and quality of required air. This competition will tests player understanding of mine ventilation",
       participant: "75+",
