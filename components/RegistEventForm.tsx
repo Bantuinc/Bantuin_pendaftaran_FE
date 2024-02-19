@@ -88,7 +88,7 @@ function RegistEventForm({
   ): void => {
     Swal.fire({
       title: "Amount !",
-      text: value === "student"?"Student must pay Rp. 40.000,00":"General must pay Rp. 60.000,00",
+      text: value === "student"?"Student must pay Rp. 25.000,00":"General must pay Rp. 30.000,00",
       icon: "info",
       confirmButtonText: "Ok",
     })
@@ -447,8 +447,8 @@ function RegistEventForm({
             <p>
               Amount : Rp.
               {AdditionalFieldValue["option"] === "student"
-                ? "40.000"
-                : "60.000"}
+                ? "25.000"
+                : "30.000"}
             </p>
           ) : null}
         </div>

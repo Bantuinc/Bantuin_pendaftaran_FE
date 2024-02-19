@@ -60,7 +60,7 @@ const Sponsor = ({
               width={2134}
               height={272}
               alt="ptfi"
-              className="sm:h-[7rem] h-[4.5rem] sm:w-auto object-contain"
+              className="sm:h-[3rem] h-[3.5rem] sm:w-auto object-contain"
             />
             {/* L */}
             {/* M */}
