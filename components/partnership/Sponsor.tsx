@@ -60,7 +60,7 @@ const Sponsor = ({
               width={2134}
               height={272}
               alt="ptfi"
-              className="sm:h-[3rem] h-[3.5rem] sm:w-auto object-contain"
+              className="sm:h-[3rem] h-[3rem] sm:w-auto object-contain"
             />
             {/* L */}
             {/* M */}
@@ -80,7 +80,7 @@ const Sponsor = ({
                   },
                 })
               }
-              className="sm:h-[4.5rem] h-[3rem] w-auto object-contain rounded-lg"
+              className="sm:h-[4.5rem] h-[3rem] w-auto object-contain rounded-lg cursor-pointer"
             />
             <img
               src="/sponsor/M/bib.png"
@@ -101,7 +101,7 @@ const Sponsor = ({
                     "<p><span style='font-weight: 400;'>PT Agincourt Resources (PTAR) is a prominent mining company in Indonesia, specialising in the exploration and mining of precious metals such as gold and silver. The Company&rsquo;s primary operating site is the Martabe Gold Mine in the Indonesian province of North Sumatra, while our headquarters in Jakarta facilitates and manages the corporate functions of the Company.The area of the Martabe Gold Mine is based on a sixth-generation 30-year Contract of Work with the Government of Indonesia. The total area is 130,252 hectares. Production The operating capacity of the Martabe Gold Mine is more than 7 million tonnes of ore per year to produce more than 200,000 ounces of gold and 1-2 million ounces of silver per year.PTAR is committed to creating safe and efficient operations, minimizing environmental impact, and ensuring our existence provides long-term benefits to all local stakeholders.</span></p>",
                 })
               }
-              className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain"
+              className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/M/aptekindo.png"
@@ -171,7 +171,7 @@ const Sponsor = ({
                   logo: "/sponsor/S/pama.png",
                 })
               }
-              className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              className="sm:h-[3rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/dyno.png"
@@ -190,7 +190,7 @@ const Sponsor = ({
                     "<p><span style='font-weight: 400;'>Established over 180 years ago, Dyno Nobel has a unique history and an unsurpassed Tradition of Practical Innovation. Our founder, Alfred Nobel, changed the world with his invention of dynamite and the detonator in the mid-1800&prime;s and changed it again when he founded the world famous Nobel Prizes. Throughout our history, we have patented over 2,800 products with 230 patents currently in force. In fact, most of the innovative explosive products ever invented are traced through Dyno Nobel. </span><span style='font-weight: 400;'>DNX Indonesia is a leading supplier of explosives products and blasting services in Indonesia. </span><b>Supported by Dyno Nobel's global organisation, DNX Indonesia delivers innovative service from its head office located in Jakarta and operations throughout Kalimantan, East Java and North Sumatra.&nbsp;</b></p> <p><b>DNX Indonesia Industrial Explosives:</b></p> <p><b></b></p> <ul> <li aria-level='1'><b>- The leader of full emulsion application of industrial explosives in Indonesia</b></li> <li aria-level='1'><b>- The #1 emulsion manufacturer (by plant number) of industrial explosives in Indonesia</b></li> <li aria-level='1'><b>- The leader of used oil application in explosives</b></li> <li></li> </ul>",
                 })
               }
-              className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              className="sm:h-[3rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/pyc.png"
@@ -216,7 +216,7 @@ const Sponsor = ({
                   logo: "/sponsor/S/pertamina_ep.png",
                 })
               }
-              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain"
+              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
           </div>
           <div className="flex justify-center sm:gap-9 gap-3 items-center flex-wrap">
@@ -258,7 +258,7 @@ const Sponsor = ({
                   },
                 })
               }
-              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain"
+              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/aldzama.png"
@@ -279,7 +279,7 @@ const Sponsor = ({
                     "Harita Nickel is a sustainable integrated nickel processing company. This is demonstrated by our operational activities that are good, professional, and prioritize sustainable environmental management for more than 10 years on Obi Island, South Halmahera, North Maluku, to be precise. in the Obi Island Industrial Area.",
                 })
               }
-              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain"
+              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
           </div>
           {/* S */}
