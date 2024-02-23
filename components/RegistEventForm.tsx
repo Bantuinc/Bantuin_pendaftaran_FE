@@ -456,6 +456,7 @@ function RegistEventForm({
             </div>
       }
       <button
+        disabled={isLoading}
         type="submit"
         className="mt-6 bg-[#FFA31D] enabled:hover:bg-orange-400 disabled:cursor-not-allowed rounded-xl py-2 px-4 font-semibold text-2xl antialiased transition-all duration-300 ease-in-out"
       >
