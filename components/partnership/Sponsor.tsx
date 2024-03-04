@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { PopupSponsorProps } from "@/app/(index)/partnership/page";
 const Sponsor = ({
   action,
@@ -18,7 +19,15 @@ const Sponsor = ({
             alt="MAA"
             width={1600}
             height={1200}
-            className="h-[10rem] object-center w-full object-contain rounded-xl"
+            onClick={() =>
+              action.showPopup({
+                name: "Mineral Alam Abadi Group",
+                description:
+                  "<p>Mineral Alam Abadi's Group commitment to excellence goes beyond just our operations. We are deeply dedicated to sustainability and environmental responsibility. Our mining practices adhere to the highest environmental standards, ensuring minimal ecological impact while maximizing resource utilization.<br> Furthermore, our engagement with local communities is at the heart of our ethos. We actively collaborate with local stakeholders, empowering them through employment opportunities and community development projects. By fostering strong relationships with the regions in which we operate, we aim to contribute positively to their growth and prosperity.<br> As we continue to expand our presence in Central Sulawesi, Southeast Sulawesi, and South Halmahera, our vision remains unwavering: to be a global leader in responsible mining and diversified services, driven by innovation and a commitment to the well-being of our planet and its people. We invite you to join us on this journey toward a sustainable and thriving future.<br> </p>",
+                logo: "/sponsor/XXL/maa.png",
+              })
+            }
+            className="h-[10rem] object-center w-full object-contain rounded-xl cursor-pointer"
           />
           {/* XXL */}
           {/* XL */}
@@ -28,14 +37,30 @@ const Sponsor = ({
               width={2339}
               height={1654}
               alt="pertamina"
-              className="w-auto md:h-[8.5rem] h-[5.75rem] object-contain rounded-2xl"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Pertamina",
+                  description:
+                    "<p>Pertamina upholds its commitment to provide energy and develop new and renewable energy in order to support the creation of national energy independence. strategic which oversees six subholdings operating in the energy sector (types of business activities), namely Upstream Subholding operationally run by PT Pertamina Hulu Energi, Gas Subholding by PT Pertamina Gas Negara, Refinery &amp; Petrochemical Subholding by PT Kilang Pertamina Internasional , Power &amp; NRE Subholding by PT Pertamina Power Indonesia, Commercial &amp; Trading Subholding by PT Pertamina Patra Niaga, and Integrated Marine Logistics Subholding by PT Pertamina International Shipping. Pertamina is committed to continuing to echo the spirit of sustainable transformation in order to perfect its steps to becoming a world-class energy company supported by an organization that is increasingly agile, aggressive, adaptable and focused on broader business development.<br> </p>",
+                  logo: "/sponsor/XL/pertamina.png",
+                })
+              }
+              className="w-auto md:h-[8.5rem] h-[5.75rem] object-contain rounded-2xl cursor-pointer"
             />
             <img
               src={"/sponsor/XL/orica.png"}
               width={2615}
               height={1177}
               alt="orica"
-              className="w-auto md:h-[8.5rem] h-[5.75rem] object-contain  rounded-xl"
+              onClick={() =>
+                action.showPopup({
+                  name: "ORICA Mining Services",
+                  description:
+                    "<p>Orica is one of the world’s leading mining and infrastructure solutions provides. Form the production and supply of the explosives, blasting system, mining chemical and geoctechnical monitoring to our cutting-edge digital solutions and comprehensive range of services, we sustainably mobilise the earth’s resources. Operating for nearly 150 years, roday our 12.500+ global workforce supports customers across surface and underground mines, quarry, construction, and oul and gas operations. Sustainibility is integral to our operations. We have set an ambition to achieve net zero emissions by 2050 and are committed to playing our part in achieving the goals of the paris agreement. Find out about orica : www.orica.com </p>",
+                  logo: "/sponsor/XL/orica.png",
+                })
+              }
+              className="w-auto md:h-[8.5rem] h-[5.75rem] object-contain cursor-pointer rounded-xl"
             />
           </div>
           {/* XL */}
@@ -46,7 +71,15 @@ const Sponsor = ({
               width={479}
               height={512}
               alt="arutmin"
-              className="sm:h-[7rem] h-[4.5rem] sm:w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Arutmin Indonesia",
+                  description:
+                    "<p>PT Arutmin Indonesia is a major coal mining company in Indonesia, operating for over three decades. Vision of the company is become the coal mining company that excels to fulfill energy needs and provides a positive impact on its stakeholders. Mission of PT Arutmin Indonesia is Achieve the company's business goals by increasing productivity through effective and efficient operations, Support government programs in fulfilling the needs of environmentally-friendly energy resources and create sustainable values for communities and the nation, Build a harmonious relationship with the government, communities, and corporate partners in reaching our business goals, also Support nature and environment conservation by building sustainable values under Government programs. Arutmin hopes to deliver a positive impact on all stakeholders and help create a better quality of life for communities.<br> </p>",
+                  logo: "/sponsor/L/arutmin.png",
+                })
+              }
+              className="sm:h-[7rem] h-[4.5rem] sm:w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/L/migc.png"
@@ -60,7 +93,15 @@ const Sponsor = ({
               width={2134}
               height={272}
               alt="ptfi"
-              className="sm:h-[3rem] h-[3rem] sm:w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Freeport Indonesia",
+                  description:
+                    "<p>PT Freeport Indonesia (PTFI) is a mineral mining company operating in the Mimika regency of Papua Province in Indonesia. PTFI mines and processes mineral ores into concentrates with copper content, and associated minerals gold and silver. Most of the concentrates produced by PTFl are refined domestically. The shares of PTFI are now owned by a company belonging to the State of the Republic of Indonesia, the Mining Industry Indonesia (MIND ID) and multinationalmining company listed at the New York Stock Exchange, Freeport-McMoRan Inc. (FCX).PTFl is the largest provider of private employments in Papua. At present the operations of PTFI employ around 7,096 direct employees and its 23,446 contractors. Most of those workingin PTFI (40.7%) are native Papuan and there are only two percent of foreign workers. In the framework of developing the quality and capacity of Papuan human resources, PTFI has builtand operated the Nemangkawi Mining Institute (IPN) which functions as a training agency for Papuan residents. The latest study by LPEM-FEUl on the economic impact of PTFI showedthat the impact of the operations of PTFI has led to the creation of 230,000 jobs in Papua and 108,800 jobs at the national level in Indonesia. </p>",
+                  logo: "/sponsor/L/ptfi.png",
+                })
+              }
+              className="sm:h-[3rem] h-[3rem] sm:w-auto cursor-pointer object-contain"
             />
             {/* L */}
             {/* M */}
@@ -78,6 +119,7 @@ const Sponsor = ({
                     text: "PT ANTAM Tbk",
                     url: "https://www.antam.com/en/about",
                   },
+                  logo: "/sponsor/M/antam.png",
                 })
               }
               className="sm:h-[4.5rem] h-[3rem] w-auto object-contain rounded-lg cursor-pointer"
@@ -87,7 +129,15 @@ const Sponsor = ({
               width={4207}
               height={542}
               alt="bib"
-              className="sm:h-[2.5rem] h-[1.75rem] w-auto rounded-lg object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Borneo Indobara",
+                  description:
+                    "<p>PT Borneo Indobara is a company engaged in the trading of mining products and mining services, particularly coal. Established in 1997 under the name PT Bumi Kencana Eka Sakti, the company later changed its name to PT Borneo Indobara in 2010. As part of the Sinarmas Mining Group, which also has PT Golden Energy Mines Tbk as its parent company, PT Borneo Indobara holds mining licenses in South Kalimantan with an area of approximately 15,000 hectares. With a coal production capacity of around 12 million tons per year, the company envisions becoming a sustainable and socially responsible coal mining company. PT Borneo Indobara also has a mission to create added value for shareholders, employees, the community, and the environment. The company actively implements Corporate Social Responsibility and Environmental Responsibility (CSER) programs, including community empowerment, education, health, environmental conservation, and disaster relief.<br> </p>",
+                  logo: "/sponsor/M/bib.png",
+                })
+              }
+              className="sm:h-[2.5rem] h-[1.75rem] w-auto rounded-lg object-contain cursor-pointer"
             />
             <img
               src="/sponsor/M/ptar.png"
@@ -99,6 +149,7 @@ const Sponsor = ({
                   name: "PT Agincourt Recources",
                   description:
                     "<p><span style='font-weight: 400;'>PT Agincourt Resources (PTAR) is a prominent mining company in Indonesia, specialising in the exploration and mining of precious metals such as gold and silver. The Company&rsquo;s primary operating site is the Martabe Gold Mine in the Indonesian province of North Sumatra, while our headquarters in Jakarta facilitates and manages the corporate functions of the Company.The area of the Martabe Gold Mine is based on a sixth-generation 30-year Contract of Work with the Government of Indonesia. The total area is 130,252 hectares. Production The operating capacity of the Martabe Gold Mine is more than 7 million tonnes of ore per year to produce more than 200,000 ounces of gold and 1-2 million ounces of silver per year.PTAR is committed to creating safe and efficient operations, minimizing environmental impact, and ensuring our existence provides long-term benefits to all local stakeholders.</span></p>",
+                  logo: "/sponsor/M/ptar.png",
                 })
               }
               className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain cursor-pointer"
@@ -108,7 +159,15 @@ const Sponsor = ({
               width={1455}
               height={717}
               alt="Aptekindo"
-              className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "Anggun Permai Tekindo",
+                  description:
+                    "<p>Anggun Permai Tekindo (APT) is a mining services and contractor company that is specialized in supplying latest technology to support mining development &amp; production.<br> We are an authorized supplier for Sika&reg; Mining Solution, Victaulic, and Getman. APT specialized in concrete admixtures, shotcrete, grouting and injections that take part of tunneling works, ground consolidation, ground stabilization, wall-face support, ground water stopping and other mining related activities.<br> Through skilled and certified contractor work and proper application with SIUJP &amp; SIUJK Licensed of our products, we are able to give the best solutions and technical support for our clients.<br> </p>",
+                  logo: "/sponsor/M/aptekindo.png",
+                })
+              }
+              className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain cursor-pointer"
             />
           </div>
           <div className="mb-6 flex justify-center sm:gap-6 gap-3 items-center flex-wrap">
@@ -117,14 +176,30 @@ const Sponsor = ({
               width={883}
               height={149}
               alt="wbk"
-              className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "Wahana Bandhawa Kencana",
+                  description:
+                    "<p>PT. Wahana Bandhawa Kencana (WBK) stands tall as a distinguished mining contractor, embodying excellence in every facet of its operations since its inception in January 2018. Our comprehensive services encompass Land Clearing, Top Soil Removal, Drilling, Blasting, and Overburden Removal. At WBK, we are not merely providers of mining services; we are architects of progress, pioneers in the industry. Our services span from Survey and Exploration to Modelling, Design and Sequence, Drilling and Blasting, Overburden Removal, Coal Getting, and Coal Hauling. Our vision is steadfast: to emerge as the foremost and most trusted mining service provider, distinguished by our unwavering commitment to safety across all operations. At the core of WBK's ethos lies a commitment to excellence, safety, and sustainability. Our policies and practices are not mere words on paper but guiding principles that permeate every aspect of our operations. Together, with our dedicated team and valued partners, we forge ahead, driven by a shared vision of a safer, more prosperous future in mining.</p>",
+                  logo: "/sponsor/M/wbk.png",
+                })
+              }
+              className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/M/mifa.png"
               width={1294}
               height={527}
               alt="Mifa"
-              className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Mifa Bersaudara",
+                  description:
+                    "<p>PT Mifa Bersaudara (&ldquo;MIFA&rdquo; or the &ldquo;Company&rdquo;) is a subsidiary of PT Media Djaya Bersama which was founded in 2002. Since its inception until now, MIFA has carried out integrated coal mining operations in the West Aceh region, Province Aceh. MIFA's mining activities are carried out independently, covering all activities from upstream to downstream, namely from the mining area to the special port. To support daily mining operational activities, MIFA has built facilities and infrastructure, such as mining operational facilities, coal crushing plants, special coal hauling roads, and building a system for loading bulk coal onto barges. to the PT Mifa Bersaudara Special Coal Terminal located on the Peunaga Cut Ujong Coast, West Aceh Regency.<br> </p>",
+                  logo: "/sponsor/M/mifa.png",
+                })
+              }
+              className="sm:h-[4.5rem] h-[3rem] rounded-lg w-auto object-contain cursor-pointer"
             />
           </div>
           {/* M */}
@@ -135,28 +210,60 @@ const Sponsor = ({
               width={559}
               height={255}
               alt="berau"
-              className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "Berau Coal",
+                  description:
+                    "<p>Berau Coal is the fifth largest coal producer in Indonesia. It engages in open cut mining of coal in its concession area in East Kalimantan, operating in three active mining areas &ndash; Lati, Binungan and Sambarata.Berau Coal supplies coal to customers in Indonesia, China, Hong Kong, India, Japan, South Korea, Taiwan, the Philippines and Thailand. Berau Coal&rsquo;s customers are mainly utility companies and coal trading companies.Berau Coal completed an initial public offering and its shares were listed on the Indonesian Stock Exchange (&ldquo;IDX&rdquo;) in August 2010.<br> </p>",
+                  logo: "/sponsor/S/berau.png",
+                })
+              }
+              className="sm:h-[3rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/peb.png"
               width={502}
               height={497}
               alt="peb"
-              className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Pendopo Energi Batubara",
+                  description:
+                    "<p>PT Pendopo Energi Batubara (PEB), established in 1995, has entered into the third Generation of Coal Contract of Work (CCOW) with the Government of Indonesia. The location of PEB mining is in Muara Enim and PALI, South Sumatera, 140 km southwest of Palembang, which can be accessed through the provincial road, Musi/Lematang River and crossed by special road for coal of the third party along the &plusmn; 116 km that connects Lahat with coal ports in the Musi River.<br> For Coal Upgrading and Coal Gasification, PEB together with its strategic partners from China, Japan and Korea are on comprehensive feasibility study in purpose to implements these projects commercially. With downstream products to be targetted are DME, Methanol, Fertilizer and SNG<br> </p>",
+                  logo: "/sponsor/S/peb.png",
+                })
+              }
+              className="sm:h-[3rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/gmb.png"
               width={702}
               height={993}
               alt="gmb"
-              className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Geo Mining Berkah",
+                  description:
+                    "<p>We are a mining and environmental consulting company that was founded in 2015 on a national scale. We provide complete services, both basic licensing which is a basic requirement for company operations, as well as technical study needs which are outlined in the form of scientific study documents in accordance with applicable statutory rules and regulations. We are a company engaged in mining services consulting with national services. We will provide solutions with a new and practical approach in the world of mining, so that we can provide high added value to our clients by utilizing technical capabilities and in-depth experience towards the client's business goals.<br> </p>",
+                  logo: "/sponsor/S/gmb.png",
+                })
+              }
+              className="sm:h-[3rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/BSSR.png"
               width={720}
               height={960}
               alt="BSSR"
-              className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Baramulti Suksessarana",
+                  description:
+                    "<p>BSSR was established in 1990, as a coal trading company and has since moved upstream to be a coal mining company.PT Baramulti Suksessarana Tbk (BSSR) offers a substantial reserves and resources of quality coal from its mine sites in East and South Kalimantan.<br> BSSR have a firm commitment for a steady coal production growth and infrastructure development to elevate it as one of Indonesia's leading coal mining companies, and contribute to the Indonesian economic growth. There are 2 coal concessions in BSSR:<br> 1. PT Antang Gunung Meratus (AGM), a 2nd generation Coal Contract of Work (CCOW), located in South Kalimantan<br> 2. PT Baramulti Suksessarana (BSSR), an Izin Usaha Pertambangan (IUP), located in East Kalimantan.<br> </p>",
+                  logo: "/sponsor/S/BSSR.png",
+                })
+              }
+              className="sm:h-[3rem] h-[2rem] w-auto cursor-pointer object-contain"
             />
             <img
               src="/sponsor/S/pama.png"
@@ -197,7 +304,15 @@ const Sponsor = ({
               width={3000}
               height={3000}
               alt="PYC"
-              className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "Purnomo Yusginatoro Center",
+                  description:
+                    "<p>Purnomo Yusgiantoro Center (PYC) is a non-profit organization that focuses on independent and in-depth research, to provide policy solutions and/or recommendations in the field of energy and natural resources research at the local, national and global levels. PYC also focuses on solutions to problems and challenges in the energy and natural resources sector which have a significant impact on sustainable development in Indonesia. To achieve this goal, PYC provides solutions through various independent research projects, seminars, workshops, conferences, and collaboration with government and private institutions in various studies/research related to energy and natural resources. In the social sector, PYC holds various events aimed at helping the community in the fields of health, welfare and education. Apart from that, it is also actively involved in promoting local and regional cultural heritage to preserve traditional Indonesian culture.<br> </p>",
+                  logo: "/sponsor/S/pyc.png",
+                })
+              }
+              className="sm:h-[3rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/pertamina_ep.png"
@@ -225,21 +340,45 @@ const Sponsor = ({
               width={1404}
               height={993}
               alt="ptba"
-              className="sm:h-[2rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Bukit Asam",
+                  description:
+                    "<p>PT Bukit Asam Tbk (PTBA) is a prominent state-owned coal mining company in Indonesia and a member of the MIND ID group. Established in 1923, the company has a long history in the coal mining industry and plays a significant role in Indonesia's energy sector.<br> With the vision of becoming a world-class energy company that cares about the environment, Bukit Asam continues to innovate in the coal-based energy business, renewable energy and coal downstream projects.<br> </p>",
+                  logo: "/sponsor/S/ptba.png",
+                })
+              }
+              className="sm:h-[2rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/united_tractors.png"
               width={2684}
               height={1512}
               alt="United Tractors"
-              className="sm:h-[3rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT United Tractors Tbk",
+                  description:
+                    "<p>PT United Tractors Tbk is a subsidiary of PT Astra International Tbk (&ldquo;Astra&rdquo;), a well-established and one of the largest business groups in Indonesia with robust experience of serving various industries and sectors. Since September 19, 1989, the Company has become a public company by listing its shares on the Indonesia Stock Exchange (formerly the Jakarta Stock Exchange and Surabaya Stock Exchange). To date Astra owns 59.5% of the Company&rsquo;s shares, with the remaining shares are held by the public. Currently, the Company is a key player in various sectors and industries in the country through its five business pillars, namely Construction Machinery, Mining Contracting, Mining, Construction Industry and Energy.<br> </p>",
+                  logo: "/sponsor/S/united_tractors.png",
+                })
+              }
+              className="sm:h-[3rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/powerchem.png"
               width={3508}
               height={955}
               alt="PowerChem"
-              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "Power Chemical Services",
+                  description:
+                    "<p>Established by a group of young &amp; professional engineers in 2018, POWER CHEMICALS is a specialty chemicals &amp; engineering service company for the mining, mineral processing, and several water treatment industries. We believe that Indonesia, with its massive human and natural resources, must be able to be independent of its various chemicals products needs. Thus our dream is to be one of the main driving forces to accelerate Indonesia's independence on various chemical products by providing added value via our specialty chemical products &amp; engineering services for our beloved customers. Our vision is to be the Nation&rsquo;s best chemical &amp; engineering service company in providing added value to our customer, employee and Indonesia.<br> </p>",
+                  logo: "/sponsor/S/powerchem.png",
+                })
+              }
+              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/geomine.png"
@@ -265,7 +404,15 @@ const Sponsor = ({
               width={1280}
               height={647}
               alt="Aldzama"
-              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain"
+              onClick={() =>
+                action.showPopup({
+                  name: "PT Aldzama",
+                  description:
+                    "<p>We work as specialist of shutdown services to the mining metals smelting and mineral industries, we deliver innovative solution to all costumer requirements, making the company an expert wherever it operates. We aim to be world class quality shutdown services to the mining, metals smelting and mineral processing industries which is beneficial for its employees partners, communities and environtment. Our area of operation extends to East Java West Nusa Tenggara and Sulawesi. There we operate to help your mining, metal smelting and mineral processing industries.<br> </p>",
+                  logo: "/sponsor/S/aldzama.png",
+                })
+              }
+              className="sm:h-[2.5rem] h-[2rem] w-auto object-contain cursor-pointer"
             />
             <img
               src="/sponsor/S/harita.png"
@@ -277,6 +424,7 @@ const Sponsor = ({
                   name: "Harita Nickel",
                   description:
                     "Harita Nickel is a sustainable integrated nickel processing company. This is demonstrated by our operational activities that are good, professional, and prioritize sustainable environmental management for more than 10 years on Obi Island, South Halmahera, North Maluku, to be precise. in the Obi Island Industrial Area.",
+                  logo: "/sponsor/S/harita.png",
                 })
               }
               className="sm:h-[2.5rem] h-[2rem] w-auto object-contain cursor-pointer"

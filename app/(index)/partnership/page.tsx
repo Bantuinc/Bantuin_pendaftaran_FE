@@ -36,6 +36,7 @@ function SponsorPage() {
       logo: props?.logo,
       description: props?.description,
       link: props?.link,
+      name: props?.name,
     });
   };
   const closePopup = () => {
